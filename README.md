@@ -2,37 +2,39 @@
 
 **Team Members**
 
-Yoonjung Choi
-Abhiteja Mandava
-Ishaan Bhalla
-Sakruthi Avirineni
+* Yoonjung Choi
+* Abhiteja Mandava
+* Ishaan Bhalla
+* Sakruthi Avirineni
 
 
 ## Introduction Dataset
 
 **Source Dataset**
-https://www.openml.org/search?type=data&status=active&id=43687&sort=runs
+
+[Source Link](https://www.openml.org/search?type=data&status=active&id=43687&sort=runs)
 
 * number of instance: 39998
 * number of features: 12
+* number of missing values: 
 
 **Feature**
 
-| Feature Name                                              |
-|-----------------------------------------------------------|
-| Age_At_The_Time_Of_Mammography INTEGER                    |
-| Radiologists_Assessment STRING                            |
-| Is_Binary_Indicator_Of_Cancer_Diagnosis {True, False}     |
-| Comparison_Mammogram_From_Mammography STRING              |
-| Patients_BI_RADS_Breast_Density STRING                    |
-| Family_History_Of_Breast_Cancer STRING                    |
-| Current_Use_Of_Hormone_Therapy STRING                     |
-| Binary_Indicator STRING                                   |
-| History_Of_Breast_Biopsy STRING                           |
-| Is_Film_Or_Digital_Mammogram {True, False}                |
-| Cancer_Type STRING                                        |
-| Body_Mass_Index STRING                                    |
-| Patients_Study_ID INTEGER                                 |
+| Feature Name                                              |  TYPE. | MissigValue|
+|-----------------------------------------------------------|--------|------------|
+| Age_At_The_Time_Of_Mammography INTEGER                    | INTEGER|            | 
+| Radiologists_Assessment STRING                            | STRING |            | 
+| Is_Binary_Indicator_Of_Cancer_Diagnosis {True, False}     | BINARY |            | 
+| Comparison_Mammogram_From_Mammography STRING              | STRING |   4680     |
+| Patients_BI_RADS_Breast_Density STRING                    | STRING |            | 
+| Family_History_Of_Breast_Cancer STRING                    | STRING |    288     | 
+| Current_Use_Of_Hormone_Therapy STRING                     | STRING |   1772     | 
+| Binary_Indicator STRING                                   | STRING |    578     | 
+| History_Of_Breast_Biopsy STRING                           | STRING |    815     |
+| Is_Film_Or_Digital_Mammogram {True, False}                | BINARY |            | 
+| Cancer_Type STRING                                        | STRING |            | 
+| Body_Mass_Index STRING                                    | STRING |   23208    |
+| Patients_Study_ID INTEGER                                 | INTEGER|            |
 
 
 ## Problem
