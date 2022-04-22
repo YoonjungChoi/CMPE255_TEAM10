@@ -12,6 +12,7 @@
 In our society, Social Network has been playing a crucial role in communication ways and analyzing social network has been important.
 Especially, in case of emergency, people would start to annouce information via social network. Twitter is one of the popular communication medium.
 Since more agencies want to monitor or track Twitter intelligently by using technologies.
+
 ![image](https://user-images.githubusercontent.com/20979517/164597834-91e22330-7d3c-49b1-87cc-af17eea57aba.png)
 
 This Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
