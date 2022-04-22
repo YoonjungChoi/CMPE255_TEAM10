@@ -1,4 +1,4 @@
-# CMPE255_TEAM10 [BreastCancerPrediction]
+# CMPE255_TEAM10 [Natural Language Processing With Disaster Tweets]
 
 **Team Members**
 
@@ -9,60 +9,78 @@
 
 
 ## Introduction Dataset
+In our society, Social Network has been playing a crucial role in communication ways and analyzing social network has been important.
+Especially, in case of emergency, people would start to annouce information via social network. Twitter is one of the popular communication medium.
+Since more agencies want to monitor or track Twitter intelligently by using technologies.
+
+This Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
+If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  people. can unserstand it does not mean 'disaster' but metaphorically somthing. However, It is not clear for machine. Thus, our team10 will investigate what techniques are for NLP and explore them.
 
 **Source Dataset**
 
-[Source Link](https://www.openml.org/search?type=data&status=active&id=43687&sort=runs)
+[Source Link](https://www.kaggle.com/competitions/nlp-getting-started/data)
 
-* number of instance: 39998
-* number of features: 12
-* number of missing values: 
+* number of instance: 7613
+* number of features: 5
+* number of missing values: 2572
 
 **Feature**
 
-| Feature Name                                              |  TYPE. | MissigValue|
-|-----------------------------------------------------------|--------|------------|
-| Age_At_The_Time_Of_Mammography INTEGER                    | INTEGER|            | 
-| Radiologists_Assessment STRING                            | STRING |            | 
-| Is_Binary_Indicator_Of_Cancer_Diagnosis {True, False}     | BINARY |            | 
-| Comparison_Mammogram_From_Mammography STRING              | STRING |   4680     |
-| Patients_BI_RADS_Breast_Density STRING                    | STRING |            | 
-| Family_History_Of_Breast_Cancer STRING                    | STRING |    288     | 
-| Current_Use_Of_Hormone_Therapy STRING                     | STRING |   1772     | 
-| Binary_Indicator STRING                                   | STRING |    578     | 
-| History_Of_Breast_Biopsy STRING                           | STRING |    815     |
-| Is_Film_Or_Digital_Mammogram {True, False}                | BINARY |            | 
-| Cancer_Type STRING                                        | STRING |            | 
-| Body_Mass_Index STRING                                    | STRING |   23208    |
-| Patients_Study_ID INTEGER                                 | INTEGER|            |
+| Feature   |  Dtype | Null Count |
+|-----------|--------|------------|
+| id        | int64  | 0          |
+| keyword   | object | 39         |
+| location. | object | 2533       |
+| text      | object | 0          |
+| target    | int64  | 0          |
+
 
 
 ## Problem
-Binary or multiple classification Problem (Supervised Learning)
-This dataset have two indicators
+This Problem is supervised learning, Binary classification Problem and Natural Language Processing.
 
-* Is_Binary_Indicator_Of_Cancer_Diagnosis {True, False}
-* Cancer_Type STRING
 
-We will use **Logistic Regression, SVM(linear & Kernal), Decision Tree** to solve this classification problem.
+This dataset have 'target' label having 0 or 1 
 
-**Preprocessing & Understanding Dataset**
-* Change all to numeric type.
-* Visualize correlations among features
-* Visualize any other relationship between features or labels
-* Identify mssing Values and replace Mean, Zero or others.    
-* Identify label.
+![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
+
+
+We will use **Logistic Regression, SVM, Decision Tree** to solve this classification problem.
+
+**Data Exploration**
+* Loading dataset and understanding data
+
+**Data Cleaning**
+* Change all characters to lowercase
+* Makes sure to remove URL, HTML, Emojis, ASCII and Punctuation. 
+
+**Data Preprocessing Part1 Using [NLTK](https://www.nltk.org/index.html)**:
+* Tokenize
+* Remove Stopwords(Common words, example: are)
+* PorterStemmer (Stemming is the important in NLP, example: asked -> ask)
+* WordNetLemmatizer (example: peopl => people)
+
+**Data Preprocessing Part2 to transform text to numerical value**
+* apply CountVector
+* apply TF-IDF
+* apply Word2Vec
+
+**Data Split**
+* split each type of feature
 
 **Modeling**:
-   
-* Split train and test set
 * Build training model
-* Train the data set in model
+* Train each type of t in model
 * Find best tuning values of model
+* Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
 
-**Prediction**:
-* Predict test date 
-* Obtain accuracy - F1 Score, Precision, Recall...
+**Emsemble**
+* create best funing values of model
+* create ensemble model
+* Train/Test ensemble model with each type of data
+* Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+
+**Visualization**
 * Visualize results
 * Compare each models to find best results.
 
