@@ -12,6 +12,7 @@
 In our society, Social Network has been playing a crucial role in communication ways and analyzing social network has been important.
 Especially, in case of emergency, people would start to annouce information via social network. Twitter is one of the popular communication medium.
 Since more agencies want to monitor or track Twitter intelligently by using technologies.
+![image](https://user-images.githubusercontent.com/20979517/164597834-91e22330-7d3c-49b1-87cc-af17eea57aba.png)
 
 This Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
 If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  people. can unserstand it does not mean 'disaster' but metaphorically somthing. However, It is not clear for machine. Thus, our team10 will investigate what techniques are for NLP and explore them.
