@@ -28,13 +28,13 @@ If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  p
 
 **Feature**
 
-| Feature   |  Dtype | Null Count |
-|-----------|--------|------------|
-| id        | int64  | 0          |
-| keyword   | object | 39         |
-| location. | object | 2533       |
-| text      | object | 0          |
-| target    | int64  | 0          |
+| Feature   |  Dtype | Descrition                  |
+|-----------|--------|-----------------------------|
+| id        | int64  |                             |
+| keyword   | object | 39 non-values               |
+| location. | object | 2533 non-valus              |
+| text      | object | tweetter content            |
+| target    | int64  | 0:non-disaster, 1:disaster  |
 
 
 
