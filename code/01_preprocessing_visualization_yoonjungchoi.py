@@ -233,12 +233,12 @@ sorted_cv_nodis = dict(sorted(nodis_countvectorizer.vocabulary_.items(), key=lam
 #print(sorted_cv_dis)
 #print(sorted_cv_nodis)
 
-print(dis_countvectorizer.vocabulary_.keys())
+#print(dis_countvectorizer.vocabulary_.keys())
 
 cv_key_list = list(vectorizer.vocabulary_.keys())
 cv_values_list = list(vectorizer.vocabulary_.values())
-print(cv_key_list)
-print(cv_values_list)
+#print(cv_key_list)
+#print(cv_values_list)
 
 import matplotlib.pyplot as plt
 fig = plt.figure()
@@ -266,19 +266,19 @@ tdidf_disaster = dis_tdidfvectorizer.fit_transform(df_disaster['FINAL'])
 nodis_tdidfvectorizer = CountVectorizer()
 tdidf_nodisaster = nodis_tdidfvectorizer.fit_transform(df_nodisater['FINAL'])
 
-print(dis_tdidfvectorizer.vocabulary_)
-print(nodis_tdidfvectorizer.vocabulary_)
+#print(dis_tdidfvectorizer.vocabulary_)
+#print(nodis_tdidfvectorizer.vocabulary_)
 
 sorted_tdidf_dis = dict(sorted(dis_tdidfvectorizer.vocabulary_.items(), key=lambda item: item[1],reverse=True))
 sorted_tdidf_nodis = dict(sorted(nodis_tdidfvectorizer.vocabulary_.items(), key=lambda item: item[1],reverse=True))
 
-print(sorted_tdidf_dis)
-print(sorted_tdidf_nodis)
+#print(sorted_tdidf_dis)
+#print(sorted_tdidf_nodis)
 
 tfidf_key_list = list(tfvectorizer.vocabulary_.keys())
 tfidf_values_list = list(tfvectorizer.vocabulary_.values())
-print(tfidf_key_list)
-print(tfidf_values_list)
+#print(tfidf_key_list)
+#print(tfidf_values_list)
 
 import matplotlib.pyplot as plt
 fig = plt.figure()
