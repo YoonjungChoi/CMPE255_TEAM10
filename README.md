@@ -25,15 +25,14 @@ If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  P
 
 * number of instance: 7613
 * number of features: 5
-* number of missing values: 2572
 
 **Feature**
 
 | Feature   |  Dtype | Descrition                  |
 |-----------|--------|-----------------------------|
 | id        | int64  |                             |
-| keyword   | object | 39 non-values               |
-| location. | object | 2533 non-valus              |
+| keyword   | object | 39 null-values              |
+| location. | object | 2533 null-valus             |
 | text      | object | tweetter content            |
 | target    | int64  | 0:non-disaster, 1:disaster  |
 
