@@ -7,7 +7,7 @@
 * Ishaan Bhalla
 * Sakruthi Avirineni
 
-[Report](https://www.overleaf.com/read/gnxxgdkfggzs)
+[Paper](https://www.overleaf.com/read/gnxxgdkfggzs)
 
 ## Introduction Dataset
 Social Network Service have become not only an important sources of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction model.
