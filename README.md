@@ -16,7 +16,7 @@ Twitter is one of the popular communication medium and people would start to ann
 ![image](https://user-images.githubusercontent.com/20979517/164597834-91e22330-7d3c-49b1-87cc-af17eea57aba.png)
 If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  People can understand it does not mean 'disaster' but metaphorically somthing. However, It is not clear for machine. 
 
-Thus, our TEAM10 will investigate what techniques are for NLP and explore them. Other Submission of Kaggle used similar preprocessing but used single model or even in case of ensemble, it trained with the same data set. **However, we tried to find best combination of feature vector(one of CountVectorizer, Tf-idf, or Word2Vec) and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
+Thus, our TEAM10 will investigate what techniques are for NLP and explore them. Other Submission of Kaggle used similar preprocessing but used single model or even in case of ensemble, it trained with the same data set. **However, we tried to find best combination of feature vector(one of CountVectorizer, Tf-idf, or Word2Vec) and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
 
 
 **Source Dataset**
@@ -72,12 +72,13 @@ A decision tree algorithm can be used to solve both regression and classificatio
 * Tokenize
 * Remove Stopwords(Common words, example: are)
 * PorterStemmer (Stemming is the important in NLP, example: asked -> ask)
-* WordNetLemmatizer (example: peopl => people)
+* WordNetLemmatizer (example: peopl => people) -> We decided to use this, not stemming, due to performance.
 
 **4) Data Preprocessing Part2 to transform text to numerical value**
 * apply CountVector
 * apply TF-IDF
 * apply Word2Vec
+* apply Word2Vec with PCA
 
 **5) Data Split**
 * split each type of feature
