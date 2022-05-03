@@ -1,5 +1,5 @@
 ---
-title: Latural Language Processing with Disaster Tweets
+title: "Natural Language Processing with Disaster Tweets"
 date: "May 2022"
 author: Yoonjung Choi, Abhiteja Mandava, Ishaan Bhalla, Sakruthi Avirineni, San José State University
 
@@ -179,7 +179,7 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding suitable combination of a feature vector and a classifier and then, applying ensemble model.
 
 # Conclusions
-In this analysis we experienced three prominent word embedding and classification techniques using an Fiure-Eight Company data set. 
+In this analysis we experienced three prominent word embedding and classification techniques of using an Fiure-Eight Company data set. 
 Ensemble with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers on each data set.
 //[Not Yet..]
 
