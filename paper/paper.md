@@ -68,6 +68,8 @@ The table shows changes after applying stemming.
 ### Lemmatization
 Lemmatization is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in dictionary in case of lemmatization. For example, original words 'populated' changed 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization is more better performed than Stemming[Naturalstemming-vs-lemmatization](https://www.baeldung.com/cs/stemming-vs-lemmatization). We decided to apply lemmatization.
 
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
+
 ## Data Visualization
 After normalized text, we made data visualization by using word cloud. In disaster tweet's words, we can discover disaster related words; suicide, police, news, kill, attack, death, california, storm, flood. In the other hand, the non disaster tweets shows that time, want, great, feel, read, but also injury or emergency are found.
 
@@ -147,28 +149,28 @@ From the fine-tuning, we finalized parameters as min samples split=8. We obtaine
 ## Ensemble
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would. We used hard voting classifier and trained each feature vectors on ensemble model consisted of SVM, Logistic Regression and Decision Tree. The figure 27 shows each ensemble's accuracy and ensemble model with CountVectorizer feature vector yields better accuracy.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.ensemble.png)
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.ensemble.png)
 
 Based on the hard voting, we made custom ensemble model combined of SVM with CountVectorizer, Logistic Regression with CountVectorizer, and Decision Tree with Tf-Idf. As a result, we got 0.806 accuracy. The following figure is about confusion matrics of custom ensemble model.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.custom_mx.png)
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.custom_mx.png)
 
 
 # Comparisons
 ## Performance Matrics
-1. Accuracy
+**1. Accuracy**
 Accuracy is a metric that generally describes how the model performs across all classes. It is calculated as the ratio between the number of correct predictions to the total number of predictions.
 
-2. Precision
+**2. Precision**
 The precision is calculated as the ratio between the number of Positive samples correctly classified to the total number of samples classified as Positive (either correctly or incorrectly).
 
-3. Recall
+**3. Recall**
 The recall is calculated as the ratio between the number of Positive samples correctly classified as Positive to the total number of Positive samples.
 
-4. F1 Score
+**4. F1 Score**
 The F1-score combines the precision and recall of a classifier into a single metric.
 
-5. ROC Curve
+**5. ROC Curve**
 ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-axis) for different thresholds.
 
 ## Comparison
@@ -177,8 +179,13 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding suitable combination of a feature vector and a classifier and then, applying ensemble model.
 
 # Conclusions
+In this analysis we experienced three prominent word embedding and classification techniques using an Fiure-Eight Company data set. 
+Ensemble with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers on each data set.
+//[Not Yet..]
+
 
 # Limitations And Future research
 We obtained the qualified data set from company, so we assumed that content of data are true. However, the thing that content could be fake is the main limitation of this study. Overcoming these limitations can be done in future research. By dealing with distinguishing the content is fake or not first, we can predict emergency situations and properly respond them.
 
 # References
+
