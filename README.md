@@ -14,15 +14,15 @@ Social Network Service have become not only an important sources of emergency in
 
 Twitter is one of the popular communication medium and people would start to annouce information via tweeter in disaster situation. This paper on Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
 
-![image](https://user-images.githubusercontent.com/20979517/164597834-91e22330-7d3c-49b1-87cc-af17eea57aba.png)
+![image](https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png)
 
 Here is example.
-If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE',  People can understand it does not mean 'disaster' but metaphorically somthing. However, It is not clear for machine. 
+If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to Machine. 
 
 Thus, our TEAM10 will investigate what techniques are for NLP and explore them. 
 
 Other submission of Kaggle used similar preprocessing but used single model or even in case of ensemble, it trained with the same data set.
-**However, we tried to find best combination of feature vector(one of CountVectorizer, Tf-idf, Word2Vec or Word2Vec with PCA) and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
+**However, we tried to find best combination of feature vectors and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
 
 ## Data set
 **Source**
@@ -65,7 +65,6 @@ Logistic Regression is easier to implement, interpret, and very efficient to tra
 
 Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable.
 
-
 * SVM
  
 SVM works relatively well when there is a clear margin of separation between classes.
@@ -76,14 +75,11 @@ SVM is effective in cases where the number of dimensions is greater than the num
 
 SVM is relatively memory efficient.
 
-
 * Decision Tree
 
 Decision Tree algorithm can be used to solve both regression and classification problems.
 
 Decision Tree can be used to handle both numerical and categorical data.
-
-
 
 
 ## WorkFlow
@@ -116,7 +112,7 @@ Decision Tree can be used to handle both numerical and categorical data.
 * Find best tuning values of model
 * Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
 
-**7) Custom Emsemble**
+**7) Custom Ensemble**
 * create best funing values of model
 * create ensemble model with selected feature vector
 * Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
