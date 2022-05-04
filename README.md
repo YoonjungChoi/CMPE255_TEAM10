@@ -10,7 +10,7 @@
 [Paper](https://www.overleaf.com/read/gnxxgdkfggzs)
 
 ## Introduction
-Social Network Services have become not only an important sources of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction model.
+Social Network Services have become not only an important sources of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction model. 
 
 Twitter is one of the popular communication medium and people would start to annouce information via tweeter in disaster situation. This paper on Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
 
