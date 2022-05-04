@@ -185,6 +185,20 @@ It is a way of extracting features from the text for use in machine learning alg
 2)Document Classification
 3)Information retrieval from documents
 
+Vectorization:
+The process of converting NLP text into numbers is called vectorization.
+Different ways to convert text to vectors are:
+1)Counting the number of times each word appears in the document.
+2)Calculating the frequency that each word appears in the document out of all words in the document.
+
+Bag of words implementation:
+1)Count vectorizer
+2)TF-IDF vectorizer
+3)N-Grams
+
+Feature Extraction:
+\_Input text -> Clean text -> Tokenize -> Build vocabulary -> Generator vectors -> ML algorithm
+
 # Comparisons
 
 ## Performance Matrics
