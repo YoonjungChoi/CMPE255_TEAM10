@@ -120,4 +120,3 @@ Decision Tree can be used to handle both numerical and categorical data.
 **8) Visualization**
 * Visualize results
 * Compare each models to find best results.
-
