@@ -57,7 +57,7 @@ This is categorized by Supervised Learning, Binary classification Problem and Na
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
 
-We will use **Logistic Regression, SVM, Decision Tree** to solve this classification problem.
+We will use **Logistic Regression, SVM, Decision Tree, LSTM** to solve this classification problem.
 
 * Logistic Regression
 
@@ -80,6 +80,12 @@ SVM is relatively memory efficient.
 Decision Tree algorithm can be used to solve both regression and classification problems.
 
 Decision Tree can be used to handle both numerical and categorical data.
+
+* LSTM 
+
+Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts.
+
+LSTM network is also proposed using this hybrid feature to classify tweets into rumor and non-rumor classes.
 
 
 ## WorkFlow
