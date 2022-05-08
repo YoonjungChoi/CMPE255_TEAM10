@@ -10,19 +10,21 @@
 [Paper](https://www.overleaf.com/read/gnxxgdkfggzs)
 
 ## Introduction
-Social Network Services have become not only an important sources of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction model. 
+Social Network Services have become not only an important source of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting the context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction models.
 
-Twitter is one of the popular communication medium and people would start to annouce information via tweeter in disaster situation. This paper on Tweetter analysis is about prediction problem on whether a person's words are actually telling a disaster.
+Twitter is a popular communication medium and people would start to announce information via twitter in disaster situations. This paper on Twitter analysis is about prediction problems on whether a person's words are actually telling of a disaster.
+
 
 ![image](https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png)
 
-Here is example.
-If someone says that 'On plus side LOOK AT THE SKY LIST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to Machine. 
+Here is an example.
+If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. 
 
 Thus, our TEAM10 will investigate what techniques are for NLP and explore them. 
 
-Other submission of Kaggle used similar preprocessing but used single model or even in case of ensemble, it trained with the same data set.
-**However, we tried to find best combination of feature vectors and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
+Other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set.
+**However, we tried to find the best combination of feature vectors and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
+
 
 ## Data set
 **Source**
