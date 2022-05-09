@@ -59,7 +59,7 @@ This is categorized by Supervised Learning, Binary classification Problem and Na
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
 
-We will use **Logistic Regression, SVM, Decision Tree, LSTM** to solve this classification problem.
+We will use **Logistic Regression, SVM, Decision Tree, LSTM, BERT** to solve this classification problem.
 
 * Logistic Regression
 
@@ -88,6 +88,12 @@ Decision Tree can be used to handle both numerical and categorical data.
 Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts.
 
 LSTM network is also proposed using this hybrid feature to classify tweets into rumor and non-rumor classes.
+
+* BERT 
+
+Bidirectional Encoder Representation is a transformer-based machine learning technique for natural language processing.
+
+BERT is based on the transformer architecture. BERT is a model that is "deeply bidirectional." Bidirectional indicates that during the training phase, BERT learns information from both the left and right sides of a token's context.
 
 
 ## WorkFlow
