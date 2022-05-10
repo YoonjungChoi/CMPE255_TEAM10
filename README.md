@@ -7,8 +7,6 @@
 * Ishaan Bhalla
 * Sakruthi Avirineni
 
-[Paper](https://www.overleaf.com/read/gnxxgdkfggzs)
-
 ## Introduction
 Social Network Services have become not only an important source of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting the context of SNS is a crucial concern in our society. Also, more agencies want to monitor or track Twitter intelligently by using technologies. This paper can be utilized to track, monitor and predict disasters from content of SNS and would help making prediction models.
 
@@ -21,6 +19,7 @@ Here is an example.
 If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. 
 
 Thus, our TEAM10 will investigate what techniques are for NLP and explore them.
+
 First step is about data cleaning, which means that we have to remove meaningless data, e.g. html tags, url, emojis, ascii codes and punctuation.
 
 Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lowers inflection in words to their root forms. According to Wikipedia, inflection is the process through which a word is modified to communicate many grammatical categories, including tense, case, voice, aspect, person, number, gender, and mood. Thus, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
@@ -82,12 +81,15 @@ GloVe stands for global vectors for word representation. It is an unsupervised l
 We will use **Machine Learning or Non-Sequential Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning or Sequential Model(LSTM)** to solve this binary classification problem.
 
 * **Logistic Regression**
+
 Logistic Regression is easier to implement, interpret, and very efficient to train.	Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression. 
 
 * **SVM**
+
 We can use a support vector machine (SVM) when data has exactly two classes.This is the reason we choose this classifer. An SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. Margin means the maximal width of the slab parallel to the hyperplane that has no interior data points.
 
 * **Decision Tree**
+
 Decision Tree is also used for classification problem. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, excludes unimportant features. Thus, we tried to train data set on decision tree.
 
 * **Random Tree**
@@ -96,6 +98,7 @@ Decision Tree is also used for classification problem. Advantages of classificat
  
 
 * **LSTM**
+
 For Natural language processing, Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts. Unlike standard feedforward neural networks, LSTM has feedback connections. Such a recurrent neural network can process not only single data points (such as images), but also entire sequences of data [Wiki](https://en.wikipedia.org/wiki/Long_short-term_memory).
 
 
@@ -119,7 +122,7 @@ For Natural language processing, Long Short Term Memory (LSTM) network were used
 * WordNetLemmatizer (example: peopl => people) -> We decided to use this, not stemming, due to performance.
 * **Expectations: learning about what, why algorithms can be applied for preprocessing**
 
-**4) Data Preprocessing Part2 to transform text to numerical value**
+**4) Data Preprocessing Part2 to transform text to numerical feature vectors**
 * apply CountVector, visualize the number of count of words.
 * apply TF-IDF, visualize the number of count of words.
 * apply Word2Vec, visualize vectors based on similiar and not opposite words.
@@ -141,23 +144,23 @@ For Natural language processing, Long Short Term Memory (LSTM) network were used
 * train each type of feature vectors in model
 * find best parameters of model
 * make sure to save all information(F1 Score, Precision, Recall, Accuracy)
-* **Expectations: improvement of performance of model **
+* **Expectations: improvement of performance of model**
 
 
 **7) Custom Ensemble**
 * create model with parameters.
 * create ensemble model with selected feature vector.
 * make sure to save all information(F1 Score, Precision, Recall, Accuracy)
-* **Expectations: performance of ensemble model **
+* **Expectations: performance of ensemble model**
 
 **8) Modeling with Dynamic Model(LSTM) with Glove, Word2Vec**
 * create Word2Vec, Glove word embedding
 * train LSTM
 * make sure to save all information(F1 Score, Precision, Recall, Accuracy)
-* **Expectations: performance of dynamic model **
+* **Expectations: performance of dynamic model**
 
 **9) Visualization**
 * Visualize results of ROC courve.
 * Compare each models to find best results.
-* **Expectations: ROC courve **
+* **Expectations: ROC courve**
 
