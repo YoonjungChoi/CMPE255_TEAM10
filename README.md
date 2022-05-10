@@ -115,6 +115,9 @@ Decision Tree is also used for classification problem. Advantages of classificat
 
 For Natural language processing, Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts. Unlike standard feedforward neural networks, LSTM has feedback connections. Such a recurrent neural network can process not only single data points (such as images), but also entire sequences of data [Wiki](https://en.wikipedia.org/wiki/Long_short-term_memory).
 
+* **Ensemble**
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would. From the research, we can use 'voting way' to create ensemble classfier.
+
 
 
 ## WorkFlow
