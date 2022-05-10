@@ -41,6 +41,7 @@ The figure 4 shows the percentage of feature 'target's distribution.
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
 
 **Observation:** we cannot say that we have perfectly balanced dataset, but slightly it is balanced data set.
+
 ## Data Cleaning
 
 We should modify data to filter meaningless data. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes.
@@ -49,13 +50,13 @@ This table shows parital of original 'text' feature.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
 
-**Observation:**
+**Observation:** We observed each instance has mixed data such as upper/lower cases, url, emojis.
 
 This tableshows changes after cleaned meaningless data.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
 
-**Observation:**
+**Observation:** We observed there is removal of unnecessary data.
 
 ## Data Preprocessing
 
@@ -68,7 +69,7 @@ The table shows changes after applying tokenization.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
 
-**Observation:**
+**Observation:** we observed the seperated words in each instance.
 
 ### Stopwords
 
@@ -77,7 +78,7 @@ The table shows changes after applying stopwords.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stopw.png)
 
-**Observation:**
+**Observation:** we observed the removal of stop words. In first instance, 'out', 'for', 'more', 'set', 'me' is removed.
 
 ### Stemming
 
@@ -86,7 +87,7 @@ The table shows changes after applying stemming.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stem.png)
 
-**Observation:**
+**Observation:** we observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
 
 ### Lemmatization
 
@@ -94,7 +95,7 @@ Lemmatization is the process of grouping together the inflected forms of a word 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
 
-**Observation:**
+**Observation:** we observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
 
 ## Data Visualization
 
@@ -118,9 +119,9 @@ The Figure represent histogram of the number of words at each sample.
 
 **Observation:** 
 
-## Transforming numerical feature vectors
+## Word Embedding to transform data into numerical feature vectors
 
-Word embedding is a term used for the representation of words for text analysis, typically in the form of a real-valued vector that encodes the meaning of the word such that the words that are closer in the vector space are expected to be similar in meaning.
+Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words, etc.
 
 ### CountVectorizer
 
@@ -128,85 +129,92 @@ Bag of Words model is a simplified representation used in natural language proce
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.countvec.png)
 
-**Observation:** 
+**Observation:** we observed the number of occurrences of words. The 'deed' occurs around 4000.
 
 ### Term Frequency Inverse Document Frequency(Tf-Idf)
 
-The Tf-Idf is a measure of whether a term is common or rare. It gives weight more to a term that occurs in only a few documents.
+Some articles say that TF-IDF is better than Count Vectorizers because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. We can then remove the words that are less important for analysis, hence making the model building less complex by reducing the input dimensions.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
 
-**Observation:** 
+**Observation:** we observed the number of occurrences of words. The 'deed' occurs around 15000.
 
 ### Word2Vec
 
-Word2Vec, a word embedding toolkit, uses a neural network model to learn word associations from a large corpus of text[wiki](https://en.wikipedia.org/wiki/Word2vec). Word2Vec represents words in vector space in a way of similar meaning words are positioned in close locations but dissimilar words are placed far away.
+Word2Vec, a word embedding toolkit, uses a neural network model to learn word associations from a large corpus of text. Word2Vec represents words in vector space in a way of similar meaning words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial to visualize the relationship with words.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.w2v_wildfire.png)
 
-**Observation:** 
+**Observation:** The blue are most similar words with the 'Wildfire' and green is most unrelated words with the 'Wildfire'
 
 ### Word2Vec with PCA applied
 
 As principal component analysis is a strategy to reduce dimension, we applied PCA to reduce 100 components from Word2Vec with dimensionality of 300. 
-Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get better accuracy in several experiments. As a result, for instance, with Xgboost model, the case of creating 300 dimensionalty and appling PCA to create 100 pricipal components has better performance.
+Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get better accuracy in several experiments. As a result, for instance, with Xgboost model, the case of creating 300 dimensionalty and appling PCA to create 100 pricipal components has better performance rather than word2vec with 100 dimensionality without PCA.
+
+### Glove
+
+
+
 
 # Methods
 
 We trained each numerical feature vectors on the basic models to find which feature vectors can yield better performance. For the fine-tuning, we adjusted parameters on the model with the selected feature vector. We repeated the same steps on other models. We also trained each feature vectors with ensemble method.
 
+## Logistic Regression(LR)
+
+Logistic regression is a process of modeling the probability of a discrete outcome given an input variable. This classifer is easier to implement, interpret, very efficient to train and performs well. Thus, at first, we tried to train four feature vectors sets on logistic regression. 
+
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.LogisticR.png)
+
+**Observation:** We observed the count vectorizer feature set resulted in better accuracy(0.797) and precision(0.813).
+
+From parameter optimization, we finalized parameters as C=0.15, penalty='l2', tol=0.001, solver='saga', random state=42, max iter=1000. We obtained the following result and confusion matrics:
+
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lr_final_score.png)
+
+**Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.800) and precision(0.837).
+
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
+
+**Observation:** This confusion matrix shows the number of instance between prediction and actuals. This Logistic Regression model predicts 668 true positive (disaster) and 1160 true negative(non-disaster) instances.
+
 ## Support Vector Machine(SVM)
-Support Vector Machine is a supervised learning model used for classification and regression problems. We trained each numerical feature vectors on basic SVM, which means no changes of parameters. In case of SVM, CountVectorizer feature vector has higher accuracy and f1 score than other feature vectors.
+Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. We trained four feature vectors on basic SVM, which means no changes of parameters.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_basic.png)
 
-**Observation:** SVM has better accuracy with Count Vectorizer feature set.
+**Observation:** We observed the count vectorizer feature set resulted in better accuracy(0.799).
 
 We adjusted parameters to yield better accuracy. In the final SVM model, it has default C value as 1, gamma value as 'auto', kernel value as 'sigmoid'. We obtained the result and confusion matrics of the model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_score.png)
 
-**Observation:** 
+**Observation:** We observed that optimization does not improve significantly, improvements, but it improved to accuracy(0.800). 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
 
-**Observation:** 
+**Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) instances.
 
-## Logistic Regression(LR)
-
-Logistic regression is a process of modeling the probability of a discrete outcome given an input variable. It is also a supervised learning model used for classification problems. We trained each feature vectors on basic Logistic Regression without fine-tuning, and Count Vector has higher accuracy as well.
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.LogisticR.png)
-
-**Observation:** 
-
-From the fine-tuning, we finalized parameters as C=0.15, penalty='l2', tol=0.001, solver='saga', random state=42, max iter=1000. We obtained the following result and confusion matrics:
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lr_final_score.png)
-
-**Observation:** 
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
-
-**Observation:** 
 
 ## Decision Tree
 
-Decision Tree is a non-parametric supervised learning method used for classification and regression problems. We trained each numerical feature vectors on basic decision tree, and Tf-Idf feature vector has a little bit higher accuracy rather than others.
+Decision Tree is also used for classification problem. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, excludes unimportant features. Thus, we tried to train data set on decision tree.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt.png)
 
-**Observation:** 
+**Observation:** We observed the tf-idf feature set resulted in better accuracy(0.752) than other feature sets and count vectorizer feature resulted in better precision(0.731). Decision Tree decided to different node at each time, so result can be differ.
 
-From the fine-tuning, we finalized parameters as min samples split=8. We obtained the result and confusion matrics.
+
+From parameter optimization, we finalized parameters as min samples split=8. We obtained the result and confusion matrics.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_score.png)
 
-**Observation:** 
+**Observation:** We observed accuracy(0.0.756). We don't have significant improvement from parameter optimization, but the default parameter could be work well because it designed general purpose. 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.dt_final_cm.png)
 
-**Observation:** 
+**Observation:** This confusion matrix shows that SVM predicts 671 true positive(disaster) and 1055 true negative (non-disaster) instances.
 
 ## Random Forest
 
@@ -225,14 +233,17 @@ Decision trees may suffer from overfitting but random forest prevents overfittin
 
 **Observation:** 
 
+## LSTM
+
 
 ## Ensemble
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.  We have four different feature sets and random_state parameter enable to split feature set in the same way, which means we can use ensemble model by our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vetorizer, SVM with Counter vectiroizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
 
-Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.
 
-Based on the hard voting, we made custom ensemble model combined of SVM with CountVectorizer, Logistic Regression with CountVectorizer, and Decision Tree with Tf-Idf. As a result, we got 0.806 accuracy. The following figure is about confusion matrics of custom ensemble model.
+![image]()
 
-[image]
+**Observation:** 
+
 
 **Observation:** 
 
@@ -277,3 +288,4 @@ We obtained the qualified data set from company, so we assumed that content of d
 [2] Text Preprocessing in NLP, https://towardsdatascience.com/text-preprocessing-in-natural-language-processing-using-python-6113ff5decd8
 [3] WordCloud, https://kavita-ganesan.com/python-word-cloud/#.YnnPcPPMIeU
 [4] Word2Vec, gensim-word2vec-tutorial, https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
+[5] Word2Vec, Wikipedia, https://en.wikipedia.org/wiki/Word2vec
