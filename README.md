@@ -21,13 +21,13 @@ Here is an example.
 If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. 
 
 Thus, our TEAM10 will investigate what techniques are for NLP and explore them.
-First step is about data cleaning, which means that removal of meaningless data, e.g. html tags, url, emojis.
-Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words.
-Third step is about word embedding to transform text into numerical feature vectors, e.g. Tf-Idf, word2vec.
+First step is about data cleaning, which means that we have to remove meaningless data, e.g. html tags, url, emojis, ascii codes and punctuation.
 
-Other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set.
-**However, we tried to find the best combination of feature vectors and static models and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer. Also, we investigated dynamic model e.g. LSTM**
+Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lowers inflection in words to their root forms. According to Wikipedia, inflection is the process through which a word is modified to communicate many grammatical categories, including tense, case, voice, aspect, person, number, gender, and mood. Thus, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
 
+Third step is about applying word embedding to transform text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform text into numerical values so model can understand what it is. The below we will talk in detail why we selected those algorithms. For the machine learning or non-sequential model such as SVM, Logistic Regression, Decision Tree, RandomForest, XGboost are trained with CountVectorizer, Tf-Idf, Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For deep learning or the sequential model such as LSTM, we trained word2vec and glove. The below, we will talk about classifier why we choose.
+
+For comparison, other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set. **However, we tried to find the best combination of feature vectors and static models and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer. Also, we investigated sequential model e.g. LSTM**
 
 ## Data set
 **Source**
@@ -59,49 +59,44 @@ Prediction problem on whether a person's words are actually telling a disaster.
 This is categorized by Supervised Learning, Binary classification Problem and Natural Language Processing.
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
+>>> we need to put images and observations by Ishaan, Abhiteja
+
 
 ## Word Embedding
+Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words, etc.
 
 **CountVectorizer**
+Count vectorizer creates a matrix with documents and token counts (bag of terms/tokens) therefore it is also known as document term matrix.
 
 **TF-IDF(Term Frequency Inverse Document Frequency)**
+Some articles says that TF-IDF is better than Count Vectorizers because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. We can then remove the words that are less important for analysis, hence making the model building less complex by reducing the input dimensions.
 
 **Word2Vec**
+According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence
 
 **Glove**
-
+GloVe stands for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrix from a corpus. The resulting embeddings show interesting linear substructures of the word in vector space. 
 
 ## Classifiers
 
-We will use **Static Models(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Dynamic Model(LSTM)** to solve this binary classification problem.
+We will use **Machine Learning or Non-Sequential Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning or Sequential Model(LSTM)** to solve this binary classification problem.
 
-* Logistic Regression
+* **Logistic Regression**
+Logistic Regression is easier to implement, interpret, and very efficient to train.	Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression. 
 
-Logistic Regression is easier to implement, interpret, and very efficient to train.	
+* **SVM**
+We can use a support vector machine (SVM) when data has exactly two classes.This is the reason we choose this classifer. An SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. Margin means the maximal width of the slab parallel to the hyperplane that has no interior data points.
 
-Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable.
+* **Decision Tree**
+Decision Tree is also used for classification problem. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, excludes unimportant features. Thus, we tried to train data set on decision tree.
 
-* SVM
+* **Random Tree**
+
+* **XGboost**
  
-SVM works relatively well when there is a clear margin of separation between classes.
 
-SVM is more effective in high dimensional spaces.
-
-SVM is effective in cases where the number of dimensions is greater than the number of samples.
-
-SVM is relatively memory efficient.
-
-* Decision Tree
-
-Decision Tree algorithm can be used to solve both regression and classification problems.
-
-Decision Tree can be used to handle both numerical and categorical data.
-
-* LSTM 
-
-Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts.
-
-LSTM network is also proposed using this hybrid feature to classify tweets into rumor and non-rumor classes.
+* **LSTM**
+For Natural language processing, Long Short Term Memory (LSTM) network were used as deep learning models for automatic feature extraction from tweet texts. Unlike standard feedforward neural networks, LSTM has feedback connections. Such a recurrent neural network can process not only single data points (such as images), but also entire sequences of data [Wiki](https://en.wikipedia.org/wiki/Long_short-term_memory).
 
 
 
@@ -164,3 +159,5 @@ LSTM network is also proposed using this hybrid feature to classify tweets into 
 **9) Visualization**
 * Visualize results of ROC courve.
 * Compare each models to find best results.
+* **Expectations: ROC courve **
+
