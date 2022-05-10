@@ -63,10 +63,10 @@ This is categorized by Supervised Learning, Binary classification Problem and Na
 
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
-Observation of Target: we cannot say that we have perfectly balanced dataset, but slightly it is balanced data set.
-
-Observation of 'location': this feature does not have format and it is not generated automatically. The feature has invalid data such as 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
-
+**Observation:**
+* we cannot say that we have perfectly balanced dataset, but slightly it is balanced data set.
+* The 'location' feature does not have format and it is not generated automatically. This feature has invalid data such as 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
+* The 'keyword' feature 
 
 >>> we need to put images and observations by Ishaan, Abhiteja
 
@@ -130,14 +130,14 @@ Ensemble methods are techniques that create multiple models and then combine the
 **2) Data Cleaning**
 * Change all characters to lowercase
 * Makes sure to remove URL, HTML, Emojis, ASCII and Punctuation. 
-* **Expectations: learning about what, why we should do before processing. **
+* **Expectations: understanding about what, why we should do before processing. **
 
 **3) Data Preprocessing Part1 Using [NLTK](https://www.nltk.org/index.html)**:
 * Tokenize
 * Remove Stopwords(Common words, example: are)
 * PorterStemmer (Stemming is the important in NLP, example: asked -> ask)
 * WordNetLemmatizer (example: peopl => people) -> We decided to use this, not stemming, due to performance.
-* **Expectations: learning about what, why algorithms can be applied for preprocessing**
+* **Expectations: understanding about what, why algorithms can be applied for preprocessing, words' changes after applying algorithms**
 
 **4) Data Preprocessing Part2 to transform text to numerical feature vectors**
 * apply CountVector, visualize the number of count of words.
@@ -153,28 +153,29 @@ Ensemble methods are techniques that create multiple models and then combine the
   -> data set by using tf-idf
   -> data set by using word2vec(sentence embedding using average of vector)
   -> data set by using word2vec with PCA
-* **Expectations: we can create 4 different data set having feature vectors**
+* **Expectations: creatation of 4 different feature vectors sets**
 
-**6) Modeling with Static Models**:
-* build training model
-  -> Logistic Regression, SVM, Decision Tree, RandomTree, XGboost(Static models)
-* train each type of feature vectors in model
+**6) Modeling with Machine Learning Algorithms:** 
+* build model
+  -> Logistic Regression, SVM, Decision Tree, RandomTree, XGboost
+* train each type of feature vectors on models
+* **Expectations: find one feature set having better performance on each model** 
+* re-train model with selected feature set
 * find best parameters of model
 * make sure to save all information(F1 Score, Precision, Recall, Accuracy)
 * **Expectations: improvement of performance of model**
 
-
-**7) Custom Ensemble**
-* create model with parameters.
-* create ensemble model with selected feature vector.
-* make sure to save all information(F1 Score, Precision, Recall, Accuracy)
-* **Expectations: performance of ensemble model**
-
-**8) Modeling with Dynamic Model(LSTM) with Glove, Word2Vec**
+**7) Modeling with sequence model(LSTM) with Glove, Word2Vec**
 * create Word2Vec, Glove word embedding
 * train LSTM
 * make sure to save all information(F1 Score, Precision, Recall, Accuracy)
-* **Expectations: performance of dynamic model**
+* **Expectations: performance of sequence model**
+
+**8) Custom Ensemble**
+* create model with parameters obatined by step 6.
+* create ensemble model with combination of models and feature sets.
+* make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+* **Expectations: performance of ensemble model**
 
 **9) Visualization**
 * Visualize results of ROC courve.
