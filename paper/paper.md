@@ -28,14 +28,19 @@ The data set has been collected from the company figure-eight and originally sha
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dataset.png)
 
-The figure shows the missing values of 'location' and 'keywords' features. The 'location' feature does not have format and it is not generated automatically. That's why it has dirty values, such as 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
+The figure shows the missing values of 'location' and 'keywords' features.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.missing.png)
+
+(put images by ishaan and abhitteja)
+
+**Observation:** The 'location' feature does not have format and it is not generated automatically. The feature has invalid data such as 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
 
 The figure 4 shows the percentage of feature 'target's distribution.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
 
+**Observation:** we cannot say that we have perfectly balanced dataset, but slightly it is balanced data set.
 ## Data Cleaning
 
 We should modify data to filter meaningless data. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes.
@@ -44,9 +49,13 @@ This table shows parital of original 'text' feature.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
 
+**Observation:**
+
 This tableshows changes after cleaned meaningless data.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
+
+**Observation:**
 
 ## Data Preprocessing
 
@@ -59,12 +68,16 @@ The table shows changes after applying tokenization.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
 
+**Observation:**
+
 ### Stopwords
 
 We should remove commonly used words, such as "the", "a", "is", "in".
 The table shows changes after applying stopwords.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stopw.png)
+
+**Observation:**
 
 ### Stemming
 
@@ -73,27 +86,37 @@ The table shows changes after applying stemming.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stem.png)
 
+**Observation:**
+
 ### Lemmatization
 
 Lemmatization is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in dictionary in case of lemmatization. For example, original words 'populated' changed 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization is more better performed than Stemming[Naturalstemming-vs-lemmatization](https://www.baeldung.com/cs/stemming-vs-lemmatization). We decided to apply lemmatization.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
 
+**Observation:**
+
 ## Data Visualization
 
-After normalized text, we made data visualization by using word cloud. In disaster tweet's words, we can discover disaster related words; suicide, police, news, kill, attack, death, california, storm, flood. In the other hand, the non disaster tweets shows that time, want, great, feel, read, but also injury or emergency are found.
+After normalized text, we made data visualization by using word cloud. 
 
 This wordcloud is about disaster.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_1.png)
 
+**Observation:** we can discover disaster related words; suicide, police, news, kill, attack, death, california, storm, flood. 
+
 This wordcloud is about non-disaster.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_0.png)
 
+**Observation:** the non disaster tweets shows that time, want, great, feel, read, but also injury or emergency are found.
+
 The Figure represent histogram of the number of words at each sample.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.numWords_label.png)
+
+**Observation:** 
 
 ## Transforming numerical feature vectors
 
@@ -105,11 +128,15 @@ Bag of Words model is a simplified representation used in natural language proce
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.countvec.png)
 
+**Observation:** 
+
 ### Term Frequency Inverse Document Frequency(Tf-Idf)
 
 The Tf-Idf is a measure of whether a term is common or rare. It gives weight more to a term that occurs in only a few documents.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
+
+**Observation:** 
 
 ### Word2Vec
 
@@ -117,27 +144,33 @@ Word2Vec, a word embedding toolkit, uses a neural network model to learn word as
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.w2v_wildfire.png)
 
+**Observation:** 
+
 ### Word2Vec with PCA applied
 
-As principal component analysis is a strategy to reduce dimension, we applied PCA with 100 components on feature vectors from Word2Vec. The below figure is shown when applying PCA with 2 components.
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.pca_comp2_word2vec.png)
+As principal component analysis is a strategy to reduce dimension, we applied PCA to reduce 100 components from Word2Vec with dimensionality of 300. 
+Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get better accuracy in several experiments. As a result, for instance, with Xgboost model, the case of creating 300 dimensionalty and appling PCA to create 100 pricipal components has better performance.
 
 # Methods
 
 We trained each numerical feature vectors on the basic models to find which feature vectors can yield better performance. For the fine-tuning, we adjusted parameters on the model with the selected feature vector. We repeated the same steps on other models. We also trained each feature vectors with ensemble method.
 
 ## Support Vector Machine(SVM)
-
 Support Vector Machine is a supervised learning model used for classification and regression problems. We trained each numerical feature vectors on basic SVM, which means no changes of parameters. In case of SVM, CountVectorizer feature vector has higher accuracy and f1 score than other feature vectors.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_basic.png)
+
+**Observation:** SVM has better accuracy with Count Vectorizer feature set.
 
 We adjusted parameters to yield better accuracy. In the final SVM model, it has default C value as 1, gamma value as 'auto', kernel value as 'sigmoid'. We obtained the result and confusion matrics of the model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_score.png)
 
+**Observation:** 
+
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
+
+**Observation:** 
 
 ## Logistic Regression(LR)
 
@@ -145,11 +178,17 @@ Logistic regression is a process of modeling the probability of a discrete outco
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.LogisticR.png)
 
+**Observation:** 
+
 From the fine-tuning, we finalized parameters as C=0.15, penalty='l2', tol=0.001, solver='saga', random state=42, max iter=1000. We obtained the following result and confusion matrics:
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lr_final_score.png)
 
+**Observation:** 
+
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
+
+**Observation:** 
 
 ## Decision Tree
 
@@ -157,21 +196,17 @@ Decision Tree is a non-parametric supervised learning method used for classifica
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt.png)
 
+**Observation:** 
+
 From the fine-tuning, we finalized parameters as min samples split=8. We obtained the result and confusion matrics.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_score.png)
 
+**Observation:** 
+
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.dt_final_cm.png)
 
-## Ensemble
-
-Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would. We used hard voting classifier and trained each feature vectors on ensemble model consisted of SVM, Logistic Regression and Decision Tree. The figure 27 shows each ensemble's accuracy and ensemble model with CountVectorizer feature vector yields better accuracy.
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.ensemble.png)
-
-Based on the hard voting, we made custom ensemble model combined of SVM with CountVectorizer, Logistic Regression with CountVectorizer, and Decision Tree with Tf-Idf. As a result, we got 0.806 accuracy. The following figure is about confusion matrics of custom ensemble model.
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.custom_mx.png)
+**Observation:** 
 
 ## Random Forest
 
@@ -179,25 +214,27 @@ Random Forest is a supervised learning algorithm. It can be used for both classi
 
 Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
-Bag of words:
-It is a way of extracting features from the text for use in machine learning algorithms. It has seen great success in problems like:
-1)NLP
-2)Document Classification
-3)Information retrieval from documents
+[image for score, confusion matrix]
 
-Vectorization:
-The process of converting NLP text into numbers is called vectorization.
-Different ways to convert text to vectors are:
-1)Counting the number of times each word appears in the document.
-2)Calculating the frequency that each word appears in the document out of all words in the document.
+**Observation:** 
 
-Bag of words implementation:
-1)Count vectorizer
-2)TF-IDF vectorizer
-3)N-Grams
+## Xgboost
 
-Feature Extraction:
-\_Input text -> Clean text -> Tokenize -> Build vocabulary -> Generator vectors -> ML algorithm
+
+[image for score, confusion matrix]
+
+**Observation:** 
+
+
+## Ensemble
+
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.
+
+Based on the hard voting, we made custom ensemble model combined of SVM with CountVectorizer, Logistic Regression with CountVectorizer, and Decision Tree with Tf-Idf. As a result, we got 0.806 accuracy. The following figure is about confusion matrics of custom ensemble model.
+
+[image]
+
+**Observation:** 
 
 # Comparisons
 
