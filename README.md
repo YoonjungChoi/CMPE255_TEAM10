@@ -56,7 +56,13 @@ For comparison, other submissions of Kaggle used similar preprocessing and a sin
 ## Problem
 Prediction problem on whether a person's words are actually telling a disaster.
 This is categorized by Supervised Learning, Binary classification Problem and Natural Language Processing.
+
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
+
+Observation of Target: we cannot say that we have perfectly balanced dataset, but slightly it is balanced data set.
+
+Observation of 'location': this feature does not have format and it is not generated automatically. The feature has invalid data such as 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
+
 
 >>> we need to put images and observations by Ishaan, Abhiteja
 
