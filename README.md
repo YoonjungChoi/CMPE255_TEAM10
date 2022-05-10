@@ -22,11 +22,14 @@ Thus, our TEAM10 will investigate what techniques are for NLP and explore them.
 
 First step is about data cleaning, which means that we have to remove meaningless data, e.g. html tags, url, emojis, ascii codes and punctuation.
 
-Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lowers inflection in words to their root forms. According to Wikipedia, inflection is the process through which a word is modified to communicate many grammatical categories, including tense, case, voice, aspect, person, number, gender, and mood. Thus, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
+Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lowers inflection in words to their root forms. According to Wikipedia, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
 
-Third step is about applying word embedding to transform text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform text into numerical values so model can understand what it is. The below we will talk in detail why we selected those algorithms. For the machine learning or non-sequential model such as SVM, Logistic Regression, Decision Tree, RandomForest, XGboost are trained with CountVectorizer, Tf-Idf, Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For deep learning or the sequential model such as LSTM, we trained word2vec and glove. The below, we will talk about classifier why we choose.
+Third step is about applying word embedding to transform text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform text into numerical values so model can understand what it is. The below we will talk in detail why we selected those algorithms. For the machine learning or non-sequential model such as SVM, Logistic Regression, Decision Tree, RandomForest, XGboost are trained with CountVectorizer, Tf-Idf, Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For deep learning or the sequential model such as LSTM, we trained word2vec and glove. The below, we will talk about classifier why we choose. 
 
 For comparison, other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set. We will try a few featuer vectors and models and make a comparison.
+
+We expect that there would be more suitable combination between feature vector sets and classifiers and lastly, we will apply ensemble model of each combination and will expect which model can be better performance.
+
 
 
 ## Data set
