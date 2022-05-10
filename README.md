@@ -74,6 +74,8 @@ Observation of 'location': this feature does not have format and it is not gener
 ## Word Embedding
 Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words, etc.
 
+**Expectations: each feature set' performance on classifiers** 
+
 **CountVectorizer**
 Count vectorizer creates a matrix with documents and token counts (bag of terms/tokens) therefore it is also known as document term matrix.
 
