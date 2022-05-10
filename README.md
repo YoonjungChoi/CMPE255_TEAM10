@@ -26,7 +26,8 @@ Second step is about applying practical algorithms e.g. stop words, stemming to 
 
 Third step is about applying word embedding to transform text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform text into numerical values so model can understand what it is. The below we will talk in detail why we selected those algorithms. For the machine learning or non-sequential model such as SVM, Logistic Regression, Decision Tree, RandomForest, XGboost are trained with CountVectorizer, Tf-Idf, Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For deep learning or the sequential model such as LSTM, we trained word2vec and glove. The below, we will talk about classifier why we choose.
 
-For comparison, other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set. **However, we tried to find the best combination of feature vectors and static models and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer. Also, we investigated sequential model e.g. LSTM**
+For comparison, other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set. We will try a few featuer vectors and models and make a comparison.
+
 
 ## Data set
 **Source**
