@@ -20,10 +20,13 @@ Twitter is a popular communication medium and people would start to announce inf
 Here is an example.
 If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. 
 
-Thus, our TEAM10 will investigate what techniques are for NLP and explore them. 
+Thus, our TEAM10 will investigate what techniques are for NLP and explore them.
+First step is about data cleaning, which means that removal of meaningless data, e.g. html tags, url, emojis.
+Second step is about applying practical algorithms e.g. stop words, stemming to find the root of words.
+Third step is about word embedding to transform text into numerical feature vectors, e.g. Tf-Idf, word2vec.
 
 Other submissions of Kaggle used similar preprocessing and a single model or even in case of ensemble, it trained with the same data set.
-**However, we tried to find the best combination of feature vectors and model and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer.**
+**However, we tried to find the best combination of feature vectors and static models and made custom voting classifier combined each combination, e.g. SVM with CountVectorizer, Decision Tree with Tf-Idf, Logistic Regression with CountVectorizer. Also, we investigated dynamic model e.g. LSTM**
 
 
 ## Data set
@@ -53,13 +56,24 @@ Other submissions of Kaggle used similar preprocessing and a single model or eve
 
 ## Problem
 Prediction problem on whether a person's words are actually telling a disaster.
-
 This is categorized by Supervised Learning, Binary classification Problem and Natural Language Processing.
-
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
 
-We will use **Logistic Regression, SVM, Decision Tree, LSTM, BERT** to solve this classification problem.
+## Word Embedding
+
+**CountVectorizer**
+
+**TF-IDF(Term Frequency Inverse Document Frequency)**
+
+**Word2Vec**
+
+**Glove**
+
+
+## Classifiers
+
+We will use **Static Models(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Dynamic Model(LSTM)** to solve this binary classification problem.
 
 * Logistic Regression
 
@@ -89,48 +103,64 @@ Long Short Term Memory (LSTM) network were used as deep learning models for auto
 
 LSTM network is also proposed using this hybrid feature to classify tweets into rumor and non-rumor classes.
 
-* BERT 
-
-Bidirectional Encoder Representation is a transformer-based machine learning technique for natural language processing.
-
-BERT is based on the transformer architecture. BERT is a model that is "deeply bidirectional." Bidirectional indicates that during the training phase, BERT learns information from both the left and right sides of a token's context.
 
 
 ## WorkFlow
 
 **1) Data Exploration**
-* Loading dataset and understanding data
+* Loading data set
+* Visualization data set
+* **Expectations: understanding balanced or imbalanced label, feature selection**
 
 **2) Data Cleaning**
 * Change all characters to lowercase
 * Makes sure to remove URL, HTML, Emojis, ASCII and Punctuation. 
+* **Expectations: learning about what, why we should do before processing. **
 
 **3) Data Preprocessing Part1 Using [NLTK](https://www.nltk.org/index.html)**:
 * Tokenize
 * Remove Stopwords(Common words, example: are)
 * PorterStemmer (Stemming is the important in NLP, example: asked -> ask)
 * WordNetLemmatizer (example: peopl => people) -> We decided to use this, not stemming, due to performance.
+* **Expectations: learning about what, why algorithms can be applied for preprocessing**
 
 **4) Data Preprocessing Part2 to transform text to numerical value**
-* apply CountVector, visualize count info
-* apply TF-IDF, visualize count info
-* apply Word2Vec, visualize vectors based on similiar and not opposite words
-* apply Word2Vec with PCA, visualize principal components.
+* apply CountVector, visualize the number of count of words.
+* apply TF-IDF, visualize the number of count of words.
+* apply Word2Vec, visualize vectors based on similiar and not opposite words.
+  -> we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec.
+* apply Word2Vec with PCA.
+* **Expectations: Invesigating Word Embedding algorithms**
 
 **5) Data Split**
 * split each type of feature
+  -> data set by using count vectorizer
+  -> data set by using tf-idf
+  -> data set by using word2vec(sentence embedding using average of vector)
+  -> data set by using word2vec with PCA
+* **Expectations: we can create 4 different data set having feature vectors**
 
-**6) Modeling**:
-* Build training model
-* Train each type of feature vectors in model
-* Find best tuning values of model
-* Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+**6) Modeling with Static Models**:
+* build training model
+  -> Logistic Regression, SVM, Decision Tree, RandomTree, XGboost(Static models)
+* train each type of feature vectors in model
+* find best parameters of model
+* make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+* **Expectations: improvement of performance of model **
+
 
 **7) Custom Ensemble**
-* create best funing values of model
-* create ensemble model with selected feature vector
-* Make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+* create model with parameters.
+* create ensemble model with selected feature vector.
+* make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+* **Expectations: performance of ensemble model **
 
-**8) Visualization**
-* Visualize results
+**8) Modeling with Dynamic Model(LSTM) with Glove, Word2Vec**
+* create Word2Vec, Glove word embedding
+* train LSTM
+* make sure to save all information(F1 Score, Precision, Recall, Accuracy)
+* **Expectations: performance of dynamic model **
+
+**9) Visualization**
+* Visualize results of ROC courve.
 * Compare each models to find best results.
