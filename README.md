@@ -54,25 +54,33 @@ For comparison, other submissions of Kaggle have done similar steps for preproce
 Prediction problem on whether a person's words are actually telling a disaster.
 This is categorized by Supervised Learning, Binary classification Problem and Natural Language Processing.
 
-1) This plot shows distribution of the **target** label.
+**1) 'target' label**
+
+This plot shows distribution of the **target** label.
 
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
 **Observation:** we cannot say that it has perfectly balanced dataset, but slightly it is balanced data set.
 
-2) This plot shows distribution of the **keyword** feature based on target.
+**2) 'keyword' feature**
+
+This plot shows distribution of the **keyword** feature based on target.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/keywordSet.png)
 
 **Observation:** keyword feature does not have much null values(39), but there are many common words. The 'keyword' feature of disaster has 221 words, and The 'keyword' feature of non-disaster has 219 words. There are 218 intersections words. The difference that only 'disaster' tweets have are {'debris', 'wreckage', 'derailment'}. The difference that only 'non-disaster' tweets have are {'aftershock'}. Thus, we does not use keyword feature.
 
-3) This Figure shows a few samples of the **location** feature.
+**3) 'location' feature**
+
+This Figure shows a few samples of the **location** feature.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/locationEx.png)
 
 **Observation:** 'location' feature have many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
 
-4) This plot shows distribution of the **text** feature based on target.
+**4) 'text' feature**
+
+This plot shows distribution of the **text** feature based on target.
 
 @abhiteja
 
@@ -85,7 +93,7 @@ This is categorized by Supervised Learning, Binary classification Problem and Na
 ## Word Embedding
 Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words, etc. 
 
-> **Why?** 
+**Why?** 
 One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms prefer structured, well defined fixed-length inputs. To make machine learning understand input data, we need to transform 'text' or words or sentences into fixed-length numerical feature vectors.
 
 ### How?
