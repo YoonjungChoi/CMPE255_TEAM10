@@ -87,13 +87,19 @@ This plot shows distribution of the **text** feature based on target.
 
 **Observation:** The 'text' feature has unnecessary data that we should handle. 
 
+**5) 'id' feature**
 
-**Observation:** Finally, we dropped 'id', 'keyword', 'location' features and use only 'text' feature and 'target' label.
+'id' feature is nominal data, there is no information.
+
+**Finally, we dropped 'id', 'keyword', 'location' features and use only 'text' feature and 'target' label.**
 
 ## Word Embedding
+**What?** 
+
 Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words, etc. 
 
 **Why?** 
+
 One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms prefer structured, well defined fixed-length inputs. To make machine learning understand input data, we need to transform 'text' or words or sentences into fixed-length numerical feature vectors.
 
 ### How?
