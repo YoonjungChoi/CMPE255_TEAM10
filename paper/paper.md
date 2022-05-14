@@ -57,7 +57,7 @@ Figure shows a few samples of the 'location' feature.
 The 'id' feature is nominal data, which means that there is no meaningful information. Finally, we dropped 'id', 'keyword', 'location' features and use only 'text' feature and 'target' label.
 
 
-## Data Cleaning
+## Data Preprocessing
 We should clean data to remove meaningless data because properly cleaned data enable to do good text analysis and help in making accurate decisions for our problem. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes.
 
 Figure shows parital of original 'text' feature.
@@ -71,8 +71,6 @@ Figure shows changes after cleaned meaningless data.
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
 
 **Observation:** We observed there is removal of unnecessary data.
-
-## Data Preprocessing
 
 We have a cleaned data through the previous step, but here are still a few ways that we can do to extract meaningful information from the cleaned data. We apply stemming or lemmatization to get normalized words. Natural Language Toolkit (NLTK)[ ] provides easy-to use interfaces for natural language processing.
 
@@ -135,7 +133,6 @@ Figure represent histogram of the number of words at each sample.
 
 Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning model, we need to transform 'text' feature(words or sentences) into fixed-length numerical feature vectors. There are a few method we can use to transform text into numerical feature vectors.
 
-
 ### CountVectorizer
 
 Bag of Words model is a simplified representation used in natural language processing. A text is represented as the bag of its words, disregarding grammar and describes the occurrences of words with in a document. CountVectorizer can be used for bag of words model. This convert a collection of text documents to a matrics of token counts. CountVectorizer transforms the text into fixed-length vectors.
@@ -144,7 +141,7 @@ Figure shows occurrences of words by CountVectorizer .
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.countvec.png)
 
-**Observation:** we observed the number of occurrences of words. The 'deed' occurs around 4000.
+**Observation:** we observed occurrences of words. The 'deed' occurs around 4000.
 
 ### Term Frequency Inverse Document Frequency(Tf-Idf)
 
@@ -154,7 +151,7 @@ Figure shows weighted occurrences of words by Tf-Idf .
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
 
-**Observation:** we observed the number of occurrences of words. The 'deed' occurs around 15000.
+**Observation:** we observed weighted occurrences of words. The occurrences of 'deed' word changes to 15000.
 
 ### Word2Vec
 
@@ -207,9 +204,9 @@ lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', 
 
 **Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.801).
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/logisticR_final_cm.png)
 
-**Observation:** This confusion matrix shows the number of instance between prediction and actuals. This Logistic Regression model predicts 668 true positive (disaster) and 1160 true negative(non-disaster) instances.
+**Observation:** This confusion matrix shows the number of instance between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) instances.
 
 ## Support Vector Machine(SVM)
 Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
