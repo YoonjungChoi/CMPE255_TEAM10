@@ -123,12 +123,6 @@ Figure shows wordcloud about non-disaster.
 
 **Observation:** Non disaster tweets shows that time, want, great, feel, read, but also injury or emergency are found.
 
-Figure represent histogram of the number of words at each sample.
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.numWords_label.png)
-
-**Observation:** 
-
 ## Word Embedding to transform data into numerical feature vectors
 
 Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning model, we need to transform 'text' feature(words or sentences) into fixed-length numerical feature vectors. There are a few method we can use to transform text into numerical feature vectors.
@@ -184,13 +178,13 @@ Logistic Regression is a supervised machine learning algorithm that can be used 
 
 Table shows performance on Logistic Regression without modifying parameters.
 
-|LR.     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|LR      |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.797| 0.776|   0.666|       0.761|
 
 **Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy rather than word2vec feature data set.
 
-We modify parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients. C is inverse of regularization strength. I trained by making several model with three type of penalty, C, and other parameters.
+We modified parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several model with three type of penalty, C, and other parameters.
 
 This is the code snippet.
 
@@ -198,30 +192,42 @@ This is the code snippet.
 lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', random_state=42, max_iter=100)
 ```
 
-|LR.     | Accuracy | Recall | Precision | F1 Score |
+We obtained the below result and confusion matrics of the model.
+
+|LR      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
-|.       |     0.801|   0.687|      0.826|     0.750|
+|        |     0.801|   0.687|      0.826|     0.750|
 
 **Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.801).
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/logisticR_final_cm.png)
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
 
 **Observation:** This confusion matrix shows the number of instance between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) instances.
 
 ## Support Vector Machine(SVM)
 Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
 
-Figure shows performance on SVM without modifying parameters.
+Table shows performance on SVM without modifying parameters.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_basic.png)
+|SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|--------|---------------|------|--------|------------|
+|Accuracy|          0.799| 0.761|   0.627|       0.712|
 
-**Observation:** We observed the count vectorizer feature resulted in better accuracy(0.799) rather than other feature vectors.
+**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.799) rather than other feature vectors data sets.
 
-We adjusted parameters to yield better accuracy. In the final SVM model, it has default C value as 1, gamma value as 'auto', kernel value as 'sigmoid'. We obtained the result and confusion matrics of the model.
+We adjusted parameters SVM to improve better accuracy with count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma set ‘auto’, it uses 1 / number of features. SVM has kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several model with three type of penalty, C, and other parameters. kernels, C, and gamma values. 
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_score.png)
+```
+svm_clf = SVM(kernel='sigmoid')
+```
 
-**Observation:** We observed that optimization does not improve significantly. It improved as accuracy(0.800). 
+We obtained the result and confusion matrics of the model.
+
+|SVM     | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.800|   0.688|      0.839|     0.744|
+
+**Observation:** We observed that optimization does not improve significantly as accuracy(0.800). 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
 
@@ -321,6 +327,13 @@ We obtained the qualified data set from company, so we assumed that content of d
 [ ] Natural Language Toolkit, https://www.nltk.org/index.html
 
 [ ] Naturalstemming-vs-lemmatization, https://www.baeldung.com/cs/stemming-vs-lemmatization
+
+[ ] Logstic Regression Sparcity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
+
+[ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
+[ ] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
+
 [1] Text Preprocessing for NLP (Natural Language Processing),Beginners to Master, https://medium.com/analytics-vidhya/text-preprocessing-for-nlp-natural-language-processing-beginners-to-master-fd82dfecf95
 
 [2] Text Preprocessing in NLP, https://towardsdatascience.com/text-preprocessing-in-natural-language-processing-using-python-6113ff5decd8
