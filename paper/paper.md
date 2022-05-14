@@ -167,7 +167,7 @@ Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get bet
 @Ishaan
 
 
-We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for LSTM model.
+We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for LSTM model. We are not able to apply PCA on Bag Of Words feature vectors sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
 # Methods
 We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost and a sequential model LSTM to solve this binary classification problem. Sequence models are the machine learning models that input or output sequences of data [].  We train four feature vectors on the basic models to find which feature vectors can yield better performance. For optimization of models, we re-train and adjust parameters on models with the selected feature vector. Even we did parameter optimization of models, some models do not result in siginificantly improvement, but the default parameter could be work well because it was designed general purpose. 
@@ -213,9 +213,10 @@ Table shows performance on SVM without modifying parameters.
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.799| 0.761|   0.627|       0.712|
 
-**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.799) rather than other feature vectors data sets.
+**Observation:** We observed the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vectors set has better accuracy rather than Word2vec feature vector set.
 
-We adjusted parameters SVM to improve better accuracy with count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma set ‘auto’, it uses 1 / number of features. SVM has kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several model with three type of penalty, C, and other parameters. kernels, C, and gamma values. 
+We adjusted parameters SVM to improve better accuracy with count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma set ‘auto’, it uses 1 / number of features. SVM has kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several model with three type of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refer from neural network field and is equivalent to a two-layer, perceptron neural network [].
+
 
 ```
 svm_clf = SVM(kernel='sigmoid')
@@ -227,7 +228,7 @@ We obtained the result and confusion matrics of the model.
 |--------|----------|--------|-----------|----------|
 |        |     0.800|   0.688|      0.839|     0.744|
 
-**Observation:** We observed that optimization does not improve significantly as accuracy(0.800). 
+**Observation:** We observed that optimization does not improve significantly as accuracy is 0.800, but default paramaters could have good performance without adjusting them because they are designed for general purpose.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
 
@@ -239,19 +240,31 @@ A decision tree can be used for either regression or classification. Advantages 
 
 Figure shows performance on Decision Tree without modifying parameters.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt.png)
 
-**Observation:** We observed the tf-idf feature set resulted in better accuracy(0.752) than other feature sets and count vectorizer feature resulted in better precision(0.731). Decision Tree decided to different node at each time, so result can be differ.
+|SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|--------|---------------|------|--------|------------|
+|Accuracy|          0.748| 0.751|   0.667|       0.671|
 
-From parameter optimization, we finalized parameters as min samples split=8. We obtained the result and confusion matrics.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_score.png)
+**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since decision Tree decides to different node at each time, results could be differ considering that the difference with accuracy of Count Vectorizer feature vectors set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
-**Observation:** We observed accuracy(0.0.756). We don't have significant improvement from parameter optimization.
+We adjusted parameters DecisionTree to improve better accuracy with Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[ ].
+The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I set random_state as 27.
+
+```
+clf = DecisionTreeClassifier(min_samples_split=10, random_state=27)
+```
+
+We obtained the result and confusion matrics of the model.
+
+|DT      | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.756|   0.681|      0.737|     0.708|
+
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.dt_final_cm.png)
 
-**Observation:** This confusion matrix shows that SVM predicts 671 true positive(disaster) and 1055 true negative (non-disaster) instances.
+**Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) instances.
 
 ## Random Forest
 
@@ -259,28 +272,44 @@ Random Forest is a supervised learning algorithm. It can be used for both classi
 
 Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
-[image for score, confusion matrix]
+[table, image for score, confusion matrix]
 
 **Observation:** 
 
 ## Xgboost
 
 
-[image for score, confusion matrix]
+[table, image for score, confusion matrix]
 
 **Observation:** 
 
 ## LSTM
 
+@Ishaan
+
 
 ## Ensemble
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.  We have four different feature sets and random_state parameter enable to split feature set in the same way, which means we can use ensemble model by our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vetorizer, SVM with Counter vectiroizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
 
+Table shows the accuracy, recall, precision, f1 score of first ensemble model.
+
+|Ensemble1 | Accuracy | Recall | Precision | F1 Score |
+|---------|----------|--------|-----------|----------|
+|         |     0.812|   0.699|      0.842|     0.764|
 
 ![image]()
 
 **Observation:** 
 
+Second ensemble model is the first ensemble model adding the sequntial model on LSTM with Glove.
+
+Table shows the accuracy, recall, precision, f1 score of second ensemble model.
+|Ensemble2 | Accuracy | Recall | Precision | F1 Score |
+|----------|----------|--------|-----------|----------|
+|          |          |        |           |          |
+
+
+[image]()
 
 **Observation:** 
 
@@ -305,7 +334,14 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 
 ## Comparison
 
-(insert ROC Curve graph)
+We obtained ROC Curve and AUC(Area under the ROC Curve).
+
+| Models  | LR + CV | SVM + CV | DT + Tf-IDF | RT + CV | Xgb + CV | LSTM+Glove |
+|---------|---------|----------|-------------|---------|----------|------------|
+| AUC     |    0.859|     0.854|        0.767|    0.852|     0.831|       0.881|   
+
+
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png)
 
 Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding suitable combination of a feature vector and a classifier and then, applying ensemble model.
 
@@ -328,12 +364,6 @@ We obtained the qualified data set from company, so we assumed that content of d
 
 [ ] Naturalstemming-vs-lemmatization, https://www.baeldung.com/cs/stemming-vs-lemmatization
 
-[ ] Logstic Regression Sparcity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
-
-[ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
-
-[ ] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
-
 [1] Text Preprocessing for NLP (Natural Language Processing),Beginners to Master, https://medium.com/analytics-vidhya/text-preprocessing-for-nlp-natural-language-processing-beginners-to-master-fd82dfecf95
 
 [2] Text Preprocessing in NLP, https://towardsdatascience.com/text-preprocessing-in-natural-language-processing-using-python-6113ff5decd8
@@ -343,3 +373,12 @@ We obtained the qualified data set from company, so we assumed that content of d
 [4] Word2Vec, gensim-word2vec-tutorial, https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
 
 [5] Word2Vec, Wikipedia, https://en.wikipedia.org/wiki/Word2vec
+
+[ ] Logstic Regression Sparcity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
+
+[ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
+[ ] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
+
+[ ] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+
