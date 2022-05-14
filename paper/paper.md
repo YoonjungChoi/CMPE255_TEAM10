@@ -173,7 +173,7 @@ Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get bet
 
 ### Glove
 
-
+@Ishaan
 
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for LSTM model.
@@ -185,17 +185,27 @@ We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, R
 
 Logistic Regression is a supervised machine learning algorithm that can be used to model the probability of a certain class or event. It is used when the data is linearly separable and the outcome is binary or dichotomous in nature. That means Logistic regression is usually used for Binary classification problems. Also, Logistic Regression is easier to implement, interpret, and very efficient to train. Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression.
 
-Figure shows performance on Logistic Regression without modifying parameters.
+Table shows performance on Logistic Regression without modifying parameters.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.LogisticR.png)
+|LR.     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|--------|---------------|------|--------|------------|
+|Accuracy|          0.797| 0.776|   0.666|       0.761|
 
-**Observation:** We observed the count vectorizer feature set resulted in better accuracy(0.797) and precision(0.813).
+**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy rather than word2vec feature data set.
 
-From parameter optimization, we finalized parameters as C=0.15, penalty='l2', tol=0.001, solver='saga', random state=42, max iter=1000. We obtained the following result and confusion matrics:
+We modify parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients. C is inverse of regularization strength. I trained by making several model with three type of penalty, C, and other parameters.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lr_final_score.png)
+This is the code snippet.
 
-**Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.800) and precision(0.837).
+```
+lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', random_state=42, max_iter=100)
+```
+
+|LR.     | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|.       |     0.801|   0.687|      0.826|     0.750|
+
+**Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.801).
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
 
