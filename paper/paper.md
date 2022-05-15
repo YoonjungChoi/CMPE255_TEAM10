@@ -14,9 +14,9 @@ Social Network Services(SNS) have become not only an important source of emergen
 
 # Introduction
 
-NLP is a branch of artificial intelligence that helps computers understand and interpret human language and give computers the ability to understand written and spoken words in much the same way human beings can.  Worldwide revenue from the NLP market forecasts to be almost 14 times larger in 2025 than it was in 2017, increasing from around three billion U.S. dollars in 2017 to over 43 billion in 2025 [1].  NLP is  one of the most promising avenues for social media data processing.
+Natural Language Processing (NLP) is a branch of artificial intelligence that helps computers understand and interpret human language and give computers the ability to understand written and spoken words. Worldwide revenue from the NLP market forecasts to be almost 14 times larger in 2025 than it was in 2017, increasing from around three billion U.S. dollars in 2017 to over 43 billion in 2025 [1]. NLP is one of the most promising avenues for social media data processing and NLP has been widely used to analyze SNS and extract potential patterns.
 
-NLP has been widely used to analyze SNS and extract potential patterns. SNS has been playing a crucial role in communicating in our society. SNS has become an important vehicle of emergency information during disasters to deliver immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure.
+SNS allows people connected with each others and give us easy and instant communication tools in real time. SNS has been playing a crucial role in interating in our society. SNS is able to be utilized as an important vehicle of emergency information during disasters to deliver immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure.
 
 Twitter is one of the popular SNS platforms and many tweets have been delivered in emergency situations. Since there are demands for companies to utilize these tweets, we investigate natural language processes and develop prediction models having better performance in this paper. For preprocessing, we clean the data from unnecessary data such as URL, Emojis or HTML tags and normalize the data by using useful algorithms; tokenizer, stopwords and lemmatization. We transform cleaned data into four feature vectors sets by using Countvectorizer, Term Frequency Inverse Document Frequency, Word2Vec and Word2Vec with PCA applied, and trained them on non sequential models; Logistic Regression, Support Vector Machine, Decision Tree, RandomForeset, XGboost. We also train a sequential model such as LSTM with Word2Vec and Glove. We found each combination between word embeddings and classifiers having better performance. Lastly, we build an ensemble model consisting of the combinations we found unlike an existing ensemble model using the same data set. The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
 
@@ -184,7 +184,7 @@ Table shows performance on Logistic Regression without modifying parameters.
 
 **Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy rather than word2vec feature data set.
 
-We modified parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several model with three type of penalty, C, and other parameters.
+We modified parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of features are elimiated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some of feature are effected a little. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several model with three type of penalty, C, and other parameters.
 
 This is the code snippet.
 
@@ -347,13 +347,14 @@ Also, other submissions of Kaggle competition used similar steps using algorithm
 
 # Conclusions
 
-In this analysis we experienced three prominent word embedding and classification techniques of using an Fiure-Eight Company data set.
-Ensemble with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers on each data set.
-//[Not Yet..]
+In this analysis, we experienced four prominent word embedding and seven classification techniques by using an Fiure-Eight Company data set. Ensemble with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers consisting of non sequential models.
+
+
+
 
 # Limitations And Future research
 
-We obtained the qualified data set from company, so we assumed that content of data are true. However, the thing that content could be fake is the main limitation of this study. Overcoming these limitations can be done in future research. By dealing with distinguishing the content is fake or not first, we can predict emergency situations and properly respond them.
+We obtained the qualified data set from company, so we assumed that data are reliable. However, the thing that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By dealing with distinguishing reliability of data first, we can predict emergency situations and properly respond them.
 
 # References
 [ ] Data For Everyone’ website, https://appen.com/datasets-resource-center
