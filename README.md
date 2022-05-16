@@ -222,3 +222,12 @@ Ensemble methods are techniques that create multiple models and then combine the
 * Visualize results of ROC courve.
 * Compare each models to find best results.
 * **Expectations: we would expect to have ROC courve on diverse models**
+
+
+# How to run
+
+1. make sure to save a dataset file "train.csv" and glove file "glove.6B.100d.txt"
+2. run code Final_Team10_Code.ipynb or Final_Team10_Code.py
+
+
+
