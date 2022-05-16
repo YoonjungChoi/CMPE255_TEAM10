@@ -340,28 +340,25 @@ Decision trees may suffer from overfitting but random forest prevents overfittin
 ## Ensemble
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.  We have four different feature sets and random_state parameter enable to split feature set in the same way, which means we can use ensemble model by our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vetorizer, SVM with Counter vectiroizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
 
-Table shows the accuracy, recall, precision, f1 score of first ensemble model.
+Table shows the accuracy, recall, precision, f1 score of the ensemble model.
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |     0.812|   0.699|      0.842|     0.764|
+|          |     0.812|   0.699|      0.841|     0.764|
 
-![image]()
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
 
 **Observation:** When we used ensemble model, accuracy is better than accuracies from repective models. 
 
-Second ensemble model is the first ensemble model adding the sequntial model on LSTM with Glove.
+Next ensemble model is the first ensemble model adding the sequntial model, LSTM with Glove.
 
 Table shows the accuracy, recall, precision, f1 score of second ensemble model.
 
-|Ensemble2 | Accuracy | Recall | Precision | F1 Score |
+|Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |          |        |           |          |
+|          |     0.813|   0.681|      0.860|     0.760|
 
-
-[image]()
-
-**Observation:** 
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
 
 # Comparisons
 
