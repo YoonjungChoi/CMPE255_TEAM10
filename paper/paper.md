@@ -16,7 +16,7 @@ Social Network Services(SNS) have become not only an important source of emergen
 
 Natural Language Processing (NLP) is a branch of artificial intelligence that helps computers understand and interpret human language and give computers the ability to understand written and spoken words. Worldwide revenue from the NLP market forecasts to be almost 14 times larger in 2025 than it was in 2017, increasing from around three billion U.S. dollars in 2017 to over 43 billion in 2025 [1]. NLP is one of the most promising avenues for social media data processing and NLP has been widely used to analyze SNS and extract potential patterns.
 
-SNS allows people connected with each others and give us easy and instant communication tools in real time. SNS has been playing a crucial role in interating in our society. SNS is able to be utilized as an important vehicle of emergency information during disasters to deliver immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure.
+SNS allows people to connect with each other and give us easy and instant communication tools in real time. SNS has been playing a crucial role in interacting in our society. SNS is able to be utilized as an important vehicle of emergency information during disasters to deliver immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure.
 
 Twitter is one of the popular SNS platforms and many tweets have been delivered in emergency situations. Since there are demands for companies to utilize these tweets, we investigate natural language processes and develop prediction models having better performance in this paper. For preprocessing, we clean the data from unnecessary data such as URL, Emojis or HTML tags and normalize the data by using useful algorithms; tokenizer, stopwords and lemmatization. We transform cleaned data into four feature vectors sets by using Countvectorizer, Term Frequency Inverse Document Frequency, Word2Vec and Word2Vec with principal component analysis(PCA) applied, and trained them on non sequential models; Logistic Regression, Support Vector Machine, Decision Tree, RandomForeset, XGboost. We also train a sequential model such as LSTM with Word2Vec and Glove. We found each combination between word embeddings and classifiers having better performance. Lastly, we build an ensemble model consisting of the combinations we found unlike an existing ensemble model using the same data set. The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
 
@@ -30,31 +30,31 @@ The data set has been collected from the company figure-eight and originally sha
 
 Figure 1. Description of data set.
 
-**Observation:** we observed data set has four features and one labels.
+**Observation:** We observed that the data set has four features and one label.
 
 Figure 2 shows counts of missing values.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.missing.png)
 
-Figure 2. The number of missing values in data set.
+Figure 2. The number of missing values in the data set.
 
-**Observation:** we observed 'location' feature has many null values(2533) and 'keyword' feature has null values(39).
+**Observation:** We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
 
-Figure 3 shows the percentage of 'target' label.
+Figure 3 shows the percentage of 'target' labels.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
 
 Figure 3. Pie chart of 'target' label.
 
-**Observation:** we cannot say that it has perfectly balanced dataset, but slightly it is balanced data set.
+**Observation:** we cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
 
 Figure 4 shows the number of unique words of the 'keyword' feature based on each target.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/keywordSet.png)
 
-Figure 4. The number of unique words and common words at repective label(disaster and non-disaster).
+Figure 4. The number of unique words and common words at respective label(disaster and non-disaster).
 
-**Observation:** keyword feature does not have much null values(39), but there are many common words. The 'keyword' feature of disaster has 221 words, and The 'keyword' feature of non-disaster has 219 words. There are 218 intersections words. The difference that only 'disaster' tweets have are {'debris', 'wreckage', 'derailment'}. The difference that only 'non-disaster' tweets have are {'aftershock'}. Thus, we does not use keyword feature.
+**Observation:** the keyword feature does not have many null values(39), but there are many common words. The 'keyword' feature of disaster has 221 words, and The 'keyword' feature of non-disaster has 219 words. There are 218 intersection words. The differences that only 'disaster' tweets have are {'debris', 'wreckage', 'derailment'}. The difference that only 'non-disaster' tweets have are {'aftershock'}. Thus, we do not use keyword features.
 
 Figure 5 shows a few samples of the 'location' feature.
 
@@ -62,15 +62,15 @@ Figure 5 shows a few samples of the 'location' feature.
 
 Figure 5. Partial instance of 'location' data set.
 
-**Observation:** 'location' feature have many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
+**Observation:** 'location' feature has many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
 
-The 'id' feature is nominal data, which means that there is no meaningful information. Finally, we dropped 'id', 'keyword', 'location' features and use only 'text' feature and 'target' label.
+The 'id' feature is nominal data, which means that there is no meaningful information. Finally, we dropped 'id', 'keyword', 'location' features and used only 'text' feature and 'target' label.
 
 
 ## Data Preprocessing
-We should clean data to remove meaningless data because properly cleaned data enable to do good text analysis and help in making accurate decisions for our problem. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes [4],[5].
+We should clean data to remove meaningless data because properly cleaned data enable us to do good text analysis and help in making accurate decisions for our problem. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes [4],[5].
 
-Figure 6 shows parital of original 'text' feature.
+Figure 6 shows parital of the original 'text' feature.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
 
@@ -78,7 +78,7 @@ Figure 6. Partial data set of 'text' feature.
 
 **Observation:** We observed each instance has mixed data such as upper/lower cases, url, emojis.
 
-Figure 7 shows changes after cleaned meaningless data.
+Figure 7 shows changes after cleaning meaningless data.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
 
@@ -86,18 +86,18 @@ Figure 7. Partial data set after cleaning meaningless data.
 
 **Observation:** We observed there is removal of unnecessary data.
 
-We have a cleaned data through the previous step, but here are still a few ways that we can do to extract meaningful information from the cleaned data. We apply stemming or lemmatization to get normalized words. Natural Language Toolkit (NLTK)[6] provides easy-to use interfaces for natural language processing.
+We have cleaned data through the previous step, but there are still a few ways that we can do to extract meaningful information from the cleaned data. We apply stemming or lemmatization to get normalized words. Natural Language Toolkit (NLTK)[6] provides easy-to-use interfaces for natural language processing.
 
-### Takenization
+### Tokenization
 
-Tokenization divides strings into lists of substrings. We can use library to find the words and punctuation in a sentences.
+Tokenization divides strings into lists of substrings. We can use the library to find the words and punctuation in sentences.
 The Figure 8 shows changes after applying tokenization.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
 
 Figure 8. Partial data set after applying tokenization on previous cleaned data.
 
-**Observation:** we observed the seperated words in each instance.
+**Observation:** We observed the separated words in each instance.
 
 ### Stopwords
 
@@ -107,7 +107,7 @@ We remove commonly used words, such as "the", "a", "is", "in". Figure 9 shows ch
 
 Figure 9. Partial data set after removing stopwords on tokenized data.
 
-**Observation:** we observed the removal of stop words. In first instance, 'out', 'for', 'more', 'set', 'me' is removed.
+**Observation:** We observed the removal of stop words. In the first instance, 'out', 'for', 'more', 'set', 'me' is removed.
 
 ### Stemming
 
@@ -117,31 +117,31 @@ Stemming is the process of producing morphological variants of a root/base word.
 
 Figure 10. Partial data set after applying stemming on data without stopwords.
 
-**Observation:** we observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
+**Observation:** We observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
 
 ### Lemmatization
 
-Lemmatization is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in dictionary in case of lemmatization. For example, original words 'populated' changed 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization is more better performed than Stemming [7]. We decided to apply lemmatization.
+Lemmatization is the process of grouping together the inflected forms of a word so they can be analyzed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in the dictionary in case of lemmatization. For example, the original words 'populated' changed to 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization is better performed than Stemming [7]. We decided to apply lemmatization.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
 
 Figure 11. Partial data set after applying lemmatization on data without stopwords.
 
-**Observation:** we observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
+**Observation:** We observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
 
 ## Data Visualization
 
 After normalized text, we made data visualization by using word cloud[8]. 
 
-Figure 12 shows wordcloud about disaster.
+Figure 12 shows a word cloud about disaster.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_1.png)
 
-Figure 12. WordCloud on 'target' label as disaster.
+Figure 12. WordCloud on 'target' labeled as a disaster.
 
 **Observation:** we discovered disaster tweets' related words; suicide, police, news, kill, attack, death, california, storm, flood. 
 
-Figure 13 shows wordcloud about non-disaster.
+Figure 13 shows the word cloud about non-disaster.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_0.png)
 
@@ -151,11 +151,11 @@ Figure 13. WordCloud on 'target' label as non disaster.
 
 ## Word Embedding to transform data into numerical feature vectors
 
-Word embedding is one of the most popular representation of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning model, we need to transform 'text' feature(words or sentences) into fixed-length numerical feature vectors. There are a few method we can use to transform text into numerical feature vectors.
+Word embedding is one of the most popular representations of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning models, we need to transform 'text' features(words or sentences) into fixed-length numerical feature vectors. There are a few methods we can use to transform text into numerical feature vectors.
 
 ### CountVectorizer
 
-Bag of Words model is a simplified representation used in natural language processing. A text is represented as the bag of its words, disregarding grammar and describes the occurrences of words with in a document. CountVectorizer can be used for bag of words model. This convert a collection of text documents to a matrics of token counts. CountVectorizer transforms the text into fixed-length vectors.
+Bag of Words model is a simplified representation used in natural language processing. A text is represented as the bag of its words, disregarding grammar and describes the occurrences of words within a document. CountVectorizer can be used for a bag of words model. This converts a collection of text documents to a matrix of token counts. CountVectorizer transforms the text into fixed-length vectors.
 
 Figure 14 shows occurrences of words by CountVectorizer .
 
@@ -163,48 +163,48 @@ Figure 14 shows occurrences of words by CountVectorizer .
 
 Figure 14. Occurrences of words by CounterVectorizer.
 
-**Observation:** we observed occurrences of words. The 'deed' occurs around 4000.
+**Observation:** We observed occurrences of words. The 'deed' occurs around 4000.
 
 ### Term Frequency Inverse Document Frequency(Tf-Idf)
 
-Some articles say that TF-IDF is better than Count Vectorizers because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. We can then remove the words that are less important for analysis, hence making the model building less complex by reducing the input dimensions.
+Some articles say that TF-IDF is better than Countvectorizer because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. We can then remove the words that are less important for analysis, hence making the model building less complex by reducing the input dimensions.
 
 Figure 15 shows weighted occurrences of words by Tf-Idf.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
 
-Figure 15. Occurrences of words by by Tf-Idf.
+Figure 15. Occurrences of words by Tf-Idf.
 
-**Observation:** we observed weighted occurrences of words. The occurrences of 'deed' word changes to 15000.
+**Observation:** We observed weighted occurrences of words. The occurrences of 'deed' word changes to 15000.
 
 ### Word2Vec
 
-According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. Word2Vec represents words in vector space in a way of similar meaning words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial[9] to visualize the relationship with words.
+According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. Word2Vec represents words in vector space in a way of similar meaning: words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial[9] to visualize the relationship with words.
 
-Figure 16 shows visuliazation by word2vec.
+Figure 16 shows visualization by word2vec.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.w2v_wildfire.png)
 
-Figure 16. Visualization of words by by word2vec.
+Figure 16. Visualization of words by word2vec.
 
 **Observation:** The blue are most similar words with the 'Wildfire' and green is most unrelated words with the 'Wildfire'
 
 ### Word2Vec with PCA applied
 
 As Principal Component Analysis is a strategy to reduce dimension, we applied PCA to reduce 100 components from Word2Vec with dimensionality of 300. 
-Word2Vec of Gensim's default dimensionalty is 100. We tried to train and get better accuracy in several experiments. As a result, the case of creating 300 dimensionalty and appling PCA to create 100 pricipal components has better performance rather than word2vec with 100 dimensionality without PCA.
+Word2Vec in Gensim's default dimensionality is 100. We tried to train and get better accuracy in several experiments. As a result, the case of creating 300 dimensionality and applying PCA to create 100 principal components has better performance rather than word2vec with 100 dimensionality without PCA.
 
 ### Glove
 
 Glove stand for global vectors for word representation.
 
 
-The difference between the Word2Vec and Glove is the way of training, which yield vectors with subtly different properties. Glove is based on global word to word co-occurance counts utilizing the entier corpus, on the other hand, Word2Vec use co-occurance within local neighboring words.
+The difference between the Word2Vec and Glove is the way of training, which yield vectors with subtly different properties. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
 
-We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for LSTM model. We are not able to apply PCA on Bag Of Words feature vectors sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
+We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
 # Methods
-We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost and a sequential model LSTM to solve this binary classification problem. Sequence models are the machine learning models that input or output sequences of data [].  We train four feature vectors on the basic models to find which feature vectors can yield better performance. For optimization of models, we re-train and adjust parameters on models with the selected feature vector. Even we did parameter optimization of models, some models do not result in siginificantly improvement, but the default parameter could be work well because it was designed general purpose. 
+We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost and a sequential model LSTM to solve this binary classification problem. Sequence models are the machine learning models that input or output sequences of data [].  We train four feature vectors on the basic models to find which feature vectors can yield better performance. For optimization of models, we re-train and adjust parameters on models with the selected feature vector. Even though we did parameter optimization of models, some models did not result in significant improvement, but the default parameter could work well because it was designed for general purpose. 
 
 ## Logistic Regression(LR)
 
@@ -216,11 +216,11 @@ Table 1 shows performance on Logistic Regression without modifying parameters.
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.797| 0.776|   0.666|       0.761|
 
-Table 1. Logistic Regression's accuracies with repective feature vectors sets.
+Table 1. Logistic Regression's accuracies with respective feature vector sets.
 
-**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy rather than word2vec feature data set.
+**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy than word2vec feature data set.
 
-We modified parameters Logistic Regression to improve better accuracy with count vectorizer feature data set. Logistic Regression has paramaters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that use shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of features are elimiated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some of feature are effected a little. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several model with three type of penalty, C, and other parameters.
+We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. Logistic Regression has parameters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
 
 This is the code snippet.
 
@@ -228,7 +228,7 @@ This is the code snippet.
 lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', random_state=42, max_iter=100)
 ```
 
-We obtained the below result and confusion matrics of the model.
+We obtained the below result and confusion matrices of the model.
 
 |LR      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -240,9 +240,9 @@ Table 2. Logistic Regression's performance with Count Vectorizer feature vectors
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
 
-Figure 17. Confusion Matrics of Logistic Regression with Count Vectorizer feature vectors set.
+Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature vectors set.
 
-**Observation:** This confusion matrix shows the number of instance between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) instances.
+**Observation:** This confusion matrix shows the number of instances between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) instances.
 
 ## Support Vector Machine(SVM)
 Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
@@ -253,36 +253,36 @@ Table shows performance on SVM without modifying parameters.
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.799| 0.761|   0.627|       0.712|
 
-Table 3. SVM's accuracies with repective feature vectors sets.
+Table 3. SVM's accuracies with respective feature vector sets.
 
-**Observation:** We observed the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vectors set has better accuracy rather than Word2vec feature vector set.
+**Observation:** We observed that the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vector set has better accuracy than Word2vec feature vector set.
 
-We adjusted parameters SVM to improve better accuracy with count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma set ‘auto’, it uses 1 / number of features. SVM has kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several model with three type of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refer from neural network field and is equivalent to a two-layer, perceptron neural network [].
+We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma sets ‘auto’, it uses 1 / number of features. SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several models with three types of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network [].
 
 
 ```
 svm_clf = SVM(kernel='sigmoid')
 ```
 
-We obtained the result and confusion matrics of the model.
+We obtained the result and confusion matrix of the model.
 
 |SVM     | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
 |        |     0.800|   0.688|      0.839|     0.744|
 
-Table 4. SVM's  performance with Count Vectorizer feature vectors set.
+Table 4. SVM's  performance with the Count Vectorizer feature vector set.
 
-**Observation:** We observed that optimization does not improve significantly as accuracy is 0.800, but default paramaters could have good performance without adjusting them because they are designed for general purpose.
+**Observation:** We observed that optimization does not improve significantly as accuracy is 0.800, but default parameters could have good performance without adjusting them because they are designed for general purpose.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
 
-Figure 18. Confusion Matrics of SVM with Count Vectorizer feature vectors set.
+Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) instances.
 
 
 ## Decision Tree
-A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, excludes unimportant features. Thus, we try to train data on decision tree as well.
+A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well.
 
 Figure shows performance on Decision Tree without modifying parameters.
 
@@ -291,18 +291,18 @@ Figure shows performance on Decision Tree without modifying parameters.
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.748| 0.751|   0.667|       0.671|
 
-Table 5. Decision Tree's accuracies with repective feature vectors sets.
+Table 5. Decision Tree's accuracies with respective feature vector sets.
 
-**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since decision Tree decides to different node at each time, results could be differ considering that the difference with accuracy of Count Vectorizer feature vectors set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
+**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vectors set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
-We adjusted parameters DecisionTree to improve better accuracy with Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[ ].
-The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible result.
+We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[ ].
+The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible results.
 
 ```
 clf = DecisionTreeClassifier(min_samples_split=10, random_state=27)
 ```
 
-We obtained the result and confusion matrics of the model.
+We obtained the result and confusion matrix of the model.
 
 |DT      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -310,15 +310,15 @@ We obtained the result and confusion matrics of the model.
 
 Table 6. Decision Tree's  performance with If-Idf feature vectors set.
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/flg.dt_final_cm.png)
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_cm.png)
 
-Figure 19. Confusion Matrics of Decision Tree with If-Idf feature vectors set.
+Figure 19. Confusion Matrix of Decision Tree with If-Idf feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) instances.
 
 ## Random Forest
 
-Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and its said that more trees it has, more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting.
+Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and it's said that the more trees it has, the more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting.
 
 Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
@@ -338,9 +338,9 @@ Decision trees may suffer from overfitting but random forest prevents overfittin
 
 
 ## Ensemble
-Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produces more accurate solutions than a single model would.  We have four different feature sets and random_state parameter enable to split feature set in the same way, which means we can use ensemble model by our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vetorizer, SVM with Counter vectiroizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
 
-Table shows the accuracy, recall, precision, f1 score of the ensemble model.
+Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
@@ -348,11 +348,11 @@ Table shows the accuracy, recall, precision, f1 score of the ensemble model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
 
-**Observation:** When we used ensemble model, accuracy is better than accuracies from repective models. 
+**Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
 
-Next ensemble model is the first ensemble model adding the sequntial model, LSTM with Glove.
+Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove.
 
-Table shows the accuracy, recall, precision, f1 score of second ensemble model.
+Table shows the accuracy, recall, precision, and f1 score of the second ensemble model.
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
@@ -362,7 +362,7 @@ Table shows the accuracy, recall, precision, f1 score of second ensemble model.
 
 # Comparisons
 
-## Performance Matrics
+## Performance Metrics
 
 **1. Accuracy**
 Accuracy is a metric that generally describes how the model performs across all classes. It is calculated as the ratio between the number of correct predictions to the total number of predictions.
@@ -381,11 +381,11 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 
 ## Comparison
 
-From non sequential modeling on one classifier and four word embeddings, we expected to find best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracies. In addition, altough we was not able to acquire much improvement by optimizing parameters, we obtained a little improve at least and we learned that some times default parameters could have good accuracy because they are supposed to work for general purpose. On the ensemble model of the non sequential modeling, we found that ensemble model has better performance than cases using single model.
+From non sequential modeling on one classifier and four word embeddings, we expected to find the best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracies. In addition, although we were not able to acquire much improvement by optimizing parameters, we obtained a little improvement at least and we learned that sometimes default parameters could have good accuracy because they are supposed to work for general purpose. On the ensemble model of the non sequential modeling, we found that the ensemble model has better performance than cases using a single model.
 
-From sequential modeling on LSTM and two word embeddings; word2vec and glove, when LSTM train on Glove feature vectors set, we was able to have the highest accuracy. Given that the difference is not much big, we found that non sequential models can have performance as much as LSTM model in this experiment.
+From sequential modeling on LSTM and two word embeddings; word2vec and glove, when LSTM trained on Glove feature vectors set, we were able to have the highest accuracy. Given that the difference is not very big, we found that non sequential models can have as much performance as the LSTM model in this experiment.
 
-We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combination of models and word embeddings. Since we used voting way of ensemble, we was not able to make ROC curve and AUC of ensemble model. As we can see Figure and Table, LSTM with Glove has highest area under the curve(0.881).
+We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used voting way of ensemble, we was not able to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.881).
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png)
 
@@ -394,15 +394,15 @@ We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinatio
 | AUC     |    0.859|     0.854|        0.767|    0.852|            0.831|       0.881|   
 
 
-Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding suitable combination of a feature vector and a classifier and then, applying ensemble model.
+Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding a suitable combination of a feature vector and a classifier and then, applying ensemble model.
 
 # Conclusions
 
-In this analysis, we experienced NLP processing with four prominent word embeddings and seven classification algorithms by using an Fiure-Eight Company data set. This study also investigated finding combinations and making comparisons on performance of diverse classifiers.
+In this analysis, we experienced NLP processing with four prominent word embeddings and seven classification algorithms by using a Figure-Eight Company data set. This study also investigated finding combinations and making comparisons on performance of diverse classifiers.
 
 # Limitations And Future research
 
-We obtained the qualified data set from company, so we assumed that data are reliable. However, the thing that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By dealing with distinguishing reliability of data first, we can predict emergency situations and properly respond them.
+We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can predict emergency situations and properly respond them.
 
 # References
 [1] NLP Market Research, https://www.statista.com/statistics/607891/worldwide-natural-language-processing-market-revenues/
@@ -417,7 +417,7 @@ We obtained the qualified data set from company, so we assumed that data are rel
 
 [6] Natural Language Toolkit, https://www.nltk.org/index.html
 
-[7] Naturalstemming-vs-lemmatization, https://www.baeldung.com/cs/stemming-vs-lemmatization
+[7] Natural Stemming-vs-lemmatization, https://www.baeldung.com/cs/stemming-vs-lemmatization
 
 [8] WordCloud, https://kavita-ganesan.com/python-word-cloud/#.YnnPcPPMIeU
 
@@ -427,9 +427,8 @@ We obtained the qualified data set from company, so we assumed that data are rel
 
 [ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
 
-[ ] Logstic Regression Sparcity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
+[ ] Logistic Regression Sparsity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
 
 [ ] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
 
 [ ] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
-
