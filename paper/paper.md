@@ -334,8 +334,28 @@ Decision trees may suffer from overfitting but random forest prevents overfittin
 
 ## LSTM
 
-@Ishaan
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems. This is a behavior required in complex problem domains like machine translation, speech recognition, and more. LSTMs are a complex area of deep learning. The Long Short Term Memory architecture was motivated by an analysis of error flow in existing RNNs which found that long time lags were inaccessible to existing architectures, because backpropagated error either blows up or decays exponentially. 
 
+An LSTM layer consists of a set of recurrently connected blocks, known as memory blocks. These blocks can be thought of as a differentiable version of the memory chips in a digital computer. Each one contains one or more recurrently connected memory cells and three multiplicative units – the input, output and forget gates – that provide continuous analogues of write, read and reset operations for the cells. … The net can only interact with the cells via the gates.
+
+**Working**
+
+An LSTM has four “gates”: forget, remember, learn and use(or output)
+
+It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data)
+
+
+
+Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate.
+
+The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts).
+
+The short-term info and “E” go into the learn gate. This gate decides what info will be learned.
+
+Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
+
+
+![image](https://user-images.githubusercontent.com/46517523/169108963-a9b16f57-9ca6-4239-bb4e-d3d48bd41551.png)
 
 ## Ensemble
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
