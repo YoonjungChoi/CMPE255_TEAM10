@@ -60,7 +60,7 @@ Figure 5 shows a few samples of the 'location' feature.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/locationEx.png)
 
-Figure 5. Partial instance of 'location' data set.
+Figure 5. Partial samples of 'location' data set.
 
 **Observation:** 'location' feature has many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
 
@@ -76,7 +76,7 @@ Figure 6 shows parital of the original 'text' feature.
 
 Figure 6. Partial data set of 'text' feature.
 
-**Observation:** We observed each instance has mixed data such as upper/lower cases, url, emojis.
+**Observation:** We observed each sample has mixed data such as upper/lower cases, url, emojis.
 
 Figure 7 shows changes after cleaning meaningless data.
 
@@ -97,7 +97,7 @@ The Figure 8 shows changes after applying tokenization.
 
 Figure 8. Partial data set after applying tokenization on previous cleaned data.
 
-**Observation:** We observed the separated words in each instance.
+**Observation:** We observed the separated words in each sample.
 
 ### Stopwords
 
@@ -107,7 +107,7 @@ We remove commonly used words, such as "the", "a", "is", "in". Figure 9 shows ch
 
 Figure 9. Partial data set after removing stopwords on tokenized data.
 
-**Observation:** We observed the removal of stop words. In the first instance, 'out', 'for', 'more', 'set', 'me' is removed.
+**Observation:** We observed the removal of stop words. In the first sample, 'out', 'for', 'more', 'set', 'me' is removed.
 
 ### Stemming
 
@@ -196,10 +196,10 @@ Word2Vec in Gensim's default dimensionality is 100. We tried to train and get be
 
 ### Glove
 
-Glove stand for global vectors for word representation.
-
+Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [10]. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the pre-trained vectors Glove can be found in many sites like Kaggle[11]. We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
 
 The difference between the Word2Vec and Glove is the way of training, which yield vectors with subtly different properties. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
+
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
@@ -242,7 +242,7 @@ Table 2. Logistic Regression's performance with Count Vectorizer feature vectors
 
 Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature vectors set.
 
-**Observation:** This confusion matrix shows the number of instances between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) instances.
+**Observation:** This confusion matrix shows the number of samples between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) samples.
 
 ## Support Vector Machine(SVM)
 Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
@@ -278,8 +278,7 @@ Table 4. SVM's  performance with the Count Vectorizer feature vector set.
 
 Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 
-**Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) instances.
-
+**Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
 ## Decision Tree
 A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well.
@@ -314,7 +313,7 @@ Table 6. Decision Tree's  performance with If-Idf feature vectors set.
 
 Figure 19. Confusion Matrix of Decision Tree with If-Idf feature vectors set.
 
-**Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) instances.
+**Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predict less non-disaster samples.
 
 ## Random Forest
 
@@ -354,30 +353,33 @@ The short-term info and “E” go into the learn gate. This gate decides what i
 
 Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
-
 ![image](https://user-images.githubusercontent.com/46517523/169108963-a9b16f57-9ca6-4239-bb4e-d3d48bd41551.png)
 
-**Observations**
+```
+@Ishaan : code
+```
 
-Using LSTM for this use case gave me a better result than what I was hoping for.
-I perfomed some preprocessing, such as I changed the names of the locations to their respective countries to make it easier, replaced the stop words and removed the emojis from the tweets. Now my model was ready to train and I used the built in LSTM library in python to do so, below is my accuracy table and the output graphs. 
+@Ishaan : code explanations here
 
 ![image](https://user-images.githubusercontent.com/46517523/169112300-5acf0cf2-6c2e-48ce-82ac-b12135fd2c92.png)
 
-F1-score:  0.7568653717347622
-Precision:  0.671021377672209
-Recall:  0.8678955453149002
-Acuracy:  0.8093487394957983
---------------------------------------------------
-              precision    recall  f1-score   support
+**Observation:**
 
-           0       0.92      0.78      0.84      1253
-           1       0.67      0.87      0.76       651
+We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.813.
 
-    accuracy                           0.81      1904
-   macro avg       0.80      0.82      0.80      1904
-weighted avg       0.83      0.81      0.81      1904
+|LSTM+Glove | Accuracy | Recall | Precision | F1 Score |
+|------------|----------|--------|-----------|----------|
+|            |     0.811|   0.820|      0.724|     0.769|
 
+**Observation:** LSTM has the higher accuracy rather than other models that we tried so far.
+
+We trained the same LSTM model with Word2Vec for comparison. Results are shown the below Table.
+
+|LSTM  + W2V | Accuracy | Recall | Precision | F1 Score |
+|------------|----------|--------|-----------|----------|
+|            |     0.788|   0.776|      0.720|     0.747|
+
+**Observation:** In this case, Word2Vec does not have better performance rather than Glove.
 
 
 ## Ensemble
@@ -391,17 +393,17 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
 
-**Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
+**Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
 
-Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove.
-
-Table shows the accuracy, recall, precision, and f1 score of the second ensemble model.
+Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.811 accuracy. 
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
 |          |     0.813|   0.681|      0.860|     0.760|
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
+
+**Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
 
 # Comparisons
 
@@ -437,7 +439,7 @@ We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinatio
 | AUC     |    0.859|     0.854|        0.767|    0.852|            0.831|       0.881|   
 
 
-Also, other submissions of Kaggle competition used similar steps using algorithms to transform to numerical feature vectors and classifiers including ensemble models as well. However, there is no comparison to find each combination of feature vectors and classifiers, to make custom ensemble models. Our model considered finding a suitable combination of a feature vector and a classifier and then, applying ensemble model.
+Also, other submissions of Kaggle have done similar steps for preprocessing and applying models and many participants have 1 score in Leaderboard. They tried to train a single model or even in case of ensemble, they trained ensemble classifiers with the same data set. However, we have a little bit of a different direction. We expect that there would be a suitable combination of feature vector sets and models. So we will try to build models with different feature vector sets to find combinations to get better performance. We evaluated diverse models and we tried to make a comparison.
 
 # Conclusions
 
@@ -466,7 +468,9 @@ We obtained the qualified data set from the company, so we assumed that data is 
 
 [9] Word2Vec, gensim-word2vec-tutorial, https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
 
-[10] Word2Vec, Wikipedia, https://en.wikipedia.org/wiki/Word2vec
+[10] What is Glove?, https://medium.com/analytics-vidhya/word-vectorization-using-glove-76919685ee0b
+
+[11] Glove File from Kaggle, https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt
 
 [ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
 
