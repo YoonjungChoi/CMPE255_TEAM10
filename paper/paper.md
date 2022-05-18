@@ -359,14 +359,25 @@ Step 2: information that passes the forget gate (it is not forgotten, forgotten 
 
 **Observations**
 
-Using LSTM for this use case gave me a better result than what I was hoping for.Dataset seems balanced, some pre processing is required to clean up stop words and puncutations. I also converted data to lowercase. After this I tried to understand what the difference in the disaster and non disaster tweets, I started observing the number of characters in both of them as well as the words in the tweets, the most important thing to observe was the averege word length in each tweet. Below are the graphs for that: 
-![image](https://user-images.githubusercontent.com/46517523/169110860-6b3595fc-32cb-4646-9358-610c263ab106.png)
-![image](https://user-images.githubusercontent.com/46517523/169110885-3bc1c477-27e1-4262-b6f0-98ccbcf92e33.png)
-![image](https://user-images.githubusercontent.com/46517523/169111182-6cedcfed-5467-4d24-be46-f08cab0bd18b.png)
-
-After this, I perfomed some preprocessing, such as I changed the names of the locations to their respective countries to make it easier, replaced the stop words and removed the emojis from the tweets. Now my model was ready to train and I used the built in LSTM library in python to do so, below is my accuracy table and the output graphs. 
+Using LSTM for this use case gave me a better result than what I was hoping for.
+I perfomed some preprocessing, such as I changed the names of the locations to their respective countries to make it easier, replaced the stop words and removed the emojis from the tweets. Now my model was ready to train and I used the built in LSTM library in python to do so, below is my accuracy table and the output graphs. 
 
 ![image](https://user-images.githubusercontent.com/46517523/169112300-5acf0cf2-6c2e-48ce-82ac-b12135fd2c92.png)
+
+F1-score:  0.7568653717347622
+Precision:  0.671021377672209
+Recall:  0.8678955453149002
+Acuracy:  0.8093487394957983
+--------------------------------------------------
+              precision    recall  f1-score   support
+
+           0       0.92      0.78      0.84      1253
+           1       0.67      0.87      0.76       651
+
+    accuracy                           0.81      1904
+   macro avg       0.80      0.82      0.80      1904
+weighted avg       0.83      0.81      0.81      1904
+
 
 
 ## Ensemble
