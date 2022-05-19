@@ -175,5 +175,26 @@ for w,c in m[:]:
 
 
 
+X_train, X_test, y_train, y_test = train_test_split(tweets['text'], tweets['target'], test_size=0.2)
+X_train.head()
+
+
+
+tfidf_vect = TfidfVectorizer()
+X_train_vect = tfidf_vect.fit_transform(X_train)
+X_test_vect = tfidf_vect.transform(X_test)
+
+
+rf = RandomForestClassifier()
+rf_model = rf.fit(X_train_vect, y_train.values.ravel())
+
+
+
+y_pred = rf_model.predict(X_test_vect)
+
+
+
+precision = precision_score(y_test, y_pred)
+print(f"Precision: {round(precision, 3)} Accuracy: {round((y_pred==y_test).sum()/len(y_pred), 3)}")
 
 
