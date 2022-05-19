@@ -110,6 +110,8 @@ One of the biggest problems with text is that it is messy and unstructured, and 
 
 The most simple and known method is the Bag-Of-Words representation of text that describes the occurrence of words within a document. It’s an algorithm that transforms the text into fixed-length vectors. Count vectorizer can be used for Bag-Of-Words representation.
 
+Bag-Of-Words : One tweet is considered as one document. The set of all tweets i.e. the feautre 'text' is considered as docuemnt corpus. From the document corpus, we need to identify unique words and consider them as features. This process is termed as 'Feature Extraction'. The frequency of each feature (word) in a particular document is recorded.
+
 **2) TF-IDF(Term Frequency Inverse Document Frequency)**
 
 Some articles say that TF-IDF is better than Countvectorizer because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. It gives more weight to a term that occurs in only a few documents.
