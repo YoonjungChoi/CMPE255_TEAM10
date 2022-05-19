@@ -191,8 +191,7 @@ Figure 16. Visualization of words by word2vec.
 
 ### Word2Vec with PCA applied
 
-As Principal Component Analysis is a strategy to reduce dimension, we applied PCA to reduce 100 components from Word2Vec with dimensionality of 300. 
-Word2Vec in Gensim's default dimensionality is 100. We tried to train and get better accuracy in several experiments. As a result, the case of creating 300 dimensionality and applying PCA to create 100 principal components has better performance rather than word2vec with 100 dimensionality without PCA.
+Principal Component Analysis is a strategy to reduce dimensionality, to identify important relationships in data and to extract new features. According to the Gensim guide,  Word2Vec's default dimensionality is 100, so we are able to have directly 100 dimensions data set without PCA. However, we used PCA to reduce 100 components from Word2Vec with dimensionality of 300 since PCA not only reduces dimensionality but also extract new features. We tried to train and get better accuracy in several experiments. As a result, in this data set, usage of PCA has better performance rather than word2vec feature vector set with 100 dimensionality without PCA.
 
 ### Glove
 
