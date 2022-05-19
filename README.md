@@ -10,21 +10,21 @@
 ## Introduction
 Natural Language Processing (NLP) is a branch of artificial intelligence that helps computers understand and interpret human language and give computers the ability to understand written and spoken words. From the [market research](https://www.statista.com/statistics/607891/worldwide-natural-language-processing-market-revenues/), worldwide revenue from the NLP market forecasts to be almost 14 times larger in 2025 than it was in 2017, increasing from around three billion U.S. dollars in 2017 to over 43 billion in 2025. NLP is one of the most promising avenues for social media data processing. It is an interesting challenge to develop powerful methods and algorithms which extract relevant information from data of unstructured format. 
 
-Social Network Services(SNS) have become not only an important source of emergency information during disaster but also a medium for expressing immediate responses of warning, evacuation or rescue, providing immediate assistance, assessing damage, continuing assistance and the immediate restoration or construction of infrastructure. As a result, predicting the context of SNS is a crucial concern in our society. More agencies want to monitor or track SNS intelligently by using technologies. NLP has been widely used to analyze SNS and extract potential patterns. By analyzing text data of social media, we can utilize this study to track, monitor and predict disasters from the real time data and this study would help build prediction models. 
+Social Network Services(SNS) have become not only an important source of emergency information during a disaster but also a medium for expressing immediate responses of warning, evacuation, or rescue, providing immediate assistance, assessing damage, continuing assistance, and the immediate restoration or construction of infrastructure. As a result, predicting the context of SNS is a crucial concern in our society. More agencies want to monitor or track SNS intelligently by using technologies. NLP has been widely used to analyze SNS and extract potential patterns. By analyzing text data of social media, we can utilize this study to track, monitor, and predict disasters from the real-time data and this study would help build prediction models. 
  
-Twitter is one of the popular SNS platforms and many tweets have been delivered in emergency situations. This project on Twitter analysis is about prediction problems whether a person's words are actually telling of a disaster.
+Twitter is one of the popular SNS platforms and many tweets have been delivered in emergencies. This project on Twitter analysis is about prediction problems of whether a person's words are telling of a disaster.
 
 ![image](https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png)
 
 This image is an example tweet. If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. Thus, we investigate techniques for natural language processing and explore diverse machine learning models with several practical word embedding algorithms. 
 
-1) We need to do certain preprocessing steps for text data, which means that we have to remove meaningless data, e.g. html tags, url, emojis, ascii codes and punctuation. This step is important because unstructured and mixed data prevent text analysis and making accurate decisions. 
+1) We need to do certain preprocessing steps for text data, which means that we have to remove meaningless data, e.g. HTML tags, URLs, emojis, ASCII codes and punctuation. This step is important because unstructured and mixed data prevent text analysis and making accurate decisions. 
 
-2) We need to apply practical algorithms e.g. stop words, stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lower inflection in words to their root forms. According to Wikipedia, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
+2) We need to apply practical algorithms e.g. stop words, and stemming to find the root of words. Again, we need to make sure that data has meaningful data as much as possible, so we remove stop words(are, the, a) and apply stemming to lower inflection in words to their root forms. According to Wikipedia, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
 
-3) We need to apply word embedding algorithms to transform text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform text into numerical feature vectors so machine learning classifiers can understand input data. We will talk in detail about word embedding algorithms in the below [word embedding section](#word-embedding). For the non sequential models such as SVM, Logistic Regression, Decision Tree, RandomForest, XGboost are trained with CountVectorizer, Tf-Idf, Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For Long Short Term Memory(LSTM) called deep learning or the sequential model, we trained word2vec and Global Vectors for Word Representation(GloVe). We will talk about why we choose LSTM in the below [classifiers section](#classifiers). 
+3) We need to apply word embedding algorithms to transform the text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform the text into numerical feature vectors so machine learning classifiers can understand input data. We will talk in detail about word embedding algorithms in the below [word embedding section](#word-embedding). For the non-sequential models such as SVM, Logistic Regression, Decision Tree, RandomForest, and XGboost are trained with CountVectorizer, Tf-Idf, and Word2vec(We build a sentence embedding by averaging the values across all token embeddings output). For Long Short Term Memory(LSTM) called deep learning or the sequential model, we trained word2vec and Global Vectors for Word Representation(GloVe). We will talk about why we choose LSTM in the below [classifiers section](#classifiers). 
 
-For comparison, other submissions of Kaggle have done similar steps for preprocessing and applying models and many participants have 1 score in Leaderboard. They tried to train a single model or even in case of ensemble, they trained ensemble classifiers with the same data set. However, we have a little bit of a different direction. We expect that there would be a suitable combination of feature vector sets and models. So we will try to build models with different feature vector sets to find combinations to get better performance and we will try to make a comparison.
+For comparison, other submissions of Kaggle have done similar steps for preprocessing and applying models and many participants have 1 score on Leaderboard. They tried to train a single model or even in the case of an ensemble, they trained ensemble classifiers with the same data set. However, we have a little bit of a different direction. We expect that there would be a suitable combination of feature vector sets and models. So we will try to build models with different feature vector sets to find combinations to get better performance and we will try to make a comparison.
 
 
 ## Data set
@@ -53,8 +53,8 @@ For comparison, other submissions of Kaggle have done similar steps for preproce
 **This dataset have 'target' label having 0 or 1**
 
 ## Problem
-Prediction problem on whether a person's words are actually telling a disaster.
-This is categorized by Supervised Learning, Binary classification Problem and Natural Language Processing.
+Prediction problem on whether a person's words are telling a disaster.
+This is categorized as Supervised Learning, Binary classification Problem, and Natural Language Processing.
 
 **1) 'target' label**
 
@@ -62,7 +62,7 @@ This plot shows distribution of the **target** label.
 
 ![image](https://user-images.githubusercontent.com/20979517/164575693-d0ee93c4-d68e-4697-a108-d616754b6eed.png)
 
-**Observation:** we cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
+**Observation:** We cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
 
 **2) 'keyword' feature**
 
