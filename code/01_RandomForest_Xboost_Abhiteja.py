@@ -140,4 +140,40 @@ def _corpus(target):
             corpus.append(i)
     return corpus
 
+# In[23]:
+
+
+from collections import defaultdict
+plt.figure(figsize=(10,5))
+corpus=_corpus(0)
+import string
+d=defaultdict(int)
+s = string.punctuation
+for i in (corpus):
+    if i in s:
+        d[i]+=1
+        
+x,y=zip(*d.items())
+plt.bar(x,y,color='blue')
+
+
+#Observing the stop words like a, the, in, is etc
+from nltk.corpus import stopwords
+stop=set(stopwords.words('english')) 
+
+
+
+from collections import  Counter
+c=Counter(corpus)
+m=c.most_common()
+x=[]
+y=[]
+for w,c in m[:]:
+    if (w not in stop):
+        x.append(w)
+        y.append(c)
+
+
+
+
 
