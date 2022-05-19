@@ -110,7 +110,7 @@ One of the biggest problems with text is that it is messy and unstructured, and 
 
 The most simple and known method is the Bag-Of-Words representation of text that describes the occurrence of words within a document. It’s an algorithm that transforms the text into fixed-length vectors. Count vectorizer can be used for Bag-Of-Words representation.
 
-Bag-Of-Words : One tweet is considered as one document. The set of all tweets i.e. the feautre 'text' is considered as docuemnt corpus. From the document corpus, we need to identify unique words and consider them as features. This process is termed as 'Feature Extraction'. The frequency of each feature (word) in a particular document is recorded. Disadvantage with Bag-Of-Words is that it misses semantic similarity between words. Hence, Word2vec was also used.
+Bag-Of-Words : One tweet is considered as one document. The set of all tweets i.e. the feautre 'text' is considered as docuemnt corpus. From the document corpus, we need to identify unique words and consider them as features. This process is termed as 'Feature Extraction'. The frequency of each feature (word) in a particular document is recorded. Disadvantage with Bag-Of-Words is that it misses semantic similarity between sentences. Hence, Word2vec was also used.
 
 **2) TF-IDF(Term Frequency Inverse Document Frequency)**
 
