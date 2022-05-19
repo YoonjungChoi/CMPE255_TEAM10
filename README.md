@@ -116,11 +116,11 @@ Some articles say that TF-IDF is better than Countvectorizer because it not only
 
 **3) Word2Vec**
 
-According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. If we put a word in trained word2vec, it returns a feature vector. In case of non sequential models, since one instance of 'text' feature has several words(sentence), we can build a sentence embedding by averaging the values across all token embeddings output by Word2Vec.
+According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. If we put a word in trained word2vec, it returns a feature vector. In the case of non-sequential models, since one instance of the 'text' feature has several words(sentence), we can build a sentence embedding by averaging the values across all token embeddings output by Word2Vec.
 
 **4) Glove**
 
-Glove stands for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the **pre-trained vectors** Glove can be found in many sites like [Kaggle](https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt). We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
+Glove stands for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the **pre-trained vectors** Glove can be found on many sites like [Kaggle](https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt). We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord datasets.
 
 **Expectations: we expect to understand how each word embedding algorithm works on it and its performances with models**
 
