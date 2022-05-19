@@ -198,3 +198,23 @@ precision = precision_score(y_test, y_pred)
 print(f"Precision: {round(precision, 3)} Accuracy: {round((y_pred==y_test).sum()/len(y_pred), 3)}")
 
 
+import xgboost as xgb
+from sklearn.model_selection import GridSearchCV
+xgb_cl = xgb.XGBClassifier()
+xg_model = xgb_cl.fit(X_train_vect, y_train.values.ravel())
+
+preds = xg_model.predict(X_test_vect)
+precision_xg = precision_score(y_test, preds)
+print(f"Precision: {round(precision_xg, 3)} Accuracy: {round((preds==y_test).sum()/len(preds), 3)}")
+
+
+# <!-- Updating paper.md file with Random Forest Analysis and proofs -->
+
+# 
+
+
+
+
+
+
+
