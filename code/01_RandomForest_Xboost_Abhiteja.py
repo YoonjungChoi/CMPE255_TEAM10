@@ -102,4 +102,13 @@ tweets["CleanText"] = tweets["CleanText"].apply(lambda x: RemoveASCII(x))
 
 tweets.head(30)
 
+# #### There are 61 missing values in Keyword feature
+
+features = ['keyword']
+for feat in features : 
+    print("The number of missing values in "+ str(feat)+" are "+str(tweets[feat].isnull().sum()))
+    
+    
+    
+
 
