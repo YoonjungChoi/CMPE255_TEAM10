@@ -364,7 +364,7 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 |------------|----------|--------|-----------|----------|
 |            |     0.635|   0.548|      0.927|     0.688|
 
-**Observation:** In this case, Word2Vec has worst performance rather than Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization for further study since we found that there is some 
+**Observation:** In this case, the model with Word2Vec has worst performance rather than the model with Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization in further study since we found that there are many parameters to improve performance [keras-].
 
 
 ## Ensemble
@@ -472,3 +472,5 @@ We obtained the qualified data set from the company, so we assumed that data is 
 [17] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
 
 [18] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+
+[keras-] Keras Optimizers API, https://keras.io/api/optimizers/
