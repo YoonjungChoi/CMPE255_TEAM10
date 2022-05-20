@@ -179,7 +179,7 @@ Figure 15. Occurrences of words by Tf-Idf.
 
 ### Word2Vec
 
-According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. Word2Vec represents words in vector space in a way of similar meaning: words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial[9] to visualize the relationship with words.
+According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence [9]. Word2Vec represents words in vector space in a way of similar meaning: words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial[10] to visualize the relationship with words.
 
 Figure 16 shows visualization by word2vec.
 
@@ -195,7 +195,7 @@ Principal Component Analysis is a strategy to reduce dimensionality, to identify
 
 ### Glove
 
-Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [10]. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the pre-trained vectors Glove can be found in many sites like Kaggle[11]. We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
+Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [11]. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the pre-trained vectors Glove can be found in many sites like Kaggle[12]. We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
 
 The difference between the Word2Vec and Glove is the way of training, which yield vectors with subtly different properties. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
 
@@ -207,7 +207,7 @@ We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, R
 
 ## Logistic Regression(LR)
 
-Logistic Regression is a supervised machine learning algorithm that can be used to model the probability of a certain class or event. It is used when the data is linearly separable and the outcome is binary or dichotomous in nature. That means Logistic regression is usually used for Binary classification problems. Also, Logistic Regression is easier to implement, interpret, and very efficient to train. Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression.
+Logistic Regression is a supervised machine learning algorithm that can be used to model the probability of a certain class or event. It is used when the data is linearly separable and the outcome is binary or dichotomous in nature [12]. That means Logistic regression is usually used for Binary classification problems. Also, Logistic Regression is easier to implement, interpret, and very efficient to train. Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression.
 
 Table 1 shows performance on Logistic Regression without modifying parameters.
 
@@ -219,7 +219,7 @@ Table 1. Logistic Regression's accuracies with respective feature vector sets.
 
 **Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy than word2vec feature data set.
 
-We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. Logistic Regression has parameters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[ ].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [ ]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
+We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. Logistic Regression has parameters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[13].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [14]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
 
 This is the code snippet.
 
@@ -244,7 +244,7 @@ Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature
 **Observation:** This confusion matrix shows the number of samples between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) samples.
 
 ## Support Vector Machine(SVM)
-Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
+Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes [16]. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
 
 Table shows performance on SVM without modifying parameters.
 
@@ -256,8 +256,8 @@ Table 3. SVM's accuracies with respective feature vector sets.
 
 **Observation:** We observed that the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vector set has better accuracy than Word2vec feature vector set.
 
-We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma sets ‘auto’, it uses 1 / number of features. SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane[ ]. We trained by making several models with three types of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network [].
-
+We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma sets ‘auto’, it uses 1 / number of features. SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane [17]. We trained by making several models with three types of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network.
+The below is the code snippet 
 
 ```
 svm_clf = SVM(kernel='sigmoid')
@@ -280,9 +280,7 @@ Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
 ## Decision Tree
-A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well.
-
-Figure shows performance on Decision Tree without modifying parameters.
+A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Table 5 shows performance on Decision Tree without modifying parameters.
 
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
@@ -467,16 +465,22 @@ We obtained the qualified data set from the company, so we assumed that data is 
 
 [8] WordCloud, https://kavita-ganesan.com/python-word-cloud/#.YnnPcPPMIeU
 
-[9] Word2Vec, gensim-word2vec-tutorial, https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
+[9] Word2Vec Wikipedia, https://en.wikipedia.org/wiki/Word2vec
 
-[10] What is Glove?, https://medium.com/analytics-vidhya/word-vectorization-using-glove-76919685ee0b
+[10] Word2Vec, gensim-word2vec-tutorial, https://www.kaggle.com/code/pierremegret/gensim-word2vec-tutorial/notebook
 
-[11] Glove File from Kaggle, https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt
+[11] What is Glove?, https://medium.com/analytics-vidhya/word-vectorization-using-glove-76919685ee0b
 
-[ ] Logstic Regression, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+[12] Glove File from Kaggle, https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt
 
-[ ] Logistic Regression Sparsity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
+[13] Logistic Regression, https://www.sciencedirect.com/topics/computer-science/logistic-regression
 
-[ ] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
+[14] Logstic Regression API, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+
+[15] Logistic Regression Sparsity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
+
+[16] SVM How it works, https://www.analyticsvidhya.com/blog/2017/09/understaing-support-vector-machine-example-code/
+
+[17] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
 
 [ ] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
