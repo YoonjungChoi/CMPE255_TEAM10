@@ -139,7 +139,7 @@ Figure 12 shows a word cloud about disaster.
 
 Figure 12. WordCloud on 'target' labeled as a disaster.
 
-**Observation:** we discovered disaster tweets' related words; suicide, police, news, kill, attack, death, california, storm, flood. 
+**Observation:** we discovered disaster tweets' related words; suicide, police, news, kill, attack, death, california, storm, flood.
 
 Figure 13 shows the word cloud about non-disaster.
 
@@ -147,7 +147,7 @@ Figure 13 shows the word cloud about non-disaster.
 
 Figure 13. WordCloud on 'target' label as non disaster.
 
-**Observation:** Non disaster tweets shows that time, want, great, feel, read, but also injury or emergency are found.
+**Observation:** Non disaster tweets shows words unrelated of disasters; time, want, great, feel, read. Also, injury or emergency, which can be used for non-disasters situations, are found as well.
 
 ## Word Embedding to transform data into numerical feature vectors
 
@@ -163,7 +163,7 @@ Figure 14 shows occurrences of words by CountVectorizer .
 
 Figure 14. Occurrences of words by CounterVectorizer.
 
-**Observation:** We observed occurrences of words. The 'deed' occurs around 4000.
+**Observation:** We observed frequencis of words. The 'deed' occurs around 4000. The 'reason' word occurs alot among 10 words in Figure.
 
 ### Term Frequency Inverse Document Frequency(Tf-Idf)
 
@@ -175,7 +175,7 @@ Figure 15 shows weighted occurrences of words by Tf-Idf.
 
 Figure 15. Occurrences of words by Tf-Idf.
 
-**Observation:** We observed weighted occurrences of words. The occurrences of 'deed' word changes to 15000.
+**Observation:** We observed weighted frequencis of words. The 'deed' word looks weighted more and changed to around 15000. The 'reason' and 'reason earthquake' have more weighted rather than other words among 10 words in Figure.
 
 ### Word2Vec
 
@@ -187,7 +187,7 @@ Figure 16 shows visualization by word2vec.
 
 Figure 16. Visualization of words by word2vec.
 
-**Observation:** The blue are most similar words with the 'Wildfire' and green is most unrelated words with the 'Wildfire'
+**Observation:** The blue are most similar words with the 'Wildfire' and green is most unrelated words with the 'Wildfire'.
 
 ### Word2Vec with PCA applied
 
@@ -376,6 +376,8 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 |----------|----------|--------|-----------|----------|
 |          |     0.811|   0.701|      0.838|     0.764|
 
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
+
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
 
 Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.811 accuracy. 
@@ -383,6 +385,8 @@ Next ensemble model is the first ensemble model adding the sequential model, LST
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
 |          |     0.813|   0.687|      0.856|     0.762|
+
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
 
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
 
@@ -426,13 +430,14 @@ Also, other submissions of Kaggle have done similar steps for preprocessing and 
 
 # Conclusions
 
-In this analysis, we experienced NLP processing with four prominent word embeddings and seven classification algorithms by using a Figure-Eight Company data set. This study also investigated finding combinations and making comparisons on performance of diverse classifiers.
+We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can analyze and predict emergency situations properly. Additional study on deep learning algorithms should be continued. When we made models on LSTM with word embeddings, we faced many difficulties about understanding complicated algorithms itself and choosing diverse optimazation options. In furthur study, we will continue dealing with our concerns.
 
 # Limitations And Future research
 
-We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can predict emergency situations and properly respond them.
+We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can analyze and predict emergency situations properly. Additional study on deep learning algorithms should be continued. When we made models on LSTM with word embeddings, we faced many difficulties about understanding complicated algorithms itself and choosing diverse optimazation options. In furthur study, we will continue dealing with our concerns.
 
 # References
+
 [1] NLP Market Research, https://www.statista.com/statistics/607891/worldwide-natural-language-processing-market-revenues/
 
 [2] Data For Everyone’ website, https://appen.com/datasets-resource-center
