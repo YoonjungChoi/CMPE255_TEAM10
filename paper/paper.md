@@ -291,7 +291,7 @@ Table 5. Decision Tree's accuracies with respective feature vector sets.
 
 **Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vectors set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
-We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[ ].
+We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[18].
 The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible results.
 
 ```
@@ -336,24 +336,12 @@ An LSTM layer consists of a set of recurrently connected blocks, known as memory
 
 **Working**
 
-An LSTM has four “gates”: forget, remember, learn and use(or output)
-
-It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data)
-
-
-
-Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate.
-
-The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts).
-
-The short-term info and “E” go into the learn gate. This gate decides what info will be learned.
-
-Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
+An LSTM has four “gates”: forget, remember, learn and use(or output). It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data). Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate. The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts). The short-term info and “E” go into the learn gate. This gate decides what info will be learned. Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
 ![image](https://user-images.githubusercontent.com/46517523/169108963-a9b16f57-9ca6-4239-bb4e-d3d48bd41551.png)
 
 ```
-@Ishaan : code
+@Ishaan : code here
 ```
 
 @Ishaan : code explanations here
@@ -364,9 +352,9 @@ Step 2: information that passes the forget gate (it is not forgotten, forgotten 
 
 We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.813.
 
-|LSTM+Glove | Accuracy | Recall | Precision | F1 Score |
-|------------|----------|--------|-----------|----------|
-|            |     0.811|   0.820|      0.724|     0.769|
+| LSTM+Glove | Accuracy | Recall  | Precision | F1 Score |
+|------------|----------|--------|-----------|-----------|
+|            |     0.810|   0.791|      0.764|      0.777|
 
 **Observation:** LSTM has the higher accuracy rather than other models that we tried so far.
 
@@ -374,9 +362,9 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 
 |LSTM  + W2V | Accuracy | Recall | Precision | F1 Score |
 |------------|----------|--------|-----------|----------|
-|            |     0.788|   0.776|      0.720|     0.747|
+|            |     0.635|   0.548|      0.927|     0.688|
 
-**Observation:** In this case, Word2Vec does not have better performance rather than Glove.
+**Observation:** In this case, Word2Vec has worst performance rather than Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization for further study since we found that there is some 
 
 
 ## Ensemble
@@ -386,7 +374,7 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |     0.812|   0.699|      0.841|     0.764|
+|          |     0.811|   0.701|      0.838|     0.764|
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
 
@@ -396,7 +384,7 @@ Next ensemble model is the first ensemble model adding the sequential model, LST
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |     0.813|   0.681|      0.860|     0.760|
+|          |     0.813|   0.687|      0.856|     0.762|
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
 
@@ -483,4 +471,4 @@ We obtained the qualified data set from the company, so we assumed that data is 
 
 [17] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
 
-[ ] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+[18] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
