@@ -376,8 +376,6 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 |----------|----------|--------|-----------|----------|
 |          |     0.811|   0.701|      0.838|     0.764|
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
-
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
 
 Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.811 accuracy. 
@@ -385,8 +383,6 @@ Next ensemble model is the first ensemble model adding the sequential model, LST
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
 |          |     0.813|   0.687|      0.856|     0.762|
-
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
 
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
 
