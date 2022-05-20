@@ -256,8 +256,7 @@ Table 3. SVM's accuracies with respective feature vector sets.
 
 **Observation:** We observed that the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vector set has better accuracy than Word2vec feature vector set.
 
-We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient and if Gamma sets ‘auto’, it uses 1 / number of features. SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane [17]. We trained by making several models with three types of penalty, C, and other parameters. kernels, C, and gamma values. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network.
-The below is the code snippet 
+We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient. If Gamma sets ‘scale’, then it uses 1 / (n_features * X.var()). SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane [17]. We trained by making several models with C(default=1), kernels, gamma(default='scale') and other parameters. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network. The below is the code snippet for optimazation. As a result, default parameters have better accuracy. 
 
 ```
 svm_clf = SVM(kernel='sigmoid')
@@ -280,7 +279,7 @@ Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
 ## Decision Tree
-A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Table 5 shows performance on Decision Tree without modifying parameters.
+A decision tree can be used for either regression or classification. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Table 5 shows performance on Decision Tree without modifying parameters. 
 
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
@@ -289,7 +288,7 @@ A decision tree can be used for either regression or classification. Advantages 
 
 Table 5. Decision Tree's accuracies with respective feature vector sets.
 
-**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vectors set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
+**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vector set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
 We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[18].
 The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible results.
