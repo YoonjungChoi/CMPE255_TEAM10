@@ -49,32 +49,28 @@ The data set has been collected from the company figure-eight and originally sha
 
 # Exploratory Data Analysis and Data preprocessing
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dataset.png)
-
-Figure 1. Description of data set.
+  Figure 1. Description of data set.
 
 **Observation:** 
 We observed that the data set has four features and one label.
 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.missing.png)
-
-Figure 2. The number of missing values in the data set.
+  Figure 2. The number of missing values in the data set.
 
 **Observation:** 
 We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
-
-Figure 3. Pie chart of 'target' label.
+   Figure 3. Pie chart of 'target' label.
 
 **Observation:** 
 We cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
 
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/keywordSet.png)
-
-Figure 4. The number of unique words and common words at respective label(disaster and non-disaster).
+   Figure 4. The number of unique words and common words at respective label(disaster and non-disaster).
 
 **Observation:** 
 1. The 'keyword' feature does not have many null values(39), but there are many common words. It has 221 words of disaster,  219 words of non-disaster.
@@ -85,8 +81,7 @@ Figure 4. The number of unique words and common words at respective label(disast
  
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/locationEx.png)
-
-Figure 5. Partial samples of 'location' data set.
+  Figure 5. Partial samples of 'location' data set.
 
 **Observation:** 
 1. The 'location' feature has many null values(2533) and does not have format and it is not generated automatically. 
@@ -103,8 +98,7 @@ For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Em
 1. Sample of the original 'text' feature can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
-
-Figure 6. Partial data set of 'text' feature.
+  Figure 6. Partial data set of 'text' feature.
 
 **Observation:** We observed each sample has mixed data such as upper/lower cases, url, emojis.
 
@@ -112,8 +106,7 @@ Figure 6. Partial data set of 'text' feature.
 2. Changes after Data Cleansing can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
-
-Figure 7. Partial data set after cleaning meaningless data.
+  Figure 7. Partial data set after cleaning meaningless data.
 
 **Observation:** Incomplete, duplicated, incorrect, and irrelevant data from the dataset is removed.
 
@@ -127,8 +120,7 @@ Tokenization divides strings into lists of substrings. We used the library to fi
 Changes after applying tokenization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
-
-Figure 8. Partial data set after applying tokenization on previous cleaned data.
+  Figure 8. Partial data set after applying tokenization on previous cleaned data.
 
 **Observation:** We observed the separated words in each sample.
 
@@ -140,8 +132,7 @@ We removed commonly used words, such as "the", "a", "is", "in".
 Changes after applying stopwords can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stopw.png)
-
-Figure 9. Partial data set after removing stopwords on tokenized data.
+  Figure 9. Partial data set after removing stopwords on tokenized data.
 
 **Observation:** In the first sample, 'out', 'for', 'more', 'set', 'me' are removed.
 
@@ -153,8 +144,7 @@ Stemming is the process of producing morphological variants of a root/base word.
 Changes after applying stemming can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stem.png)
-
-Figure 10. Partial data set after applying stemming on data without stopwords.
+  Figure 10. Partial data set after applying stemming on data without stopwords.
 
 **Observation:** We observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
 
@@ -168,8 +158,7 @@ For example, the original words 'populated' changed to 'popul' in Stemming, but 
 Changes after applying lemmatization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
-
-Figure 11. Partial data set after applying lemmatization on data without stopwords.
+  Figure 11. Partial data set after applying lemmatization on data without stopwords.
 
 **Observation:** We observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
 
