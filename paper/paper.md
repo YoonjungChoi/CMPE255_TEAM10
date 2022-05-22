@@ -40,7 +40,7 @@ To develop the models, we have designed a sequence of steps. The steps involved 
 9. Best Fit Analysis
 
 Workflow:
-
+![Workflow](https://user-images.githubusercontent.com/90536339/169720195-ba156d8c-a2b0-4aed-8bfc-64c8758f67ed.png)
 
 # Data Exploration
 
