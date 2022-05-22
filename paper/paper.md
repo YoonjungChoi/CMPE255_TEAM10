@@ -338,7 +338,7 @@ An LSTM layer consists of a set of recurrently connected blocks, known as memory
 An LSTM has four “gates”: forget, remember, learn and use(or output). It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data). Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate. The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts). The short-term info and “E” go into the learn gate. This gate decides what info will be learned. Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
 ![image](https://user-images.githubusercontent.com/46517523/169108963-a9b16f57-9ca6-4239-bb4e-d3d48bd41551.png)
-
+@Ishaan this image looks not understandable.
 ```
 @Ishaan : code here
 ```
@@ -431,7 +431,7 @@ Also, other submissions of Kaggle have done similar steps for preprocessing and 
 
 # Conclusions
 
-We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can analyze and predict emergency situations properly. Additional study on deep learning algorithms should be continued. When we made models on LSTM with word embeddings, we faced many difficulties about understanding complicated algorithms itself and choosing diverse optimazation options. In furthur study, we will continue dealing with our concerns.
+In this analysis we experienced four prominent word embeddings and seven classification techniques of using an Fiure-Eight Company data set. LSTM with glove have good performance among individual models and Ensemble model with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers on each data set.
 
 # Limitations And Future research
 
