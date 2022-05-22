@@ -152,6 +152,7 @@ A decision tree can be used for either regression or classification. Advantages 
  
  **6) BERT Model**
  
+ Bert (Bidirectional Encoder Representations from Transformers), is a deep learning model which is based on the transformers. In this model each and every element of output is connected to the input elements and weights are calculated dynamically based on connection between them. The speciality of bert is that we can read the input text in both the directions.
  
  
 
