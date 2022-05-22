@@ -41,10 +41,7 @@ To develop the models, we have designed a sequence of steps. The steps involved 
 
 Workflow:
 
-
 ![Workflow](https://user-images.githubusercontent.com/90536339/169720495-9b02d9a0-c9b2-44a6-81db-45631d38e7f5.png)
-
-
 
 # Data Collection
 
