@@ -19,7 +19,7 @@ Natural Language Processing (NLP) is a branch of artificial intelligence that he
 
 Twitter is one of the popular SNS platforms and many tweets have been delivered in emergencies. Since there are demands for companies to utilize these tweets, we investigate natural language processes and develop prediction models having better performance in this paper.
 
-This project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning classifier models that will predict which tweets are about "actual disasters" and which aren't.
+This project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning models that will predict which tweets are about "actual disasters" and which aren't.
 
 # Literature/Market Review
 
