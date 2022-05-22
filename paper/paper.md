@@ -1,7 +1,7 @@
 ---
 title: "Natural Language Processing with Disaster Tweets"
 date: "May 2022"
-author: Yoonjung Choi, Abhiteja Mandava, Ishaan Bhalla, Sakruthi Avirineni, San José State University
+author: Team 10, CMPE 255, San José State University
 
 header-includes: |
   \usepackage{booktabs}
