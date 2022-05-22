@@ -15,7 +15,7 @@ Social Network Services(SNS) have become not only an important source of emergen
 Twitter is one of the popular SNS platforms and many tweets have been delivered in emergencies. This project on Twitter analysis is about prediction problems of whether a person's words are telling of a disaster.
 
 ![image](https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png)
-<img src = "https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png" width = "100" height ="100">
+<img src = "https://storage.googleapis.com/kaggle-media/competitions/tweet_screenshot.png" width = "400" height ="400">
 
 This image is an example tweet. If someone says that 'On plus side LOOK AT THE SKY LAST NIGHT IT WAS ABLAZE', We can understand it does not mean 'disaster' but it means metaphorically something. However, It is not clear to the Machine. Thus, we investigate techniques for natural language processing and explore diverse machine learning models with several practical word embedding algorithms. 
 
