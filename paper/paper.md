@@ -40,11 +40,10 @@ To develop the models, we have designed a sequence of steps. The steps involved 
 9. Best Fit Analysis
 
 Workflow:
-![Workflow](https://user-images.githubusercontent.com/90536339/169720195-ba156d8c-a2b0-4aed-8bfc-64c8758f67ed.png)
 
-# Data Exploration
+(https://user-images.githubusercontent.com/90536339/169720195-ba156d8c-a2b0-4aed-8bfc-64c8758f67ed.png)
 
-## Data Set
+# Data Collection
 
 The data set has been collected from the company figure-eight and originally shared on their ‘Data For Everyone’ website [2]. We found the data set from Kaggle Competition [3]. It contains 7613 tweets data with the following features:
 
@@ -52,7 +51,8 @@ The data set has been collected from the company figure-eight and originally sha
 
 Figure 1. Description of data set.
 
-**Observation:** We observed that the data set has four features and one label.
+**Observation:** 
+We observed that the data set has four features and one label.
 
 Figure 2 shows counts of missing values.
 
@@ -60,7 +60,8 @@ Figure 2 shows counts of missing values.
 
 Figure 2. The number of missing values in the data set.
 
-**Observation:** We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
+**Observation:** 
+We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
 
 Figure 3 shows the percentage of 'target' labels.
 
@@ -68,7 +69,8 @@ Figure 3 shows the percentage of 'target' labels.
 
 Figure 3. Pie chart of 'target' label.
 
-**Observation:** we cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
+**Observation:** 
+We cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
 
 Figure 4 shows the number of unique words of the 'keyword' feature based on each target.
 
@@ -76,7 +78,13 @@ Figure 4 shows the number of unique words of the 'keyword' feature based on each
 
 Figure 4. The number of unique words and common words at respective label(disaster and non-disaster).
 
-**Observation:** the keyword feature does not have many null values(39), but there are many common words. The 'keyword' feature of disaster has 221 words, and The 'keyword' feature of non-disaster has 219 words. There are 218 intersection words. The differences that only 'disaster' tweets have are {'debris', 'wreckage', 'derailment'}. The difference that only 'non-disaster' tweets have are {'aftershock'}. Thus, we do not use keyword features.
+**Observation:** 
+1. The 'keyword' feature does not have many null values(39), but there are many common words. It has 221 words of disaster,  219 words of non-disaster.
+2. There are 218 intersection words.
+3. The differences that only 'disaster' tweets have are {'debris', 'wreckage', 'derailment'}. 
+4. The differences that only 'non-disaster' tweets have are {'aftershock'}. 
+5. Thus, we do not use keyword features.
+ 
 
 Figure 5 shows a few samples of the 'location' feature.
 
