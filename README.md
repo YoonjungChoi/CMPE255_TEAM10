@@ -150,13 +150,17 @@ A decision tree can be used for either regression or classification. Advantages 
 
 **5) XGboost**
  
+ **6) BERT Model**
+ 
+ 
+ 
 
-**6) LSTM**
+**7) LSTM**
 
 For Natural language processing, Long Short Term Memory (LSTM) networks were used as deep learning models for automatic feature extraction from data. Unlike standard feedforward neural networks, LSTM has feedback connections. Such a recurrent neural network can process not only single data points, but also entire sequences of data. [Wiki](https://en.wikipedia.org/wiki/Long_short-term_memory).
 
 
-**7) Ensemble**
+**8) Ensemble**
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would. There are different criteria to make output, but we will create a voting classifier that predicts on the basis of aggregation the findings of each base model.
 
 **Expectations: we expect to understand how models work on it and its performances**
