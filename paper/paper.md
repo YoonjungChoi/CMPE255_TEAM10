@@ -57,7 +57,6 @@ Figure 1. Description of data set.
 **Observation:** 
 We observed that the data set has four features and one label.
 
-Figure 2 shows counts of missing values.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.missing.png)
 
@@ -66,7 +65,6 @@ Figure 2. The number of missing values in the data set.
 **Observation:** 
 We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
 
-Figure 3 shows the percentage of 'target' labels.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
 
@@ -75,7 +73,6 @@ Figure 3. Pie chart of 'target' label.
 **Observation:** 
 We cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
 
-Figure 4 shows the number of unique words of the 'keyword' feature based on each target.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/keywordSet.png)
 
@@ -89,15 +86,17 @@ Figure 4. The number of unique words and common words at respective label(disast
 5. Thus, we do not use keyword features.
  
 
-Figure 5 shows a few samples of the 'location' feature.
-
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/locationEx.png)
 
 Figure 5. Partial samples of 'location' data set.
 
-**Observation:** 'location' feature has many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
+**Observation:** 
+1. The 'location' feature has many null values(2533) and does not have format and it is not generated automatically. 
+2. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'.
+3.  We do not use 'location' as a feature.
 
-The 'id' feature is nominal data, which means that there is no meaningful information. Finally, we dropped 'id', 'keyword', 'location' features and used only 'text' feature and 'target' label.
+**Concluded Observation of Data Collection:**
+The 'id' feature is nominal data, which means that there is no meaningful information. Finally, it was decided to drop 'id', 'keyword', 'location' features and used only 'text' feature and 'target' label.
 
 
 ## Data Preprocessing
