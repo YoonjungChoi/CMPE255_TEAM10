@@ -10,7 +10,10 @@ header-includes: |
 
 # Abstract
 
-Social Network Services(SNS) have become not only an important source of emergency information during disasters but also a medium for expressing immediate responses of warning, evacuation or rescue. As a result, predicting the context of SNS is a crucial concern in our society. By analyzing context, we can utilize this study to track, monitor and predict disasters from the real time data and this study would help make prediction models. In this paper, data was retrieved from the company Figure-Eight, and the key problem is dealing with diverse word embedding and machine learning models for this problem. We tried to find combinations of word embedding algorithms and classifiers, and furthermore, we tried to apply a deep learning model such as Long short-term memory(LSTM) with two different word embedding algorithms. Lastly, we created an ensemble model, and expect a comparison of models we trained. After analyzing data, factors normalizing data set and transforming to feature vector sets were identified, measures to improve performance were proposed, and comparison was conducted.
+Social Network Services(SNS) have become not only an important source of emergency information during disasters but also a medium for expressing immediate responses of warning, evacuation or rescue. Because smartphones are so common, people can use them to broadcast an emergency in real time. As a result, more organizations (such as disaster relief organizations and news companies) are interested in programmatically monitoring tweets, however it's not always clear whether a person's statements are announcing a calamity. By analyzing context, we can utilize this study to track, monitor and predict disasters from the real time data and this study would help make prediction models.
+
+This project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning classifier models that will predict which tweets are about "actual disasters" and which aren't.
+
 
 # Introduction
 
