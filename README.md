@@ -128,7 +128,7 @@ Glove stands for global vectors for word representation. It is an unsupervised l
 
 ## Classifiers
 
-We will use **Non-Sequential Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning or Sequential Model(LSTM)** to solve this binary classification problem.
+We will use **Non-Sequential Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning(BERT) or Sequential Model(LSTM)** to solve this binary classification problem.
 
 (Sequence models are the machine learning models that input or output sequences of data. Sequential data includes text streams, audio clips, video clips, time-series data and etc - [Article](https://towardsdatascience.com/sequence-models-and-recurrent-neural-networks-rnns-62cadeb4f1e1).)
 
@@ -152,11 +152,9 @@ A decision tree can be used for either regression or classification. Advantages 
  
  **6) BERT Model**
  
- Bert (Bidirectional Encoder Representations from Transformers), is a deep learning model which is based on the transformers. In this model each and every element of output is connected to the input elements and weights are calculated dynamically based on connection between them. The speciality of bert is that we can read the input text in both the directions.
+ Bert (Bidirectional Encoder Representations from Transformers), is a deep learning model which is based on the transformers. In this model each and every element of output is connected to the input elements and weights are calculated dynamically based on connection between them. The speciality of bert is that we can read the input text in both the directions.Tansformers can process the data in order and it enable training on the large dataset which is not possible before the bert came into existence.Bert uses a method of masked language modeling which helps in reducing the ambiguity of language.
  
- 
-
-**7) LSTM**
+ **7) LSTM**
 
 For Natural language processing, Long Short Term Memory (LSTM) networks were used as deep learning models for automatic feature extraction from data. Unlike standard feedforward neural networks, LSTM has feedback connections. Such a recurrent neural network can process not only single data points, but also entire sequences of data. [Wiki](https://en.wikipedia.org/wiki/Long_short-term_memory).
 
