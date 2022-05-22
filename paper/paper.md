@@ -1,7 +1,7 @@
 ---
-title: "Natural Language Processing with Disaster Tweets"
-date: "May 2022"
-author: Team 10, CMPE 255, San José State University
+Title: "Natural Language Processing with Disaster Tweets"
+Date: "May 2022"
+Author: Team 10, CMPE 255, San José State University
 
 header-includes: |
   \usepackage{booktabs}
