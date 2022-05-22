@@ -47,6 +47,7 @@ Workflow:
 
 The data set has been collected from the company figure-eight and originally shared on their ‘Data For Everyone’ website [2]. We found the data set from Kaggle Competition [3]. It contains 7613 tweets data with the following features:
 
+# Exploratory Data Analysis and Data preprocessing
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dataset.png)
 
 Figure 1. Description of data set.
@@ -92,14 +93,14 @@ Figure 5. Partial samples of 'location' data set.
 2. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'.
 3.  We do not use 'location' as a feature.
 
-**Concluded Observation of Data Collection:**
+**Concluded Observation of Exploratory Data Analysis and Data preprocessing:**
 The 'id' feature is nominal data, which means that there is no meaningful information. Finally, it was decided to drop 'id', 'keyword', 'location' features and used only 'text' feature and 'target' label.
 
 
-## Data Preprocessing
-We should clean data to remove meaningless data because properly cleaned data enable us to do good text analysis and help in making accurate decisions for our problem. For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes [4],[5].
+**Implementation:**
+For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Emojis, punctuation and ASCII codes [4],[5].
 
-Figure 6 shows parital of the original 'text' feature.
+1. Sample of the original 'text' feature can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
 
@@ -107,20 +108,23 @@ Figure 6. Partial data set of 'text' feature.
 
 **Observation:** We observed each sample has mixed data such as upper/lower cases, url, emojis.
 
-Figure 7 shows changes after cleaning meaningless data.
+
+2. Changes after Data Cleansing can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
 
 Figure 7. Partial data set after cleaning meaningless data.
 
-**Observation:** We observed there is removal of unnecessary data.
+**Observation:** Incomplete, duplicated, incorrect, and irrelevant data from the dataset is removed.
 
-We have cleaned data through the previous step, but there are still a few ways that we can do to extract meaningful information from the cleaned data. We apply stemming or lemmatization to get normalized words. Natural Language Toolkit (NLTK)[6] provides easy-to-use interfaces for natural language processing.
+However, there is still an additional implementation that we can do to extract meaningful information from the cleaned data. We apply stemming or lemmatization to get normalized words. Natural Language Toolkit (NLTK)[6] provides easy-to-use interfaces for natural language processing.
 
-### Tokenization
 
-Tokenization divides strings into lists of substrings. We can use the library to find the words and punctuation in sentences.
-The Figure 8 shows changes after applying tokenization.
+### 3. Tokenization
+
+Tokenization divides strings into lists of substrings. We used the library to find the words and punctuation in sentences.
+
+Changes after applying tokenization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
 
@@ -128,19 +132,25 @@ Figure 8. Partial data set after applying tokenization on previous cleaned data.
 
 **Observation:** We observed the separated words in each sample.
 
-### Stopwords
 
-We remove commonly used words, such as "the", "a", "is", "in". Figure 9 shows changes after applying stopwords.
+### 4. Stopwords
+
+We removed commonly used words, such as "the", "a", "is", "in". 
+
+Changes after applying stopwords can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stopw.png)
 
 Figure 9. Partial data set after removing stopwords on tokenized data.
 
-**Observation:** We observed the removal of stop words. In the first sample, 'out', 'for', 'more', 'set', 'me' is removed.
+**Observation:** In the first sample, 'out', 'for', 'more', 'set', 'me' are removed.
 
-### Stemming
 
-Stemming is the process of producing morphological variants of a root/base word. For example, words such as “Likes”, ”liked”, ”likely” and ”liking” will be reduced to “like” after stemming. There are different algorithms for stemming. Porter Stemmer, one of them, is a basic stemmer and it is straightforward and fast to run. Figure shows changes after applying stemming.
+### 5. Stemming
+
+Stemming is the process of producing morphological variants of a root/base word. For example, words such as “Likes”, ”liked”, ”likely” and ”liking” will be reduced to “like” after stemming. There are different algorithms for stemming. Porter Stemmer, one of them, is a basic stemmer and it is straightforward and fast to run. 
+
+Changes after applying stemming can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stem.png)
 
@@ -148,15 +158,21 @@ Figure 10. Partial data set after applying stemming on data without stopwords.
 
 **Observation:** We observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
 
-### Lemmatization
 
-Lemmatization is the process of grouping together the inflected forms of a word so they can be analyzed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in the dictionary in case of lemmatization. For example, the original words 'populated' changed to 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization is better performed than Stemming [7]. We decided to apply lemmatization.
+### 6. Lemmatization
+
+Lemmatization is the process of grouping together the inflected forms of a word so they can be analyzed as a single item, identified by the word's lemma, or dictionary form. Both stemming and lemmatization are word normalization techniques, but we can find the word in the dictionary in case of lemmatization. 
+
+For example, the original words 'populated' changed to 'popul' in Stemming, but it is not changed in lemmatization. Lemmatization has better performance than Stemming [7].
+
+Changes after applying lemmatization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
 
 Figure 11. Partial data set after applying lemmatization on data without stopwords.
 
 **Observation:** We observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
+
 
 ## Data Visualization
 
