@@ -47,7 +47,7 @@ Workflow:
 
 The data set has been collected from the company figure-eight and originally shared on their ‘Data For Everyone’ website [2]. We found the data set from Kaggle Competition [3]. It contains 7613 tweets data with the following features:
 
-# Exploratory Data Analysis and Data preprocessing
+# Exploratory Data Analysis, Data preprocessing and Feature Selection:
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dataset.png)
  
  Figure 1. Description of data set.
@@ -174,75 +174,86 @@ Changes after applying lemmatization can be viewed below.
 **Observation:** We observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
 
 
-## Data Visualization
+### Data Visualization
 
-After normalized text, we made data visualization by using word cloud[8]. 
+After performing the aforementioned steps on the feature 'text', we made data visualization using word cloud[8]. 
 
-Figure 12 shows a word cloud about disaster.
+Word cloud on disaster can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_1.png)
 
 Figure 12. WordCloud on 'target' labeled as a disaster.
 
-**Observation:** we discovered disaster tweets' related words; suicide, police, news, kill, attack, death, california, storm, flood.
+**Observation:** We discovered disaster tweets' related words : suicide, police, news, kill, attack, death, california, storm, flood.
 
-Figure 13 shows the word cloud about non-disaster.
+
+Word cloud on non-disaster can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_0.png)
 
 Figure 13. WordCloud on 'target' label as non disaster.
 
-**Observation:** Non disaster tweets shows words unrelated of disasters; time, want, great, feel, read. Also, injury or emergency, which can be used for non-disasters situations, are found as well.
+**Observation:** Non disaster tweets shows words unrelated of disasters: time, want, great, feel, read. Also, injury or emergency.
+
+# Feature Extraction (feature = 'text')
 
 ## Word Embedding to transform data into numerical feature vectors
 
-Word embedding is one of the most popular representations of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning models, we need to transform 'text' features(words or sentences) into fixed-length numerical feature vectors. There are a few methods we can use to transform text into numerical feature vectors.
+One of the biggest problems with text is that it is messy and unstructured, and machine learning algorithms need structured, properly defined fixed-length inputs. To train text on machine learning models, we need to transform 'text' features(words or sentences) into fixed-length numerical feature vectors.
 
-### CountVectorizer
+Word embedding is one of the most popular representations of document vocabulary. It is capable of capturing context of a word in a document, semantic and syntactic similarity, relation with other words. There are a few methods we can use to transform text into numerical feature vectors.
 
-Bag of Words model is a simplified representation used in natural language processing. A text is represented as the bag of its words, disregarding grammar and describes the occurrences of words within a document. CountVectorizer can be used for a bag of words model. This converts a collection of text documents to a matrix of token counts. CountVectorizer transforms the text into fixed-length vectors.
+### 1. CountVectorizer
 
-Figure 14 shows occurrences of words by CountVectorizer .
+The Bag-of-Words model is a simplified representation used in NLP. A text is represented as the bag of its words, disregarding grammar, and describes the occurrences of words within a document. CountVectorizer can be used for a bag of words model. 
+
+CountVectorizer can be used for a bag of words model. This converts a collection of text documents to a matrix of token counts and transforms the text into fixed-length vectors.
+
+Occurrences of words by CountVectorizer can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.countvec.png)
 
-Figure 14. Occurrences of words by CounterVectorizer.
+  Figure 14. Occurrences of words by CounterVectorizer.
 
-**Observation:** We observed frequencis of words. The 'deed' occurs around 4000. The 'reason' word occurs alot among 10 words in Figure.
+**Observation:** We observed the frequencis of words. The  word 'deed' was present in 4000 odd occurences. The  word 'reason' was present in 10 odd occurences.
 
-### Term Frequency Inverse Document Frequency(Tf-Idf)
+### 2. Term Frequency Inverse Document Frequency(Tf-Idf)
 
-Some articles say that TF-IDF is better than Countvectorizer because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. We can then remove the words that are less important for analysis, hence making the model building less complex by reducing the input dimensions.
+TF-IDF is considered to be better than Countvectorizer because it not only focuses on the frequency of words present in the corpus but also provides the importance of the words. Hence, we removed the words that are less important for analysis making the model building less complex.
 
-Figure 15 shows weighted occurrences of words by Tf-Idf.
+Occurrences of words by Tf-Idf can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
 
 Figure 15. Occurrences of words by Tf-Idf.
 
-**Observation:** We observed weighted frequencis of words. The 'deed' word looks weighted more and changed to around 15000. The 'reason' and 'reason earthquake' have more weighted rather than other words among 10 words in Figure.
+**Observation:** We observed weighted frequencis of words. The word 'deed' looks more weighted and the occurences changed to around 15000. The words 'reason' and 'reason earthquake' have appeared to weigh more as well.
 
-### Word2Vec
+### 3. Word2Vec
 
-According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence [9]. Word2Vec represents words in vector space in a way of similar meaning: words are positioned in close locations but dissimilar words are placed far away. For non sequential models, we build a sentence embedding by averaging the values across all token embeddings output by Word2Vec. We followed the gensim-tutorial[10] to visualize the relationship with words.
+The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence [9]. Word2Vec represents words in vector space in a way of similar meaning: words are positioned in close locations but dissimilar words are placed far away. We followed the gensim-tutorial[10] to visualize the relationship with words.
 
-Figure 16 shows visualization by word2vec.
+Visualization of words by word2vec can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.w2v_wildfire.png)
 
 Figure 16. Visualization of words by word2vec.
 
-**Observation:** The blue are most similar words with the 'Wildfire' and green is most unrelated words with the 'Wildfire'.
+**Observation:** Blue represents most similar words associated with the 'Wildfire' and green represents most unrelated words associated with 'Wildfire'.
 
-### Word2Vec with PCA applied
+### 4. Word2Vec with PCA applied
 
-Principal Component Analysis is a strategy to reduce dimensionality, to identify important relationships in data and to extract new features. According to the Gensim guide,  Word2Vec's default dimensionality is 100, so we are able to have directly 100 dimensions data set without PCA. However, we used PCA to reduce 100 components from Word2Vec with dimensionality of 300 since PCA not only reduces dimensionality but also extract new features. We tried to train and get better accuracy in several experiments. As a result, in this data set, usage of PCA has better performance rather than word2vec feature vector set with 100 dimensionality without PCA.
+Principal Component Analysis is a strategy to reduce dimensionality and to identify important relationships in data and to extract new features. According to the Gensim guide,  Word2Vec's default dimensionality is 100, so we are able to have directly 100 dimensions data set without PCA. However, we used PCA to reduce 100 components from Word2Vec with dimensionality of 300 since PCA not only reduces dimensionality but also extract new features. 
 
-### Glove
+We have noticed that the implementation of  PCA has better performance than word2vec feature vector set with 100 dimensionality without PCA.
 
-Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [11]. The resulting embeddings show interesting linear substructures of the word in vector space. Files with the pre-trained vectors Glove can be found in many sites like Kaggle[12]. We will use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
+### 5. Glove
 
-The difference between the Word2Vec and Glove is the way of training, which yield vectors with subtly different properties. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
+Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [11]. It was decided to use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
+
+The difference between the Word2Vec and Glove is the way of training. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
+
+
 
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
