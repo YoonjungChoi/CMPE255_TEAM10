@@ -23,7 +23,7 @@ The problem can be viewed as a binary classification problem and this project's 
 
 # Literature/Market Review
 
-Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and also adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2vec and Word2vec with Principal Component Analysis) on multiple models (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM Glove, Glove, LSTM with Word2Vec etc.). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
+Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and also adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2Vec and Word2vec with Principal Component Analysis) on multiple models (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM Glove, Glove, LSTM with Word2Vec etc.). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
  
 
 # Methods
