@@ -278,6 +278,7 @@ Table 1. Logistic Regression's accuracies with respective to feature vector sets
 
 **Observation:** We observed that the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy than word2vec feature data set.
 
+**Parameter Tuning:**
 We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. 
 
 Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[13].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [14]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
@@ -288,7 +289,7 @@ Below is the code snippet:
 lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', random_state=42, max_iter=100)
 ```
 
-Results and confusion matrices of the model can be viewed below.
+Results and confusion matrix of the model can be viewed below.
 
 |LR      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -308,7 +309,7 @@ Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature
 
 Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes [16]. That is the reason we have used SVM to solve a Binary classification problem in our case.
 
-Table shows performance on SVM without modifying parameters.
+Performance on SVM without modifying parameters can be viewed below.
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
@@ -316,15 +317,21 @@ Table shows performance on SVM without modifying parameters.
 
 Table 3. SVM's accuracies with respective feature vector sets.
 
-**Observation:** We observed that the count vectorizer feature vector set resulted in better accuracy(0.799) rather than other feature vectors sets. Word2Vec applied PCA feature vector set has better accuracy than Word2vec feature vector set.
+**Observation:** We observed that the count vectorizer feature vector set resulted in better accuracy(0.799) than other feature vectors' sets. Word2Vec applied PCA feature vector set has better accuracy than Word2vec feature vector set.
 
-We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient. If Gamma sets ‘scale’, then it uses 1 / (n_features * X.var()). SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane [17]. We trained by making several models with C(default=1), kernels, gamma(default='scale') and other parameters. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network. The below is the code snippet for optimazation. As a result, default parameters have better accuracy. 
+**Parameter Tuning:**
+
+We adjusted parameters SVM to improve better accuracy with the count vectorizer feature data set. 
+
+SVM has also parameters for regularization. C is the inverse strength of the regularization. Gamma is the kernel coefficient. If Gamma sets ‘scale’, then it uses 1 / (n_features * X.var()). SVM has a kernel parameter for kernel trick, which is a simple method where a non linear data is projected onto a higher dimension space so as to make it easier to classify the data where it could be linearly divided by a plane [17]. We trained by making several models with C(default=1), kernels, gamma(default='scale') and other parameters. Sigmoid Kernel refers to a neural network field and is equivalent to a two-layer, perceptron neural network. 
+
+Below is the code snippet for optimazation: 
 
 ```
 svm_clf = SVM(kernel='sigmoid')
 ```
 
-We obtained the result and confusion matrix of the model.
+Results and confusion matrix of the model can be viewed below.
 
 |SVM     | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
