@@ -23,7 +23,7 @@ The problem can be viewed as a binary classification problem and this project's 
 
 # Literature/Market Review
 
-Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2Vec and Word2vec with Principal Component Analysis, Glove) on multiple classifiers (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
+Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and adaptation of Principal Component Analysis(PCA) or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2Vec and Word2vec with PCA, Glove) on multiple classifiers (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
  
 
 # Methods
@@ -412,7 +412,7 @@ Table 8. Random Forest's performance with Count vectorizer feature vectors set.
 
 Figure 20. Confusion Matrix of Random Forest with CV feature vectors set.
 
-**Observation:** We observed the RF + CV resulted in better accuracy(0.852) than other feature vectors sets.
+**Observation:** We observed the RF + CV resulted in better accuracy(0.799) than other feature vectors sets.
 
 
 ## 5.Xgboost
@@ -441,7 +441,7 @@ Table 10. XGBoost's performance with Word2Vec + PCA feature vectors set.
 
 Figure 21. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set.
 
-**Observation:** We observed the XGB+PCA+W2V resulted in better accuracy(0.831) than other feature vectors sets.
+**Observation:** We observed the XGB+PCA+W2V resulted in better accuracy(0.774) than other feature vectors sets.
 
 ## 6.LSTM
 
@@ -471,7 +471,7 @@ Table 11. LSTM with Glove model's performance
 
 **Observation:** LSTM has the higher accuracy rather than other models that we tried so far.
 
-We trained the same LSTM model with Word2Vec for comparison. Results are shown the below Table.
+We trained the same LSTM model with Word2Vec for comparison. Results are shown the below Table. This model is not stable and fluctuates from 0.6~0.78.
 
 |LSTM  + W2V | Accuracy | Recall | Precision | F1 Score |
 |------------|----------|--------|-----------|----------|
