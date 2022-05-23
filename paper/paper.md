@@ -260,7 +260,7 @@ We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2V
 
 # Models
 
-We used non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost, and a sequential model LSTM to solve this binary classification problem. 
+We used non deep learning models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost, and a deep learning model LSTM to solve this binary classification problem. 
 
 For optimization of models, we re-trained and adjusted parameters on the models with the selected feature vector. However, some models did not result in significant improvement just for the simpler reason that the default parameters have worked well due to their general-purpose design.
 
@@ -483,7 +483,7 @@ Table 12. LSTM with word2vec model's performance
 
 
 ## 7.Ensemble
-Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForest with counter vectorizer, Xgboost with word2vec applied PCA.
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non deep learning models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForest with counter vectorizer, Xgboost with word2vec applied PCA.
 
 Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
@@ -495,9 +495,9 @@ Table 13. Performance of ensemble model without LSTM
 
 <!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png) -->
 
-**Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
+**Observation:** When we use ensemble model, accuracy is better than accuracy from respective non deep learning models.
 
-Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.809 accuracy. 
+Next ensemble model is the first ensemble model adding the deep learning model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.809 accuracy. 
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
@@ -530,11 +530,11 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 
 ## Comparison
 
-From non-sequential modeling on one classifier and four-word embeddings, we expected to find the best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracy in each of the experiments. In addition, although we were not able to acquire much improvement by optimizing parameters, we obtained a little improvement we learned that sometimes default parameters have good accuracy because they are supposed to work for general purposes. On the ensemble model of non-sequential models, we found that the ensemble model has better performance than cases using a single model.
+From non deep learning modeling on one classifier and four-word embeddings, we expected to find the best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracy in each of the experiments. In addition, although we were not able to acquire much improvement by optimizing parameters, we obtained a little improvement we learned that sometimes default parameters have good accuracy because they are supposed to work for general purposes. On the ensemble model of non deep learning models, we found that the ensemble model has better performance than cases using a single model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/performance.png)
 
-From sequential modeling on LSTM and two-word embeddings; word2vec and glove, LSTM trained on the Glove feature vectors set obtained the highest accuracy. LSTM has better accuracy than other models. However, we also noticed that the difference is not significant and non-sequential models had similar performance to LSTM model.
+From deep learning modeling on LSTM and two-word embeddings; word2vec and glove, LSTM trained on the Glove feature vectors set obtained the highest accuracy. LSTM has better accuracy than other models. However, we also noticed that the difference is not significant and non deep learning models had similar performance to LSTM model.
 
 ## ROC Curve
 
