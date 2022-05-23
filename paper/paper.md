@@ -485,7 +485,7 @@ Table 12. LSTM with word2vec model's performance
 
 
 ## 7.Ensemble
-Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
+Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForest with counter vectorizer, Xgboost with word2vec applied PCA.
 
 Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
