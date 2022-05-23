@@ -469,6 +469,8 @@ We tried to set random seed to make reproducible results, still LSTM model fluct
 |------------|----------|--------|-----------|-----------|
 |            |     0.809|   0.793|      0.759|      0.775|
 
+Table 11. LSTM with Glove model's performance
+
 **Observation:** LSTM has the higher accuracy rather than other models that we tried so far.
 
 We trained the same LSTM model with Word2Vec for comparison. Results are shown the below Table.
@@ -476,6 +478,8 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 |LSTM  + W2V | Accuracy | Recall | Precision | F1 Score |
 |------------|----------|--------|-----------|----------|
 |            |     0.635|   0.548|      0.927|     0.688|
+
+Table 12. LSTM with word2vec model's performance
 
 **Observation:** In this case, the model with Word2Vec has worst performance rather than the model with Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization in further study since we found that there are many parameters to improve performance [21].
 
@@ -489,6 +493,8 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 |----------|----------|--------|-----------|----------|
 |          |     0.812|   0.708|      0.835|     0.766|
 
+Table 13. Performance of ensemble model without LSTM
+
 <!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png) -->
 
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
@@ -498,6 +504,8 @@ Next ensemble model is the first ensemble model adding the sequential model, LST
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
 |          |     0.821|   0.697|      0.865|     0.772|
+
+Table 14. Performance of Ensemble model
 
 <!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png) -->
 
