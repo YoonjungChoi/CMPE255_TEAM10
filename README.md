@@ -23,7 +23,7 @@ This image is an example tweet. If someone says that 'On plus side LOOK AT THE S
 
 2) We need to apply practical algorithms e.g. stop words, and stemming to find the root of words. Again, we need to make sure that the data is as meaningful as possible, so we remove stop words(are, the, a, etc.) and apply stemming to lower inflection in words to their root forms. According to Wikipedia, although a word may exist in several inflected forms, having multiple inflected forms inside the same text adds redundancy to the NLP process.
 
-3) We need to apply word embedding algorithms to transform the text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform the text into numerical feature vectors so machine learning classifiers can understand input data. We will talk in detail about word embedding algorithms in the below [word embedding section](#word-embedding). For the non-sequential models such as SVM, Logistic Regression, Decision Tree, RandomForest, and XGboost are trained with CountVectorizer, Tf-Idf, and Word2vec(We have build a sentence embedding by averaging the values across all token embeddings output). For Long Short Term Memory(LSTM) called deep learning or the sequential model, we trained word2vec and Global Vectors for Word Representation(GloVe). We will talk about why we have we chosen LSTM in the below [classifiers section](#classifiers). 
+3) We need to apply word embedding algorithms to transform the text into numerical feature vectors, e.g. CountVectorizer, Tf-Idf, word2vec, glove. We have to transform the text into numerical feature vectors so machine learning classifiers can understand input data. We will talk in detail about word embedding algorithms in the below [word embedding section](#word-embedding). For the non deep learning models such as SVM, Logistic Regression, Decision Tree, RandomForest, and XGboost are trained with CountVectorizer, Tf-Idf, and Word2vec(We have build a sentence embedding by averaging the values across all token embeddings output). For Long Short Term Memory(LSTM) called deep learning or sequential model, we trained word2vec and Global Vectors for Word Representation(GloVe). We will talk about why we have we chosen LSTM in the below [classifiers section](#classifiers). 
 
 For comparison, other submissions of Kaggle have done similar steps for preprocessing and applying models and many participants have 1 score on Leaderboard. They tried to train a single model or even in the case of an ensemble, they trained ensemble classifiers with the same data set. However, we have a little bit of a different direction. We expect that there would be a suitable combination of feature vector sets and models. So we will try to build models with different feature vector sets to find combinations to get better performance and we will try to make a comparison.
 
@@ -119,7 +119,7 @@ Some articles say that TF-IDF is better than Countvectorizer because it not only
 
 **3) Word2Vec**
 
-According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. If we put a word in trained word2vec, it returns a feature vector. In the case of non-sequential models, since one instance of the 'text' feature has several words(sentence), we can build a sentence embedding by averaging the values across all token embeddings output by Word2Vec.
+According to Wikipedia, Word2vec is a group of related models that are used to produce word embeddings. The word2vec algorithm uses a neural network model to learn word associations from a large corpus of text. Once trained, such a model can detect synonymous words or suggest additional words for a partial sentence. If we put a word in trained word2vec, it returns a feature vector. In the case of non deep learning models, since one instance of the 'text' feature has several words(sentence), we can build a sentence embedding by averaging the values across all token embeddings output by Word2Vec.
 
 **4) Glove**
 
@@ -133,7 +133,7 @@ Bert (Bidirectional Encoder Representations from Transformers), is a deep learni
 
 ## Classifiers
 
-We will use **Non-Sequential Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning(BERT) or Sequential Model(LSTM)** to solve this binary classification problem.
+We will use **Non deep learning Model(Logistic Regression, SVM, Decision Tree, Random Tree, XGboost) and Deep Learning(Sequential) Model(LSTM)** to solve this binary classification problem.
 
 (Sequence models are the machine learning models that input or output sequences of data. Sequential data includes text streams, audio clips, video clips, time-series data and etc - [Article](https://towardsdatascience.com/sequence-models-and-recurrent-neural-networks-rnns-62cadeb4f1e1).)
 
@@ -239,7 +239,13 @@ Ensemble methods are techniques that create multiple models and then combine the
    - code/train.csv , glove [file](https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt)
 2. make sure correct paths of dataset and glove file
 3. run code Final_Team10_Code.ipynb or Final_Team10_Code.py
+
 or
-3. You can connect LIVEDEMO HERE: [colab link](https://colab.research.google.com/drive/19pXkCAS5EU0FjIyZe0WWEQYE5Ck9JDbT?usp=sharing)
+
+1. You can connect LIVEDEMO HERE: [colab link](https://colab.research.google.com/drive/19pXkCAS5EU0FjIyZe0WWEQYE5Ck9JDbT?usp=sharing)
+2. upload dataset and glove file
+3. make sure file path correct
+4. run it
+
 
 
