@@ -21,7 +21,7 @@ Twitter is one of the popular SNS platforms and many tweets have been delivered 
 
 The problem can be viewed as a binary classification problem and this project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning models that will predict which tweets are about "actual disasters" and which aren't.
 
-# Literature/Market Review
+# Market Review
 
 Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and also adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2vec and Word2vec with Principal Component Analysis) on multiple models (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM Glove, Glove, LSTM with Word2Vec etc.). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
  
@@ -258,7 +258,7 @@ The difference between the Word2Vec and Glove is the way of training. Glove is b
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
-# Models
+# Methods
 
 We used non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost, and a sequential model LSTM to solve this binary classification problem. 
 
@@ -347,8 +347,11 @@ Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
-## Decision Tree
-A decision tree can be used for either regression or classification. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Table 5 shows performance on Decision Tree without modifying parameters. 
+## 3. Decision Tree
+
+A decision tree can be used for either regression or classification. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. The advantages of classification with decision trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, have accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we have decided to train data on decision trees as well. 
+
+Performance on the Decision Tree without modifying parameters can be viewed below. 
 
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
@@ -357,16 +360,19 @@ A decision tree can be used for either regression or classification. Decision Tr
 
 Table 5. Decision Tree's accuracies with respective feature vector sets.
 
-**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vector set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
+**Observation:** We observed that the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vector sets. Since the decision tree decides on a different node at each time, results could differ and the differences in the accuracies of the Countvectorizer feature vector set are small. In addition to this, we observed that the accuracies from feature vector sets of Word2Vec and Word2Vec applied PCA has no significant difference as in Logistic Regression and Support Vector Machine.
 
-We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[18].
-The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible results.
+**Parameter Tuning:**
+
+We adjusted parameters to improve better accuracy with the Tf-Idf feature vectors set. We can see the detail of parameters in Sklearn documentation[18].
+
+The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, we used random_state to make reproducible results.
 
 ```
 clf = DecisionTreeClassifier(min_samples_split=10, random_state=27)
 ```
 
-We obtained the result and confusion matrix of the model.
+Results and confusion matrix of the model can be viewed below.
 
 |DT      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -378,7 +384,7 @@ Table 6. Decision Tree's  performance with If-Idf feature vectors set.
 
 Figure 19. Confusion Matrix of Decision Tree with If-Idf feature vectors set.
 
-**Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predict less non-disaster samples.
+**Observation:** The confusion matrix showed that the SVM predicts 677 true positive (disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predicted less non-disaster samples.
 
 ## Random Forest
 
@@ -386,7 +392,12 @@ Random Forest is a supervised learning algorithm. It can be used for both classi
 
 Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
-[table, image for score, confusion matrix]
+Results and confusion matrix of the model can be viewed below.
+
+|RF      | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.773|   0.681|      0.737|     0.708|
+
 
 **Observation:** 
 
@@ -486,9 +497,10 @@ From non sequential modeling on one classifier and four word embeddings, we expe
 From sequential modeling on LSTM and two word embeddings; word2vec and glove, when LSTM trained on Glove feature vectors set, we were able to have the highest accuracy. LSTM has better accuracy rather than other models. However, we can also think that given that the difference is not very big, non sequential models can have as much performance as the LSTM model in this experiment.
 
 We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used voting way of ensemble, we was not able to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.881).
-![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png])
+
+<!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png]) -->
 <!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png]) -->
-<!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png) -->
+![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png)
 
 | Models  | LR + CV | SVM + CV | DT + Tf-IDF | RT + CV | Xgb + W2v + PCA | LSTM+Glove |
 |---------|---------|----------|-------------|---------|-----------------|------------|
