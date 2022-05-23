@@ -347,7 +347,7 @@ Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
-## Decision Tree
+## 3.Decision Tree
 A decision tree can be used for either regression or classification. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Table 5 shows performance on Decision Tree without modifying parameters. 
 
 Results and confusion matrix of the model can be viewed below.
@@ -386,7 +386,7 @@ Figure 19. Confusion Matrix of Decision Tree with Tf-Idf feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predict less non-disaster samples.
 
-## Random Forest
+## 4.Random Forest
 
 Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and it's said that the more trees it has, the more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting.
 
@@ -407,7 +407,7 @@ Figure 20. Confusion Matrix of Random Forest with CV feature vectors set.
 **Observation:** We observed the RF + CV resulted in better accuracy(0.852) than other feature vectors sets.
 
 
-## Xgboost
+## 5.Xgboost
 
 Extreme Gradient Boosting (XGBoost) is a distributed gradient-boosted decision tree (GBDT) machine learning toolkit that is scalable. Supervised machine learning, decision trees, ensemble learning, and gradient boosting are all used in XGBoost. We were keen to use this approach and notice the results.
 
@@ -425,7 +425,7 @@ Figure 21. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set
 
 **Observation:** We observed the XGB+PCA+W2V resulted in better accuracy(0.831) than other feature vectors sets.
 
-## LSTM
+## 6.LSTM
 
 Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems. This is a behavior required in complex problem domains like machine translation, speech recognition, and more. LSTMs are a complex area of deep learning. The Long Short Term Memory architecture was motivated by an analysis of error flow in existing RNNs which found that long time lags were inaccessible to existing architectures, because backpropagated error either blows up or decays exponentially. 
 
@@ -464,7 +464,7 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 **Observation:** In this case, the model with Word2Vec has worst performance rather than the model with Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization in further study since we found that there are many parameters to improve performance [keras-].
 
 
-## Ensemble
+## 7.Ensemble
 Ensemble methods are techniques that create multiple models and then combine them to produce improved results. Ensemble methods usually produce more accurate solutions than a single model would.  We have four different feature sets and random_state parameters enable split feature vector sets in the same way, which means we can use ensemble models on our own. Based on the voting way, First ensemble model consisted of non sequential models; Logistic Regression with Count vectorizer, SVM with Counter vectorizer, Decision Tree with Tf-Idf, RandomForeset with counter vectorizer, Xgboost with word2vec applied PCA.
 
 Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
