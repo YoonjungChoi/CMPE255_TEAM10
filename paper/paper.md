@@ -451,15 +451,14 @@ An LSTM layer consists of a set of recurrently connected blocks, known as memory
 
 An LSTM has four “gates”: forget, remember, learn and use(or output). It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data). Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate. The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts). The short-term info and “E” go into the learn gate. This gate decides what info will be learned. Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
-```
-
-```
-
-
-
-![image](https://user-images.githubusercontent.com/46517523/169112300-5acf0cf2-6c2e-48ce-82ac-b12135fd2c92.png)
 
 **Observation:**
+The metrics for the LSTM model are shown below: 
+
+
+| LSTM       | Accuracy | Recall  | Precision | F1 Score |
+|------------|----------|--------|-----------|-----------|
+|            |     0.809|   0.793|      0.759|      0.775|
 
 We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.815.
 
