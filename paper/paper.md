@@ -350,6 +350,7 @@ Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 ## Decision Tree
 A decision tree can be used for either regression or classification. Decision Tree uses 'entropy' or 'gini' to calculate impurity of split and obtains information gain, and then decides which node splits in a way of having as much as possible higher information gain. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we try to train data on decision trees as well. Table 5 shows performance on Decision Tree without modifying parameters. 
 
+Results and confusion matrix of the model can be viewed below.
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
@@ -359,14 +360,19 @@ Table 5. Decision Tree's accuracies with respective feature vector sets.
 
 **Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vector set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
+**Parameter Tuning:**
+
 We adjusted parameters DecisionTree to improve better accuracy with the Tf-Idf feature vectors set. As default values, Decision Tree has 'gini' criterion, 'best' split strategy, consider all number of features when looking for best split. We can see the detail of parameters in Sklearn documentation[18].
+
 The 'min_samples_split' parameter indicates the minimum number of samples required to split an internal node. For experiments, I used random_state to make reproducible results.
+
+Below is the code snippet for optimazation: 
 
 ```
 clf = DecisionTreeClassifier(min_samples_split=10, random_state=27)
 ```
 
-We obtained the result and confusion matrix of the model.
+Results and confusion matrix of the model can be viewed below.
 
 |DT      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -386,9 +392,18 @@ Random Forest is a supervised learning algorithm. It can be used for both classi
 
 Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
-[table, image for score, confusion matrix]
+Results and confusion matrix of the model can be viewed below.
 
-**Observation:** 
+|RF      | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.799|   0.704|      0.809|     0.753|
+
+Table 7. Random Forest's accuracies with respective feature vector sets.
+
+<img width="273" alt="Screen Shot 2022-05-22 at 6 13 34 PM" src="https://user-images.githubusercontent.com/90536339/169726148-b326fa8f-3ff4-441d-8e2b-d81472da2a62.png">
+
+**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.799) than other feature vectors sets.
+
 
 ## Xgboost
 
