@@ -23,7 +23,7 @@ The problem can be viewed as a binary classification problem and this project's 
 
 # Literature/Market Review
 
-Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and also adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2Vec and Word2vec with Principal Component Analysis) on multiple models (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM Glove, Glove, LSTM with Word2Vec etc.). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
+Although there are various existing analyses on this dataset like classifiers with word embeddings, there is no comparison on classifiers with word embeddings and adaptation of PCA or ensemble with different word embeddings. We wanted to explore the impact of datasets constructed using different word vectorization methods (Countvectorizer, TF-IDF, Word2Vec and Word2vec with Principal Component Analysis, Glove) on multiple classifiers (Logistic regression, SVM, Decision Tree, Random Forest, XGBoost, LSTM). The results were compared based on different performance metrics such as Accuracy, Recall, Precision, F1 Score, Confusion Matrix, ROC Curve.
  
 
 # Methods
@@ -463,11 +463,11 @@ An LSTM has four “gates”: forget, remember, learn and use(or output). It als
 
 **Observation:**
 
-We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.813.
+We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.815.
 
 | LSTM+Glove | Accuracy | Recall  | Precision | F1 Score |
 |------------|----------|--------|-----------|-----------|
-|            |     0.810|   0.791|      0.764|      0.777|
+|            |     0.809|   0.793|      0.759|      0.775|
 
 **Observation:** LSTM has the higher accuracy rather than other models that we tried so far.
 
@@ -487,19 +487,19 @@ Table shows the accuracy, recall, precision, and f1 score of the ensemble model.
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |     0.811|   0.701|      0.838|     0.764|
+|          |     0.812|   0.708|      0.835|     0.766|
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png)
+<!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en1_cm.png) -->
 
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective non sequential models.
 
-Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.811 accuracy. 
+Next ensemble model is the first ensemble model adding the sequential model, LSTM with Glove. This ensemble model also fluctuate performance depends on performance of LSTM model. The below table shows the accuracy, recall, precision, and f1 score when LSTM with Glove model has 0.809 accuracy. 
 
 |Ensemble  | Accuracy | Recall | Precision | F1 Score |
 |----------|----------|--------|-----------|----------|
-|          |     0.813|   0.687|      0.856|     0.762|
+|          |     0.821|   0.697|      0.865|     0.772|
 
-![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png)
+<!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/en2_cm.png) -->
 
 **Observation:** When we use ensemble model, accuracy is better than accuracy from respective models. 
 
