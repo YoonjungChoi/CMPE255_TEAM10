@@ -19,7 +19,7 @@ Natural Language Processing (NLP) is a branch of artificial intelligence that he
 
 Twitter is one of the popular SNS platforms and many tweets have been delivered in emergencies. Since there are demands for companies to utilize these tweets, we investigate natural language processes and develop prediction models having better performance in this paper.
 
-This project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning models that will predict which tweets are about "actual disasters" and which aren't.
+THe given problem is a binary classification problem and this project's goal is to figure out how to tell which tweets are about "genuine disasters" and which aren't. This project will involve experimentation on various machine learning models that will predict which tweets are about "actual disasters" and which aren't.
 
 # Literature/Market Review
 
@@ -258,32 +258,37 @@ The difference between the Word2Vec and Glove is the way of training. Glove is b
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
-# Methods
-We use non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost and a sequential model LSTM to solve this binary classification problem. Sequence models are the machine learning models that input or output sequences of data [].  We train four feature vectors on the basic models to find which feature vectors can yield better performance. For optimization of models, we re-train and adjust parameters on models with the selected feature vector. Even though we did parameter optimization of models, some models did not result in significant improvement, but the default parameter could work well because it was designed for general purpose. 
+# Models
 
-## Logistic Regression(LR)
+We used non-sequential models, such as Logistic Regression, SVM, Decision Tree, Random Tree, XGboost, and a sequential model LSTM to solve this binary classification problem. 
 
-Logistic Regression is a supervised machine learning algorithm that can be used to model the probability of a certain class or event. It is used when the data is linearly separable and the outcome is binary or dichotomous in nature [12]. That means Logistic regression is usually used for Binary classification problems. Also, Logistic Regression is easier to implement, interpret, and very efficient to train. Logistic Regression is good accuracy for many simple data sets and it performs well when the dataset is linearly separable. So first we tried to train data sets on logistic regression.
+For optimization of models, we re-trained and adjusted parameters on the models with the selected feature vector. However, some models did not result in significant improvement just for the simpler reason that the default parameters have worked well due to their general-purpose design.
 
-Table 1 shows performance on Logistic Regression without modifying parameters.
+## 1. Logistic Regression(LR)
+
+Logistic Regression is a supervised machine learning algorithm that can be used to model the probability of a certain class or event. It is used when the data is linearly separable and the outcome is binary or dichotomous in nature [12]. That is the reason we have used LR to solve a Binary classification problem in our case.
+
+Performance on Logistic Regression without modifying parameters can be viewed below.
 
 |LR      |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.797| 0.776|   0.666|       0.761|
 
-Table 1. Logistic Regression's accuracies with respective feature vector sets.
+Table 1. Logistic Regression's accuracies with respective to feature vector sets.
 
-**Observation:** We observed the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy than word2vec feature data set.
+**Observation:** We observed that the count vectorizer feature data set resulted in better accuracy(0.797). Also, Word2Vec applied PCA feature data set has better accuracy than word2vec feature data set.
 
-We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. Logistic Regression has parameters for regularization, which can be used to train models that generalize better on unseen data, by preventing the algorithm from overfitting the training dataset. Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[13].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [14]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
+We modified parameters of Logistic Regression to improve better accuracy with the count vectorizer feature data set. 
 
-This is the code snippet.
+Penalty, a type of linear regression that uses shirikage, has three options; l1, l2, or elasticnet. The 'l1' is called Rasso Regression and this type of regularization can result in making coefficients zero, which means that some of the features are eliminated. On the other hand, the 'l2', called Ridge Regression, does not result in elimination of coefficients, which means that some features are affected a little. The 'elasticnet' is between 'l1' and 'l2'[13].  C is the inverse of regularization strength. The 'solver' is an algorithm to use in the optimization problem. For small datasets, ‘liblinear’ is a good choice [14]. We trained by making several models with three types of penalty, C, gamma, and other parameters.
+
+Below is the code snippet:
 
 ```
 lg_clf = LogisticRegression(C=0.45, penalty='l2', tol=0.01, solver='liblinear', random_state=42, max_iter=100)
 ```
 
-We obtained the below result and confusion matrices of the model.
+Results and confusion matrices of the model can be viewed below.
 
 |LR      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
@@ -291,7 +296,7 @@ We obtained the below result and confusion matrices of the model.
 
 Table 2. Logistic Regression's performance with Count Vectorizer feature vectors set.
 
-**Observation:** We observed that optimization does not improve significantly, but it improved to accuracy(0.801).
+**Observation:** We observed that the accuracy is improved (0.801). However, its not significant.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
 
@@ -299,8 +304,9 @@ Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature
 
 **Observation:** This confusion matrix shows the number of samples between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) samples.
 
-## Support Vector Machine(SVM)
-Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes [16]. SVM can be used for our binary classification problem. We train four feature vectors on basic SVM, which means no changes of parameters.
+## 2. Support Vector Machine(SVM)
+
+Support Vector Machine is a supervised learning model used for classification and regression problems. SVM can be used when data has exactly two classes. SVM classifies data by finding the best hyperplane that separates all data points of one class from those of the other class. The best hyperplane for an SVM means the one with the largest margin between the two classes [16]. That is the reason we have used SVM to solve a Binary classification problem in our case.
 
 Table shows performance on SVM without modifying parameters.
 
