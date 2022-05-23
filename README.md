@@ -54,7 +54,7 @@ For comparison, other submissions of Kaggle have done similar steps for preproce
 **This dataset have 'target' label having 0 or 1**
 
 ## Problem
-Prediction problem on whether a person's words are telling a disaster.
+Prediction problem on whether a person's words can be a disaster warning or not.
 This is categorized as Supervised Learning, Binary classification Problem, and Natural Language Processing.
 
 **1) 'target' label**
