@@ -593,7 +593,7 @@ We obtained the qualified data set from the company, so we assumed that the data
 
 [13] Logistic Regression, https://www.sciencedirect.com/topics/computer-science/logistic-regression
 
-[14] Logstic Regression API, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+[14] Logistic Regression API, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
 
 [15] Logistic Regression Sparsity, https://scikit-learn.org/stable/auto_examples/linear_model/plot_logistic_l1_l2_sparsity.html
 
