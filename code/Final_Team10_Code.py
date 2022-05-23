@@ -37,8 +37,8 @@ stop_words = stopwords.words('english')
 nltk.download('averaged_perceptron_tagger')
 
 # Load the Drive helper and mount
-from google.colab import drive
-drive.mount('/content/drive')
+#from google.colab import drive
+#drive.mount('/content/drive')
 
 """# Data Loading & Exploration"""
 
