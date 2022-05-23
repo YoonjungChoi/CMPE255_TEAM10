@@ -378,11 +378,11 @@ Results and confusion matrix of the model can be viewed below.
 |--------|----------|--------|-----------|----------|
 |        |     0.756|   0.681|      0.737|     0.708|
 
-Table 6. Decision Tree's  performance with If-Idf feature vectors set.
+Table 6. Decision Tree's  performance with Tf-Idf feature vectors set.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_cm.png)
 
-Figure 19. Confusion Matrix of Decision Tree with If-Idf feature vectors set.
+Figure 19. Confusion Matrix of Decision Tree with Tf-Idf feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predict less non-disaster samples.
 
@@ -401,6 +401,8 @@ Results and confusion matrix of the model can be viewed below.
 Table 7. Random Forest's accuracies with respective feature vector sets.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 13 34 PM" src="https://user-images.githubusercontent.com/90536339/169726148-b326fa8f-3ff4-441d-8e2b-d81472da2a62.png">
+
+Figure 20. Confusion Matrix of Random Forest with Tf-Idf feature vectors set.
 
 **Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.799) than other feature vectors sets.
 
