@@ -378,7 +378,7 @@ Results and confusion matrix of the model can be viewed below.
 |--------|----------|--------|-----------|----------|
 |        |     0.756|   0.681|      0.737|     0.708|
 
-Table 6. Decision Tree's  performance with Tf-Idf feature vectors set.
+Table 6. Decision Tree's performance with Tf-Idf feature vectors set.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_cm.png)
 
@@ -388,17 +388,25 @@ Figure 19. Confusion Matrix of Decision Tree with Tf-Idf feature vectors set.
 
 ## 4.Random Forest
 
-Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and it's said that the more trees it has, the more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting.
-
-Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
+Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and it's said that the more trees it has, the more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting. Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
 Results and confusion matrix of the model can be viewed below.
 
-|RF      | Accuracy | Recall | Precision | F1 Score |
-|--------|----------|--------|-----------|----------|
-|        |     0.852|   0.704|      0.809|     0.753|
+|RandomForest     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|-----------------|---------------|------|--------|------------|
+|         Accuracy|          0.785| 0.768|   0.733|       0.771|
 
-Table 7. Random Forest's accuracies with respective feature vector sets.
+Table 7. RandomForest's accuracies with respective feature vector sets.
+
+RandomForest have better accuracy with Count vectorizer feature vector set.
+
+Results and confusion matrix of the model can be viewed below.
+
+|RF+CV   | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.799|   0.704|      0.809|     0.753|
+
+Table 8. Random Forest's performance with Count vectorizer feature vectors set.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 13 34 PM" src="https://user-images.githubusercontent.com/90536339/169726148-b326fa8f-3ff4-441d-8e2b-d81472da2a62.png">
 
@@ -413,11 +421,21 @@ Extreme Gradient Boosting (XGBoost) is a distributed gradient-boosted decision t
 
 Results and confusion matrix of the model can be viewed below.
 
-|XGB      | Accuracy | Recall | Precision | F1 Score |
-|--------|----------|--------|-----------|----------|
-|        |     0.831|   0.654|      0.796|     0.718|
+|Xgboost     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|------------|---------------|------|--------|------------|
+|    Accuracy|          0.713| 0.729|   0.729|       0.753|
 
-Table 7. XGBoost's accuracies with respective feature vector sets.
+Table 9. Xgboost's accuracies with respective feature vector sets.
+
+Xgboost have better accuracy with Word2Vec+PCA feature vector set.
+
+Results and confusion matrix of the model can be viewed below.
+
+|XGB     | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.774|   0.659|      0.786|     0.717|
+
+Table 10. XGBoost's performance with Word2Vec + PCA feature vectors set.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 31 17 PM" src="https://user-images.githubusercontent.com/90536339/169726922-abe2739e-393e-40f7-b219-aead445fd65d.png">
 
@@ -427,11 +445,9 @@ Figure 21. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set
 
 ## 6.LSTM
 
-Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems. This is a behavior required in complex problem domains like machine translation, speech recognition, and more. LSTMs are a complex area of deep learning. The Long Short Term Memory architecture was motivated by an analysis of error flow in existing RNNs which found that long time lags were inaccessible to existing architectures, because backpropagated error either blows up or decays exponentially. 
+Long Short-Term Memory (LSTM) networks are a type of recurrent neural network capable of learning order dependence in sequence prediction problems. This is a behavior required in complex problem domains like machine translation, speech recognition, and more. LSTMs are a complex area of deep learning. The Long Short Term Memory architecture was motivated by an analysis of error flow in existing RNNs which found that long time lags were inaccessible to existing architectures, because backpropagated error either blows up or decays exponentially [20]
 
-An LSTM layer consists of a set of recurrently connected blocks, known as memory blocks. These blocks can be thought of as a differentiable version of the memory chips in a digital computer. Each one contains one or more recurrently connected memory cells and three multiplicative units – the input, output and forget gates – that provide continuous analogues of write, read and reset operations for the cells. … The net can only interact with the cells via the gates.
-
-**Working**
+An LSTM layer consists of a set of recurrently connected blocks, known as memory blocks. These blocks can be thought of as a differentiable version of the memory chips in a digital computer. Each one contains one or more recurrently connected memory cells and three multiplicative units – the input, output and forget gates – that provide continuous analogues of write, read and reset operations for the cells. The net can only interact with the cells via the gates.
 
 An LSTM has four “gates”: forget, remember, learn and use(or output). It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data). Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate. The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts). The short-term info and “E” go into the learn gate. This gate decides what info will be learned. Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
@@ -461,7 +477,7 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 |------------|----------|--------|-----------|----------|
 |            |     0.635|   0.548|      0.927|     0.688|
 
-**Observation:** In this case, the model with Word2Vec has worst performance rather than the model with Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization in further study since we found that there are many parameters to improve performance [keras-].
+**Observation:** In this case, the model with Word2Vec has worst performance rather than the model with Glove. However, this model have many possibility to improve considering that we do not use optimization. We will apply optimization in further study since we found that there are many parameters to improve performance [21].
 
 
 ## 7.Ensemble
@@ -581,4 +597,6 @@ We obtained the qualified data set from the company, so we assumed that the data
 
 [19] XGBoost, https://www.nvidia.com/en-us/glossary/data-science/xgboost/
 
-[keras-] Keras Optimizers API, https://keras.io/api/optimizers/
+[20] LSTM, https://machinelearningmastery.com/gentle-introduction-long-short-term-memory-networks-experts/ 
+
+[21] Keras Optimizers API, https://keras.io/api/optimizers/
