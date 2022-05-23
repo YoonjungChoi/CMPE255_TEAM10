@@ -214,6 +214,13 @@ Ensemble methods are techniques that create multiple models and then combine the
 * **Expectations: From parameter optimization, we would improve the performance of model**
 
 
+**7) Modeling with sequence model(LSTM) with Glove, Word2Vec**
+* create Word2Vec, Glove word embedding
+* train LSTM 
+* make sure to save all information(F1 Score, Precision, Recall, Accuracy, Confusion Matrix)
+* **Expectations: we would expect better performance of the sequence model because it considers sequences of text.**
+
+
 **8) Custom Ensemble**
 * create a model with parameters obtained by step 6.
 * create ensemble models with a combination of models and feature sets.
