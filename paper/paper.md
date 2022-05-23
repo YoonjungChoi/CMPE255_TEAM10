@@ -396,22 +396,34 @@ Results and confusion matrix of the model can be viewed below.
 
 |RF      | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
-|        |     0.799|   0.704|      0.809|     0.753|
+|        |     0.852|   0.704|      0.809|     0.753|
 
 Table 7. Random Forest's accuracies with respective feature vector sets.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 13 34 PM" src="https://user-images.githubusercontent.com/90536339/169726148-b326fa8f-3ff4-441d-8e2b-d81472da2a62.png">
 
-Figure 20. Confusion Matrix of Random Forest with Tf-Idf feature vectors set.
+Figure 20. Confusion Matrix of Random Forest with CV feature vectors set.
 
-**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.799) than other feature vectors sets.
+**Observation:** We observed the RF + CV resulted in better accuracy(0.852) than other feature vectors sets.
 
 
 ## Xgboost
 
-[table, image for score, confusion matrix]
+Extreme Gradient Boosting (XGBoost) is a distributed gradient-boosted decision tree (GBDT) machine learning toolkit that is scalable. Supervised machine learning, decision trees, ensemble learning, and gradient boosting are all used in XGBoost. We were keen to use this approach and notice the results.
 
-**Observation:** 
+Results and confusion matrix of the model can be viewed below.
+
+|XGB      | Accuracy | Recall | Precision | F1 Score |
+|--------|----------|--------|-----------|----------|
+|        |     0.831|   0.654|      0.796|     0.718|
+
+Table 7. XGBoost's accuracies with respective feature vector sets.
+
+<img width="273" alt="Screen Shot 2022-05-22 at 6 31 17 PM" src="https://user-images.githubusercontent.com/90536339/169726922-abe2739e-393e-40f7-b219-aead445fd65d.png">
+
+Figure 21. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set.
+
+**Observation:** We observed the XGB+PCA+W2V resulted in better accuracy(0.831) than other feature vectors sets.
 
 ## LSTM
 
@@ -560,5 +572,7 @@ We obtained the qualified data set from the company, so we assumed that data is 
 [17] SVM Kernel Trick, https://datamites.com/blog/support-vector-machine-algorithm-svm-understanding-kernel-trick/
 
 [18] Decision Tree, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+
+[19] XGBoost, https://www.nvidia.com/en-us/glossary/data-science/xgboost/
 
 [keras-] Keras Optimizers API, https://keras.io/api/optimizers/
