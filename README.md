@@ -238,4 +238,4 @@ Ensemble methods are techniques that create multiple models and then combine the
 
 or
 
-You can connect [colab link](https://colab.research.google.com/drive/19pXkCAS5EU0FjIyZe0WWEQYE5Ck9JDbT?usp=sharing)
+You can connect LIVEDEMO HERE: [colab link](https://colab.research.google.com/drive/19pXkCAS5EU0FjIyZe0WWEQYE5Ck9JDbT?usp=sharing)
