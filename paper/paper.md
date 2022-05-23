@@ -508,32 +508,38 @@ ROC curve is a graphical plot that illustrates recall(x-axis) and precision(y-ax
 
 ## Comparison
 
-From non sequential modeling on one classifier and four word embeddings, we expected to find the best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracy at each experiment. In addition, although we were not able to acquire much improvement by optimizing parameters, we obtained a little improvement at least and we learned that sometimes default parameters could have good accuracy because they are supposed to work for general purpose. On the ensemble model of non sequential models, we found that the ensemble model has better performance than cases using a single model.
+From non-sequential modeling on one classifier and four-word embeddings, we expected to find the best combination having better accuracy. We found that when Logistic Regression, SVM, Random Tree, XGBoost trained on CountVectorizer feature vectors set, Decision Tree trained on Tf-Idf feature vectors set, and XGBoost trained on Word2Vec applied PCA feature vectors set, they resulted in the highest accuracy in each of the experiments. In addition, although we were not able to acquire much improvement by optimizing parameters, we obtained a little improvement we learned that sometimes default parameters have good accuracy because they are supposed to work for general purposes. On the ensemble model of non-sequential models, we found that the ensemble model has better performance than cases using a single model.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/performance.png)
 
-From sequential modeling on LSTM and two word embeddings; word2vec and glove, when LSTM trained on Glove feature vectors set, we were able to have the highest accuracy. LSTM has better accuracy rather than other models. However, we can also think that given that the difference is not very big, non sequential models can have as much performance as the LSTM model in this experiment.
+From sequential modeling on LSTM and two-word embeddings; word2vec and glove, LSTM trained on the Glove feature vectors set obtained the highest accuracy. LSTM has better accuracy than other models. However, we also noticed that the difference is not significant and non-sequential models had similar performance to LSTM model.
 
-We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used voting way of ensemble, we was not able to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.881).
+## ROC Curve
+
+We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used the voting way of ensemble, we were unable to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.881).
+
 <!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png]) -->
 <!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png]) -->
 <!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png) -->
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png)
+
+### Comparision Table
 
 | Models  | LR + CV | SVM + CV | DT + Tf-IDF | RT + CV | Xgb + W2v + PCA | LSTM+Glove |
 |---------|---------|----------|-------------|---------|-----------------|------------|
 | AUC     |    0.859|     0.854|        0.767|    0.852|            0.831|       0.881|   
 
 
-Also, other submissions of Kaggle have done similar steps for preprocessing and applying models and many participants have 1 score in Leaderboard. They tried to train a single model or even in case of ensemble, they trained ensemble classifiers with the same data set. However, we have a little bit of a different direction. We expect that there would be a suitable combination of feature vector sets and models. So we will try to build models with different feature vector sets to find combinations to get better performance. We evaluated diverse models and we tried to make a comparison.
+## Market Comparision
+Also, other submissions on Kaggle have done similar steps for preprocessing and applying models. They tried to train a single model or even in case of ensemble, they trained ensemble classifiers with the same data set. However, we had taken a different direction expecting that there would be a suitable combination of feature vector sets and models.
 
 # Conclusions
 
-In this analysis we experienced four prominent word embeddings and seven classification techniques of using an Fiure-Eight Company data set. LSTM with glove have good performance among individual models and Ensemble model with combined different feature vectors and classifiers in our experiment outperfomanced the other classifiers on each data set.
+In this analysis, we experienced four prominent word embeddings and seven classification techniques using a Figure-Eight Company data set. LSTM with glove has good performance among individual models and the ensemble model with combined different feature vectors and these classifiers have outperformance the other classifiers on each data set.
 
 # Limitations And Future research
 
-We obtained the qualified data set from the company, so we assumed that data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing reliability of data first, we can analyze and predict emergency situations properly. Additional study on deep learning algorithms should be continued. When we made models on LSTM with word embeddings, we faced many difficulties about understanding complicated algorithms itself and choosing diverse optimazation options. In furthur study, we will continue dealing with our concerns.
+We obtained the qualified data set from the company, so we assumed that the data is reliable. However, the fact that data could be not truthful is the main limitation of this study. Overcoming these limitations can be done in future research. By distinguishing the reliability of data first, we can analyze and predict emergencies properly. Additional studies on deep learning algorithms should be continued. When we made models on LSTM with word embeddings, we faced many difficulties in understanding complicated algorithms themselves and choosing diverse optimization options. In further study, we will continue dealing with our concerns.
 
 # References
 
