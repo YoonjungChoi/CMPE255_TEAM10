@@ -272,7 +272,7 @@ Performance on Logistic Regression without modifying parameters can be viewed be
 
 |LR      |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
-|Accuracy|          0.797| 0.776|   0.666|       0.761|
+|Accuracy|          0.797| 0.776|   0.675|       0.752|
 
 Table 1. Logistic Regression's accuracies with respective to feature vector sets.
 
@@ -313,7 +313,7 @@ Performance on SVM without modifying parameters can be viewed below.
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
-|Accuracy|          0.799| 0.761|   0.627|       0.712|
+|Accuracy|          0.799| 0.761|   0.626|       0.708|
 
 Table 3. SVM's accuracies with respective feature vector sets.
 
@@ -354,11 +354,11 @@ Results and confusion matrix of the model can be viewed below.
 
 |SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
-|Accuracy|          0.748| 0.751|   0.667|       0.671|
+|Accuracy|          0.746| 0.749|   0.650|       0.664|
 
 Table 5. Decision Tree's accuracies with respective feature vector sets.
 
-**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy(0.751) than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vector set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
+**Observation:** We observed the tf-idf feature vectors set resulted in better accuracy than other feature vectors sets. Since the decision Tree decides on a different node at each time, results could be differ considering that the difference with accuracy of the Countvectorizer feature vector set are small. Also, we observed that accuracies from feature vectors sets of Word2Vec and Word2Vec applied PCA are not much big difference rather than cases of Logistic Regression and SVM.
 
 **Parameter Tuning:**
 
@@ -452,15 +452,7 @@ An LSTM layer consists of a set of recurrently connected blocks, known as memory
 An LSTM has four “gates”: forget, remember, learn and use(or output). It also has three inputs: long-term memory, short-term memory, and E. (E is some training example/new data). Step 1: When the 3 inputs enter the LSTM they go into either the forget gate, or learn gate. The long-term info goes into the forget gate, where, shocker, some of it is forgotten (the irrelevant parts). The short-term info and “E” go into the learn gate. This gate decides what info will be learned. Step 2: information that passes the forget gate (it is not forgotten, forgotten info stays at the gate) and info that passes learn gate (it is learned) will go to the remember gate (which makes up the new long term memory) and the use gate (which updates short term memory +is the outcome of the network).
 
 
-**Observation:**
-The metrics for the LSTM model are shown below: 
-
-
-| LSTM       | Accuracy | Recall  | Precision | F1 Score |
-|------------|----------|--------|-----------|-----------|
-|            |     0.809|   0.793|      0.759|      0.775|
-
-We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.815.
+The performance for the LSTM with glove model are shown below table. We tried to set random seed to make reproducible results, still LSTM model fluctuates its accuracy score from 0.803 to 0.815.
 
 | LSTM+Glove | Accuracy | Recall  | Precision | F1 Score |
 |------------|----------|--------|-----------|-----------|
@@ -474,7 +466,7 @@ We trained the same LSTM model with Word2Vec for comparison. Results are shown t
 
 |LSTM  + W2V | Accuracy | Recall | Precision | F1 Score |
 |------------|----------|--------|-----------|----------|
-|            |     0.635|   0.548|      0.927|     0.688|
+|            |     0.627|   0.543|      0.911|     0.680|
 
 Table 12. LSTM with word2vec model's performance
 
@@ -548,7 +540,7 @@ We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinatio
 
 | Models  | LR + CV | SVM + CV | DT + Tf-IDF | RT + CV | Xgb + W2v + PCA | LSTM+Glove |
 |---------|---------|----------|-------------|---------|-----------------|------------|
-| AUC     |    0.859|     0.854|        0.767|    0.852|            0.831|       0.881|   
+| AUC     |    0.859|     0.854|        0.767|    0.852|            0.832|       0.875|   
 
 
 ## Market Comparision
