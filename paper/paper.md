@@ -394,7 +394,7 @@ Results and confusion matrix of the model can be viewed below.
 
 |RandomForest     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |-----------------|---------------|------|--------|------------|
-|         Accuracy|          0.788| 0.773|   0.747|       0.767|
+|         Accuracy|          0.785| 0.768|   0.733|       0.771|
 
 Table 7. RandomForest's accuracies with respective feature vector sets.
 
@@ -404,7 +404,7 @@ Results and confusion matrix of the model can be viewed below.
 
 |RF+CV   | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
-|        |     0.788|   0.668|      0.813|     0.733|
+|        |     0.799|   0.704|      0.809|     0.753|
 
 Table 8. Random Forest's performance with Count vectorizer feature vectors set.
 
@@ -423,7 +423,7 @@ Results and confusion matrix of the model can be viewed below.
 
 |Xgboost     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |------------|---------------|------|--------|------------|
-|    Accuracy|          0.773| 0.765|   0.745|       0.768|
+|    Accuracy|          0.713| 0.729|   0.729|       0.753|
 
 Table 9. Xgboost's accuracies with respective feature vector sets.
 
@@ -433,7 +433,7 @@ Results and confusion matrix of the model can be viewed below.
 
 |XGB     | Accuracy | Recall | Precision | F1 Score |
 |--------|----------|--------|-----------|----------|
-|        |     0.768|   0.660|      0.776|     0.713|
+|        |     0.774|   0.659|      0.786|     0.717|
 
 Table 10. XGBoost's performance with Word2Vec + PCA feature vectors set.
 
