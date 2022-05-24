@@ -81,16 +81,8 @@ This Figure shows a few samples of the **location** feature.
 
 **Observation:** The 'location' feature has many null values(2533) and does not have format and it is not generated automatically. This feature has invalid data such as 'Happily Married with 2 kids', 'have car; will travel', 'peekskill. new york, 10566', or 'milky way'. We do not use 'location' as a feature.
 
-**4) 'text' feature**
 
-This plot shows distribution of the **text** feature based on target.
-
-@abhiteja
-
-
-**Observation:** The 'text' feature has unnecessary data that we should handle. 
-
-**5) 'id' feature**
+**4) 'id' feature**
 
 'id' feature is nominal data, there is no information.
 
