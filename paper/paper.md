@@ -530,7 +530,7 @@ From deep learning modeling on LSTM and two-word embeddings; word2vec and glove,
 
 ## ROC Curve
 
-We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used the voting way of ensemble, we were unable to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.881).
+We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinations of models and word embeddings. Since we used the voting way of ensemble, we were unable to make ROC curve and AUC of ensemble model. As we can see in Figure and Table, LSTM with Glove has the highest area under the curve(0.875).
 
 <!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png]) -->
 <!-- ![image]([https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png]) -->
