@@ -42,6 +42,7 @@ To develop the models, we have designed a sequence of steps. The steps involved 
 Workflow:
 
 ![Workflow](https://user-images.githubusercontent.com/90536339/169720495-9b02d9a0-c9b2-44a6-81db-45631d38e7f5.png)
+Figure 1. workflow.
 
 # Data Collection
 
@@ -50,7 +51,7 @@ The data set has been collected from the company figure-eight and originally sha
 # Exploratory Data Analysis, Data preprocessing and Feature Selection:
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dataset.png)
  
- Figure 1. Description of data set.
+ Figure 2. Description of data set.
 
 **Observation:** 
 We observed that the data set has four features and one label.
@@ -58,7 +59,7 @@ We observed that the data set has four features and one label.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.missing.png)
   
-  Figure 2. The number of missing values in the data set.
+  Figure 3. The number of missing values in the data set.
 
 **Observation:** 
 We observed that the 'location' feature has many null values(2533) and the 'keyword' feature has null values(39).
@@ -66,7 +67,7 @@ We observed that the 'location' feature has many null values(2533) and the 'keyw
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.labelpie.png)
   
-  Figure 3. Pie chart of 'target' label.
+  Figure 4. Pie chart of 'target' label.
 
 **Observation:** 
 We cannot say that it has a perfectly balanced dataset, but slightly it is a balanced data set.
@@ -74,7 +75,7 @@ We cannot say that it has a perfectly balanced dataset, but slightly it is a bal
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/keywordSet.png)
   
-  Figure 4. The number of unique words and common words at respective label(disaster and non-disaster).
+  Figure 5. The number of unique words and common words at respective label(disaster and non-disaster).
 
 **Observation:** 
 1. The 'keyword' feature does not have many null values(39), but there are many common words. It has 221 words of disaster,  219 words of non-disaster.
@@ -86,7 +87,7 @@ We cannot say that it has a perfectly balanced dataset, but slightly it is a bal
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/locationEx.png)
   
-  Figure 5. Partial samples of 'location' data set.
+  Figure 6. Partial samples of 'location' data set.
 
 **Observation:** 
 1. The 'location' feature has many null values(2533) and does not have format and it is not generated automatically. 
@@ -104,7 +105,7 @@ For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Em
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.oridata.png)
   
-  Figure 6. Partial data set of 'text' feature.
+  Figure 7. Partial data set of 'text' feature.
 
 **Observation:** We observed each sample has mixed data such as upper/lower cases, url, emojis.
 
@@ -113,7 +114,7 @@ For cleaning text, we changed all words to lowercase, removed URL, HTML tags, Em
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.cleantext.png)
   
-  Figure 7. Partial data set after cleaning meaningless data.
+  Figure 8. Partial data set after cleaning meaningless data.
 
 **Observation:** Incomplete, duplicated, incorrect, and irrelevant data from the dataset is removed.
 
@@ -128,7 +129,7 @@ Changes after applying tokenization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tok.png)
   
-  Figure 8. Partial data set after applying tokenization on previous cleaned data.
+  Figure 9. Partial data set after applying tokenization on previous cleaned data.
 
 **Observation:** We observed the separated words in each sample.
 
@@ -141,7 +142,7 @@ Changes after applying stopwords can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stopw.png)
   
-  Figure 9. Partial data set after removing stopwords on tokenized data.
+  Figure 10. Partial data set after removing stopwords on tokenized data.
 
 **Observation:** In the first sample, 'out', 'for', 'more', 'set', 'me' are removed.
 
@@ -154,7 +155,7 @@ Changes after applying stemming can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.stem.png)
  
- Figure 10. Partial data set after applying stemming on data without stopwords.
+ Figure 11. Partial data set after applying stemming on data without stopwords.
 
 **Observation:** We observed some changes of words. The 'crying' changed to 'cri' or 'acquisitions' changed to 'acquisit'.
 
@@ -169,7 +170,7 @@ Changes after applying lemmatization can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.lem.png)
   
-  Figure 11. Partial data set after applying lemmatization on data without stopwords.
+  Figure 12. Partial data set after applying lemmatization on data without stopwords.
 
 **Observation:** We observed some changes of words. Unlike stemming, lemmatization made that 'crying' changed to 'cry' or 'acquisitions' changed to 'acquisition'.
 
@@ -182,7 +183,7 @@ Word cloud on disaster can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_1.png)
 
-Figure 12. WordCloud on 'target' labeled as a disaster.
+Figure 13. WordCloud on 'target' labeled as a disaster.
 
 **Observation:** We discovered disaster tweets' related words : suicide, police, news, kill, attack, death, california, storm, flood.
 
@@ -191,7 +192,7 @@ Word cloud on non-disaster can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.wordcloud_0.png)
 
-Figure 13. WordCloud on 'target' label as non disaster.
+Figure 14. WordCloud on 'target' label as non disaster.
 
 **Observation:** Non disaster tweets shows words unrelated of disasters: time, want, great, feel, read. Also, injury or emergency.
 
@@ -213,7 +214,7 @@ Occurrences of words by CountVectorizer can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.countvec.png)
 
-  Figure 14. Occurrences of words by CounterVectorizer.
+  Figure 15. Occurrences of words by CounterVectorizer.
 
 **Observation:** We observed the frequencis of words. The  word 'deed' was present in 4000 odd occurences. The  word 'reason' was present in 10 odd occurences.
 
@@ -225,7 +226,7 @@ Occurrences of words by Tf-Idf can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.tfidf.png)
 
-Figure 15. Occurrences of words by Tf-Idf.
+Figure 16. Occurrences of words by Tf-Idf.
 
 **Observation:** We observed weighted frequencis of words. The word 'deed' looks more weighted and the occurences changed to around 15000. The words 'reason' and 'reason earthquake' have appeared to weigh more as well.
 
@@ -237,7 +238,7 @@ Visualization of words by word2vec can be viewed below.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.w2v_wildfire.png)
 
-Figure 16. Visualization of words by word2vec.
+Figure 17. Visualization of words by word2vec.
 
 **Observation:** Blue represents most similar words associated with the 'Wildfire' and green represents most unrelated words associated with 'Wildfire'.
 
@@ -252,9 +253,6 @@ We have noticed that the implementation of  PCA has better performance than word
 Glove stand for global vectors for word representation. It is an unsupervised learning algorithm developed by Stanford for generating word embeddings by aggregating global word-word co-occurrence matrices from a corpus [11]. It was decided to use the glove.6B.100d.txt file containing the glove vectors trained on the Wikipedia and GigaWord dataset.
 
 The difference between the Word2Vec and Glove is the way of training. Glove is based on global word to word co-occurrence counts utilizing the entire corpus, on the other hand, Word2Vec uses co-occurrence within local neighboring words.
-
-
-
 
 We build four feature vectors from Count Vectorizer, Tf-Idf, Word2vec and Word2Vec with PCA applied. Glove and Word2Vec embedding are used for the LSTM model. We are not able to apply PCA on Bag Of Words feature vector sets because of its sparsity. Transformed feature vectors sets have respective shape (7613,16270) from Count Vectorizer, shape (7613, 63245) from If-Idf, shape (7613,300) from Word2Vec, shape (7613,100) from Word2Vec applied PCA. 
 
@@ -301,7 +299,7 @@ Table 2. Logistic Regression's performance with Count Vectorizer feature vectors
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.logisticR_final_cm.png)
 
-Figure 17. Confusion Matrix of Logistic Regression with Count Vectorizer feature vectors set.
+Figure 18. Confusion Matrix of Logistic Regression with Count Vectorizer feature vectors set.
 
 **Observation:** This confusion matrix shows the number of samples between prediction and actuals. This Logistic Regression model predicts 683 true positive (disaster) and 1146 true negative(non-disaster) samples.
 
@@ -343,7 +341,7 @@ Table 4. SVM's  performance with the Count Vectorizer feature vector set.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.svm_final_cm.png)
 
-Figure 18. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
+Figure 19. Confusion Matrix of SVM with Count Vectorizer feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 664 true positive(disaster)and 1163 true negative(non-disaster) samples. Compared to Logistic Regression model, SVM predict more non-disaster samples than disaster samples.
 
@@ -382,7 +380,7 @@ Table 6. Decision Tree's performance with Tf-Idf feature vectors set.
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/fig.dt_final_cm.png)
 
-Figure 19. Confusion Matrix of Decision Tree with Tf-Idf feature vectors set.
+Figure 20. Confusion Matrix of Decision Tree with Tf-Idf feature vectors set.
 
 **Observation:** This confusion matrix shows that SVM predicts 677 true positive(disaster) and 1049 true negative (non-disaster) samples. Compared to Logistic Regression and SVM, Decision Tree predict less non-disaster samples.
 
@@ -410,7 +408,7 @@ Table 8. Random Forest's performance with Count vectorizer feature vectors set.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 13 34 PM" src="https://user-images.githubusercontent.com/90536339/169726148-b326fa8f-3ff4-441d-8e2b-d81472da2a62.png">
 
-Figure 20. Confusion Matrix of Random Forest with CV feature vectors set.
+Figure 21. Confusion Matrix of Random Forest with CV feature vectors set.
 
 **Observation:** We observed the RF + CV resulted in better accuracy(0.799) than other feature vectors sets.
 
@@ -439,7 +437,7 @@ Table 10. XGBoost's performance with Word2Vec + PCA feature vectors set.
 
 <img width="273" alt="Screen Shot 2022-05-22 at 6 31 17 PM" src="https://user-images.githubusercontent.com/90536339/169726922-abe2739e-393e-40f7-b219-aead445fd65d.png">
 
-Figure 21. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set.
+Figure 22. Confusion Matrix of XGBoost with PCA and Word2Vec feature vectors set.
 
 **Observation:** We observed the XGB+PCA+W2V resulted in better accuracy(0.774) than other feature vectors sets.
 
@@ -525,6 +523,8 @@ From non deep learning modeling on one classifier and four-word embeddings, we e
 
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/performance.png)
 
+Figure 23. Performance of all models.
+
 From deep learning modeling on LSTM and two-word embeddings; word2vec and glove, LSTM trained on the Glove feature vectors set obtained the highest accuracy. LSTM has better accuracy than other models. However, we also noticed that the difference is not significant and non deep learning models had similar performance to LSTM model.
 
 ## ROC Curve
@@ -536,12 +536,15 @@ We obtained ROC Curve and AUC(Area under the ROC Curve) of respective combinatio
 <!-- ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROC_Curves.png) -->
 ![image](https://github.com/YoonjungChoi/CMPE255_TEAM10/blob/main/paper/images/ROCCurve.png)
 
+Figure 24. ROC Curve and AUC of individual models.
+
 ### Comparision Table
 
 | Models  | LR + CV | SVM + CV | DT + Tf-IDF | RT + CV | Xgb + W2v + PCA | LSTM+Glove |
 |---------|---------|----------|-------------|---------|-----------------|------------|
 | AUC     |    0.859|     0.854|        0.767|    0.852|            0.832|       0.875|   
 
+Table 15. Models' AUC values.
 
 ## Market Comparision
 Also, other submissions on Kaggle have done similar steps for preprocessing and applying models. They tried to train a single model or even in case of ensemble, they trained ensemble classifiers with the same data set. However, we had taken a different direction expecting that there would be a suitable combination of feature vector sets and models.
