@@ -601,3 +601,17 @@ We obtained the qualified data set from the company, so we assumed that the data
 [20] LSTM, https://machinelearningmastery.com/gentle-introduction-long-short-term-memory-networks-experts/ 
 
 [21] Keras Optimizers API, https://keras.io/api/optimizers/
+
+# How to run
+
+1. make sure to save a dataset file "train.csv" and glove file "glove.6B.100d.txt"
+   - code/train.csv , glove [file](https://www.kaggle.com/datasets/danielwillgeorge/glove6b100dtxt)
+2. make sure correct paths of dataset and glove file
+3. run code Final_Team10_Code.ipynb or Final_Team10_Code.py
+
+or
+
+1. You can connect LIVEDEMO HERE: [colab link](https://colab.research.google.com/drive/19pXkCAS5EU0FjIyZe0WWEQYE5Ck9JDbT?usp=sharing)
+2. upload dataset and glove file
+3. make sure file path correct
+4. run it
