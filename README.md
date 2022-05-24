@@ -151,10 +151,13 @@ We can use a support vector machine (SVM) when data has exactly two classes. Thi
 
 A decision tree can be used for either regression or classification. Advantages of classification with Decision Trees are inexpensive to construct, extremely fast at classifying unknown records, easy to interpret for small-sized trees, accuracy comparable to other classification techniques for many simple data sets, and excludes unimportant features. Thus, we tried to train a data set on the decision tree as well.
 
-**4) Random Tree**
+**4) Random Forest**
+
+Random Forest is a supervised learning algorithm. It can be used for both classification and regression. However, it's mainly used for classification problems. A forest comprises trees and it's said that the more trees it has, the more robust the forest is. Random Forest is a set of multiple decision trees. Random Forest creates decision trees on randomly selected data samples, gets predictions from each tree and selects the best solution by means of voting. Decision trees may suffer from overfitting but random forest prevents overfitting by creating trees on random subsets. Decision trees are computationally faster.
 
 **5) XGboost**
- 
+
+Extreme Gradient Boosting (XGBoost) is a distributed gradient-boosted decision tree (GBDT) machine learning toolkit that is scalable. Supervised machine learning, decision trees, ensemble learning, and gradient boosting are all used in XGBoost. We were keen to use this approach and notice the results.
  
  **6) LSTM**
 
