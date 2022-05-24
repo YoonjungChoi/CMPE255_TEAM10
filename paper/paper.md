@@ -351,7 +351,7 @@ A decision tree can be used for either regression or classification. Decision Tr
 
 Results and confusion matrix of the model can be viewed below.
 
-|SVM     |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
+|DT    |CountVectorizer|Tf-Idf|Word2Vec|Word2Vec+PCA|
 |--------|---------------|------|--------|------------|
 |Accuracy|          0.746| 0.749|   0.650|       0.664|
 
